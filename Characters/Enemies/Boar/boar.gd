@@ -21,11 +21,4 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-#new add to move the boar
-#	var direction: Vector2 = starting_move_direction
-#	if direction && state_machine.check_if_can_move():
-#		velocity.x = direction.x * movement_speed_boar
-#	elif state_machine.current_state != hit_state_boar:
-#		velocity.x = move_toward(velocity.x, 0, movement_speed_boar)
-
 	move_and_slide()

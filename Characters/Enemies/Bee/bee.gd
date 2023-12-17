@@ -21,7 +21,7 @@ func _physics_process(delta):
 	
 	if (distance_to_move >=100):
 		fly_direction = Vector2.RIGHT
-		
+
 		if abs(distance_moved) >= distance_to_move:
 		# Change direction and flip the sprite
 			fly_direction *= -45
