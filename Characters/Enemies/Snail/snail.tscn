@@ -168,6 +168,7 @@ current_state = NodePath("Walk")
 
 [node name="Walk" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("5_sg3oi")
+can_move = null
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("5_sg3oi")

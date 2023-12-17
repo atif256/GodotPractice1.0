@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=9 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
 [ext_resource type="PackedScene" uid="uid://c5flkl2dibkc7" path="res://Characters/player.tscn" id="2_1afom"]
 [ext_resource type="PackedScene" uid="uid://cdcwf1bhhbacu" path="res://Characters/Enemies/Snail/snail.tscn" id="4_gknwv"]
 [ext_resource type="PackedScene" uid="uid://drs4fdg5hvcl7" path="res://UI/health_changed_manager.tscn" id="5_h3wjc"]
+[ext_resource type="PackedScene" uid="uid://pb04c3xlvbrp" path="res://Characters/Enemies/Boar/boar.tscn" id="6_c2ofg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
 texture = ExtResource("1_0efv7")
@@ -1458,16 +1459,8 @@ drag_vertical_enabled = true
 [node name="Snail" parent="." instance=ExtResource("4_gknwv")]
 position = Vector2(198, 186)
 
-[node name="Snail4" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("4_gknwv")]
-position = Vector2(594, 184)
-hit_state = NodePath("../Snail/CharacterStateMachine/Hit")
-
 [node name="Snail2" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("4_gknwv")]
-position = Vector2(328, 185)
-hit_state = NodePath("../Snail/CharacterStateMachine/Hit")
-
-[node name="Snail3" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("4_gknwv")]
-position = Vector2(467, 184)
+position = Vector2(345, 185)
 hit_state = NodePath("../Snail/CharacterStateMachine/Hit")
 
 [node name="HealthChangedManager" parent="." instance=ExtResource("5_h3wjc")]
@@ -1476,3 +1469,11 @@ offset_left = 85.0
 offset_top = 47.0
 offset_right = 141.0
 offset_bottom = 82.0
+
+[node name="Boar" parent="." instance=ExtResource("6_c2ofg")]
+position = Vector2(159, 96)
+collision_layer = 4
+
+[node name="Boar2" parent="." instance=ExtResource("6_c2ofg")]
+position = Vector2(359, 97)
+collision_layer = 4

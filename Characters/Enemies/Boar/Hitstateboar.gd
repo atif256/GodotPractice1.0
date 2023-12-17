@@ -1,8 +1,8 @@
 extends State
 
-class_name HitState
+class_name HitStateBoar
 
-@export var damageable: Damageable
+@export var damageable: DamageableBoar
 
 #@export var damageable_boar: DamageableBoar
 
@@ -11,13 +11,13 @@ class_name HitState
 @export var knockback_speed: float = 100
 @export var return_state: State
 
-@onready var timer: Timer = $Timer
+@onready var timerboar : Timer = $Timer
 
 func _ready():
 	damageable.connect("on_hit", on_damageable_hit)
 	
 func on_enter():
-	timer.start()
+	timerboar.start()
 
 func on_damageable_hit(node: Node, damage_amount: int, knockback_direction: Vector2 ):
 	if(damageable.health > 0): #>=
@@ -29,6 +29,7 @@ func on_damageable_hit(node: Node, damage_amount: int, knockback_direction: Vect
 
 func on_exit():
 	character.velocity = Vector2.ZERO
+
 
 func _on_timer_timeout():
 	next_state = return_state
