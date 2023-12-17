@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://pb04c3xlvbrp"]
+[gd_scene load_steps=24 format=3 uid="uid://pb04c3xlvbrp"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/Boar/boar.gd" id="1_da7mo"]
 [ext_resource type="Texture2D" uid="uid://3ppnw72uebf0" path="res://art/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Hit-Vanish/Hit-Sheet-Black.png" id="1_r1b03"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Characters/CharacterStateMachine.gd" id="3_56uue"]
 [ext_resource type="Script" path="res://Characters/state.gd" id="4_pdjgm"]
 [ext_resource type="Script" path="res://Characters/Enemies/Boar/Hitstateboar.gd" id="7_1dq12"]
+[ext_resource type="Script" path="res://Characters/Enemies/Boar/RunBoar.gd" id="8_13llv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgcbs"]
 size = Vector2(37, 26)
@@ -185,8 +186,9 @@ states/run/node = SubResource("AnimationNodeAnimation_au0a0")
 states/run/position = Vector2(486, 27)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kt38i"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_ukxnv"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_mma2m"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_xp4r8")]
 
-[node name="Boar" type="CharacterBody2D"]
+[node name="Boar" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
 script = ExtResource("1_da7mo")
+hit_state = NodePath("CharacterStateMachine/Hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 3)
@@ -221,7 +223,7 @@ script = ExtResource("4_pdjgm")
 script = ExtResource("4_pdjgm")
 
 [node name="Run" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("4_pdjgm")
+script = ExtResource("8_13llv")
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state")]
 script = ExtResource("7_1dq12")

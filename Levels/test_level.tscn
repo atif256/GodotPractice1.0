@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=10 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdcwf1bhhbacu" path="res://Characters/Enemies/Snail/snail.tscn" id="4_gknwv"]
 [ext_resource type="PackedScene" uid="uid://drs4fdg5hvcl7" path="res://UI/health_changed_manager.tscn" id="5_h3wjc"]
 [ext_resource type="PackedScene" uid="uid://pb04c3xlvbrp" path="res://Characters/Enemies/Boar/boar.tscn" id="6_c2ofg"]
+[ext_resource type="PackedScene" uid="uid://c00o8d8fh5hb1" path="res://Characters/Enemies/Bee/bee.tscn" id="7_57id1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
 texture = ExtResource("1_0efv7")
@@ -1457,11 +1458,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Snail" parent="." instance=ExtResource("4_gknwv")]
-position = Vector2(198, 186)
-
-[node name="Snail2" parent="." node_paths=PackedStringArray("hit_state") instance=ExtResource("4_gknwv")]
-position = Vector2(345, 185)
-hit_state = NodePath("../Snail/CharacterStateMachine/Hit")
+position = Vector2(357, 181)
 
 [node name="HealthChangedManager" parent="." instance=ExtResource("5_h3wjc")]
 visible = false
@@ -1475,5 +1472,9 @@ position = Vector2(159, 96)
 collision_layer = 4
 
 [node name="Boar2" parent="." instance=ExtResource("6_c2ofg")]
-position = Vector2(359, 97)
+position = Vector2(336, 96)
+collision_layer = 4
+
+[node name="Bee" parent="." instance=ExtResource("7_57id1")]
+position = Vector2(114, 51)
 collision_layer = 4
