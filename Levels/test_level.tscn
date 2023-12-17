@@ -1478,3 +1478,7 @@ collision_layer = 4
 [node name="Bee" parent="." instance=ExtResource("7_57id1")]
 position = Vector2(114, 51)
 collision_layer = 4
+
+[node name="Bee2" parent="." instance=ExtResource("7_57id1")]
+position = Vector2(296, 46)
+collision_layer = 4
