@@ -14,7 +14,7 @@ func _ready():
 	initial_position = global_position
 	#adistance_to_move =0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = speed_bee * fly_direction
 	var distance_moved = global_position.x - initial_position.x
 	

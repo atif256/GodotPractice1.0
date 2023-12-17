@@ -7,11 +7,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SignalBus.connect("on_health_changed", on_signal_health_changed)
+	pass
+#	SignalBus.connect("on_health_changed", on_signal_health_changed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func on_signal_health_changed(node : Node, amount_changed: int):
@@ -22,4 +23,4 @@ func on_signal_health_changed(node : Node, amount_changed: int):
 		label_instance.modulate = heal_color
 	else:
 		label_instance.modulate = damage_color
-
+	label_instance.start_floating()

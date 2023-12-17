@@ -1466,6 +1466,7 @@ offset_left = 85.0
 offset_top = 47.0
 offset_right = 141.0
 offset_bottom = 82.0
+health_changed_label = null
 
 [node name="Boar" parent="." instance=ExtResource("6_c2ofg")]
 position = Vector2(159, 96)
