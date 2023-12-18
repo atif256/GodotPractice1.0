@@ -435,8 +435,8 @@ script = ExtResource("1_8leax")
 shape = SubResource("CapsuleShape2D_8htxb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_up62c")
-hframes = 8
+texture = ExtResource("1_piwpi")
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -4,7 +4,7 @@ class_name DamageableBee
 
 signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2 )
 #snail health
-@export var health: float = 50:
+@export var health: float = 10:
 	get:
 		return health
 	set(value):
