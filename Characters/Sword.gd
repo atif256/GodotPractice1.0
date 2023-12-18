@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage : int =10
+@export var damage : int =100 #10 initial
 @export var player: Player
 @export var facing_shape: FacingCollisionShape2D
 
