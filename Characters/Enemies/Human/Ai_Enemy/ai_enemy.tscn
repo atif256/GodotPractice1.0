@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://0e0nqn8tkb3j"]
+[gd_scene load_steps=20 format=3 uid="uid://0e0nqn8tkb3j"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/ai_enemy.gd" id="1_44m3n"]
 [ext_resource type="Texture2D" uid="uid://stnxgji4qb3" path="res://art/generic_char_v0.2/generic_char_v0.2/png/red/char_red_1.png" id="1_imlc0"]
@@ -83,7 +83,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_htlui"]
 resource_name = "attack"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -349,20 +348,34 @@ animation = &"attack"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vmag1"]
 animation = &"idle"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4wun"]
+animation = &"run"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qawmk"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rmhr5"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t6545"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_87f83"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pia5y"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_um62y"]
 states/attack/node = SubResource("AnimationNodeAnimation_4ub21")
-states/attack/position = Vector2(634, 100)
+states/attack/position = Vector2(552, 37)
 states/idle/node = SubResource("AnimationNodeAnimation_vmag1")
-states/idle/position = Vector2(397, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qawmk"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_rmhr5")]
+states/idle/position = Vector2(394, 32)
+states/run/node = SubResource("AnimationNodeAnimation_c4wun")
+states/run/position = Vector2(394, 146)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qawmk"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_rmhr5"), "Start", "run", SubResource("AnimationNodeStateMachineTransition_t6545"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_87f83"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_pia5y")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndkyn"]
 size = Vector2(20, 74.233)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16c08"]
+size = Vector2(18, 52)
 
 [node name="Ai_Enemy" type="CharacterBody2D"]
 script = ExtResource("1_44m3n")
@@ -377,11 +390,10 @@ y_sort_enabled = true
 position = Vector2(12, -12)
 scale = Vector2(1.463, 1.463)
 texture = ExtResource("1_imlc0")
-offset = Vector2(-12, 3)
+offset = Vector2(-10, 0)
 flip_h = true
 hframes = 8
 vframes = 9
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -392,9 +404,28 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_um62y")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-40, -32)
+target_position = Vector2(0, 72)
+collision_mask = 3
+
 [node name="Sword" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 position = Vector2(-4, -8)
 rotation = 1.309
 shape = SubResource("RectangleShape2D_ndkyn")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_16c08")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
