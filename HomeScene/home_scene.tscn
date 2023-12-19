@@ -3473,10 +3473,3 @@ drag_vertical_enabled = true
 [node name="Ai_enemy" parent="." instance=ExtResource("6_lgpxr")]
 position = Vector2(587, 87)
 collision_layer = 4
-
-[node name="Ai_enemy2" parent="." node_paths=PackedStringArray("hit_state", "dead_state", "attack_state") instance=ExtResource("6_lgpxr")]
-position = Vector2(731, 87)
-collision_layer = 4
-hit_state = NodePath("../Ai_enemy/CharacterStateMachine/hit")
-dead_state = NodePath("../Ai_enemy/CharacterStateMachine/dead")
-attack_state = NodePath("../Ai_enemy/CharacterStateMachine/Attack")
