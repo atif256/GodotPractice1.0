@@ -8,10 +8,6 @@ class_name HitStateBoar
 @export var run_animation_name: String = "run"
 @export var idle_animation_name: String = "idle"
 @export var flip_sprite_on_run: bool = true
-
-##to set a delay to knockback
-#@export var run_delay: float = 0.01
-
 @export var dead_state: State
 @export var dead_animation_node: String = "dead"
 @export var knockback_speed: float = 100
