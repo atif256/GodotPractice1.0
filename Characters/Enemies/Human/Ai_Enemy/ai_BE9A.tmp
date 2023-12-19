@@ -1,11 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://0e0nqn8tkb3j"]
+[gd_scene load_steps=31 format=3 uid="uid://0e0nqn8tkb3j"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/ai_enemy.gd" id="1_44m3n"]
 [ext_resource type="Texture2D" uid="uid://stnxgji4qb3" path="res://art/generic_char_v0.2/generic_char_v0.2/png/red/char_red_1.png" id="1_imlc0"]
-[ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/Sword.gd" id="3_ccuma"]
 [ext_resource type="Script" path="res://Characters/CharacterStateMachine.gd" id="3_f7qho"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/DamageableAiOne.gd" id="3_qfihd"]
-[ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/CollisionShape2D.gd" id="3_u2t0j"]
 [ext_resource type="Script" path="res://Characters/state.gd" id="4_x2hdn"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/HitStateAiOne.gd" id="6_r3j5m"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/EnemyAttackStateMachine.gd" id="6_wqond"]
@@ -537,13 +535,11 @@ collision_mask = 3
 collision_layer = 0
 collision_mask = 6
 monitorable = false
-script = ExtResource("3_ccuma")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 position = Vector2(-4, -8)
 rotation = 1.309
 shape = SubResource("RectangleShape2D_ndkyn")
-script = ExtResource("3_u2t0j")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -597,23 +593,17 @@ one_shot = true
 script = ExtResource("4_x2hdn")
 can_move = false
 
-[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine", "health_enemy")]
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 offset_left = -47.0
-offset_top = -80.0
-offset_right = 41.0
-offset_bottom = -28.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "Enemy: run
-Health: 80"
+offset_top = -48.0
+offset_right = 10.0
+offset_bottom = -22.0
+text = "Enemy:"
 script = ExtResource("7_bnp5m")
 state_machine = NodePath("../CharacterStateMachine")
-health_enemy = NodePath("../Damageable")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="CharacterStateMachine/Attack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
-[connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerDetector" to="CharacterStateMachine/Attack" method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="CharacterStateMachine/Attack" method="_on_player_detector_body_exited"]
 [connection signal="timeout" from="CharacterStateMachine/hit/Timer" to="CharacterStateMachine/hit" method="_on_timer_timeout"]

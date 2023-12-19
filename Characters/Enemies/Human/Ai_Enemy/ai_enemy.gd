@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Ai_Enemy
+
 @export var movement_speed: float = 60.0 #60.0
 @export var starting_move_direction: Vector2 = Vector2.LEFT
 @onready var animation_tree: AnimationTree = $AnimationTree
