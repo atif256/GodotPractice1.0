@@ -1482,10 +1482,6 @@ collision_layer = 4
 position = Vector2(114, 51)
 collision_layer = 4
 
-[node name="Bee2" parent="." instance=ExtResource("7_57id1")]
-position = Vector2(296, 46)
-collision_layer = 4
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transitioner" parent="CanvasLayer" instance=ExtResource("8_5k2ul")]

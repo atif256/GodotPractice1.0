@@ -485,7 +485,7 @@ advance_mode = 2
 states/attack/node = SubResource("AnimationNodeAnimation_4ub21")
 states/attack/position = Vector2(570, 32)
 states/dead/node = SubResource("AnimationNodeAnimation_u6v0u")
-states/dead/position = Vector2(771, 116)
+states/dead/position = Vector2(767, 116)
 states/idle/node = SubResource("AnimationNodeAnimation_vmag1")
 states/idle/position = Vector2(394, 32)
 states/run/node = SubResource("AnimationNodeAnimation_c4wun")
@@ -493,7 +493,7 @@ states/run/position = Vector2(394, 116)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qawmk"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_rmhr5"), "Start", "run", SubResource("AnimationNodeStateMachineTransition_t6545"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_87f83"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_hc518"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_owk1s"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_5k77u"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_6wx8j")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndkyn"]
-size = Vector2(21.2127, 81.4152)
+size = Vector2(45.8033, 23.8545)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16c08"]
 size = Vector2(17, 90)
@@ -507,6 +507,7 @@ attack_state = NodePath("CharacterStateMachine/Attack")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_ankac")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_as_relative = false
@@ -518,6 +519,7 @@ offset = Vector2(-12, 3)
 flip_h = true
 hframes = 8
 vframes = 9
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -532,18 +534,18 @@ anim_player = NodePath("../AnimationPlayer")
 position = Vector2(-24, -32)
 target_position = Vector2(0, 72)
 collision_mask = 3
+metadata/_edit_lock_ = true
 
 [node name="Sword" type="Area2D" parent="." node_paths=PackedStringArray("enemy_ai", "facing_shape")]
+position = Vector2(-17, 0)
 collision_layer = 0
 collision_mask = 6
-monitoring = false
 script = ExtResource("3_ccuma")
 enemy_ai = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
-position = Vector2(-1.90735e-06, 0)
-rotation = 1.309
+scale = Vector2(1.06979, 0.922256)
 shape = SubResource("RectangleShape2D_ndkyn")
 script = ExtResource("3_u2t0j")
 
@@ -552,8 +554,9 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(-32.5, -22)
+position = Vector2(-32, -24)
 shape = SubResource("RectangleShape2D_16c08")
+metadata/_edit_lock_ = true
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("3_qfihd")
@@ -600,7 +603,7 @@ one_shot = true
 script = ExtResource("4_x2hdn")
 can_move = false
 
-[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine", "health_enemy")]
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("health_enemy")]
 offset_left = -47.0
 offset_top = -80.0
 offset_right = 41.0
@@ -608,11 +611,10 @@ offset_bottom = -28.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
-text = "Enemy: run
-Health: 80"
+text = "Health: 80"
 script = ExtResource("7_bnp5m")
-state_machine = NodePath("../CharacterStateMachine")
 health_enemy = NodePath("../Damageable")
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="CharacterStateMachine/Attack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]

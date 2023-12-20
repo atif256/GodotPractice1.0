@@ -8,4 +8,3 @@ extends Label
 func _process(_delta):
 	text = "State : " + state_machine.current_state.name
 	text += "\nHealth: " + str(player_health.health)
-	
