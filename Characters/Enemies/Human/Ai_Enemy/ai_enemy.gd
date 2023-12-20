@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Ai_Enemy
 
+
 @export var movement_speed: float = 60.0 #60.0
 @export var starting_move_direction: Vector2 = Vector2.LEFT
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -11,15 +12,17 @@ class_name Ai_Enemy
 @export var dead_state: State
 @export var attack_state: State
 
+#new added
+@onready var sprite: Sprite2D = $Sprite2D
 var attack_animation_name: String = "attack"
-
 @onready var state_machine: CharacterStateMachine = $CharacterStateMachine
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+signal facing_direction_changed(facing_left: bool)
+
 
 func _ready():
 	animation_tree.active = true
-	
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -42,6 +45,8 @@ func _physics_process(delta):
 	detect_turn_around()
 	move_and_slide()
 	
+	update_animation_parameter()
+	update_facing_direction()
 
 func detect_turn_around():
 	if !raycast.is_colliding() && is_on_floor():
@@ -53,3 +58,16 @@ func detect_turn_around():
 func turn_around():
 	starting_move_direction = - starting_move_direction
 #	print("turn around")
+
+#new added
+var direction: Vector2 = Vector2.ZERO
+func update_animation_parameter():
+	animation_tree.set("parameters/move/blend_position", direction.x)
+
+func update_facing_direction():
+	if direction.x > 0:
+		sprite.flip_h = false
+	elif direction.x < 0:
+		sprite.flip_h = true
+	
+	emit_signal("facing_direction_changed", !sprite.flip_h)

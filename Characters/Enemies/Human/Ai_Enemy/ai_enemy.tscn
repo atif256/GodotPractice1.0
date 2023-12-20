@@ -493,7 +493,7 @@ states/run/position = Vector2(394, 116)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qawmk"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_rmhr5"), "Start", "run", SubResource("AnimationNodeStateMachineTransition_t6545"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_87f83"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_hc518"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_owk1s"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_5k77u"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_6wx8j")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndkyn"]
-size = Vector2(20, 74.233)
+size = Vector2(21.2127, 81.4152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16c08"]
 size = Vector2(17, 90)
@@ -533,14 +533,16 @@ position = Vector2(-24, -32)
 target_position = Vector2(0, 72)
 collision_mask = 3
 
-[node name="Sword" type="Area2D" parent="."]
+[node name="Sword" type="Area2D" parent="." node_paths=PackedStringArray("enemy_ai", "facing_shape")]
 collision_layer = 0
 collision_mask = 6
-monitorable = false
+monitoring = false
 script = ExtResource("3_ccuma")
+enemy_ai = NodePath("..")
+facing_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
-position = Vector2(-4, -8)
+position = Vector2(-1.90735e-06, 0)
 rotation = 1.309
 shape = SubResource("RectangleShape2D_ndkyn")
 script = ExtResource("3_u2t0j")
@@ -581,12 +583,13 @@ can_move = false
 wait_time = 0.8
 one_shot = true
 
-[node name="hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state", "current_state")]
+[node name="hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state", "current_state", "attack_state")]
 script = ExtResource("6_r3j5m")
 damageable = NodePath("../../Damageable")
 dead_state = NodePath("../dead")
 return_state = NodePath("../run")
 current_state = NodePath(".")
+attack_state = NodePath("../Attack")
 can_move = false
 
 [node name="Timer" type="Timer" parent="CharacterStateMachine/hit"]
