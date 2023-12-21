@@ -17,6 +17,9 @@ func _ready():
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
 			
+			#to set the character
+			child.controlled_object = character
+			
 			#connect to interrupt signal
 			child.connect("interrupt_state", on_state_interrupt_state)
 			
