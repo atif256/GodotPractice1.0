@@ -8,7 +8,6 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monitoring = false
-	ai_enemy2.connect("facing_direction_changed", _on_enemy_facing_direction_changed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,7 +18,7 @@ func _process(delta):
 func _on_body_entered(body):
 	for child in body.get_children():
 		if child is PlayerHealth:
-			print("enemy enter the player hit box")
+			#print("enemy enter the player hit box")
 			var direction_to_damageable = (body.global_position - get_parent().global_position)
 			var direction_sign = sign(direction_to_damageable.x)
 			
@@ -30,7 +29,6 @@ func _on_body_entered(body):
 			#apply knockback direction
 			if(direction_sign > 0):
 				child.hit(damage, knockback_direction)
-				#print_debug(child)
 			elif(direction_sign < 0):
 				child.hit(damage, -knockback_direction)
 			else:

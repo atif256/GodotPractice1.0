@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=13 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c00o8d8fh5hb1" path="res://Characters/Enemies/Bee/bee.tscn" id="7_57id1"]
 [ext_resource type="PackedScene" uid="uid://ght0hvdnxndq" path="res://UI/Transitions_Scene_1/transitions.tscn" id="8_5k2ul"]
 [ext_resource type="Script" path="res://Levels/TransitionsButton.gd" id="9_dw21k"]
+[ext_resource type="PackedScene" uid="uid://dejfqgo1cypl3" path="res://CollectableItems/Heals/collectable_items.tscn" id="10_irhdi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
 texture = ExtResource("1_0efv7")
@@ -1492,5 +1493,14 @@ offset_bottom = 24.0
 focus_mode = 0
 script = ExtResource("9_dw21k")
 transitioner = NodePath("../Transitioner")
+
+[node name="CollectableItems" parent="." instance=ExtResource("10_irhdi")]
+position = Vector2(-37, 104)
+
+[node name="CollectableItems3" parent="." instance=ExtResource("10_irhdi")]
+position = Vector2(-151, 104)
+
+[node name="CollectableItems2" parent="." instance=ExtResource("10_irhdi")]
+position = Vector2(-103, 105)
 
 [connection signal="toggled" from="CanvasLayer/Transitions Button" to="CanvasLayer/Transitions Button" method="_on_toggled"]

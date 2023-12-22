@@ -1,18 +1,15 @@
 extends State
 
 var player = null
-#var controlled_object: Node2D = null
 var enemy_chase: bool = false
 @export var slow_chase: float = 50.0
 var has_flipped: bool = false
 @export var run_animation_name: String = "run"
-@export var idle_animation_name: String = "idle"
 @export var attack_animation_name: String = "attack"
-@export var dead_animation_name: String = " dead"
 @export var chase_run: State
 @export var attack_state:State
-@export var idle_state: State
-@export var dead_state: State
+
+
 
 func _ready():
 	pass
@@ -21,6 +18,8 @@ func _physics_process(delta):
 	if enemy_chase and player:
 		# Access the position property of the controlled object
 		controlled_object.position += (player.global_position - controlled_object.global_position) / slow_chase
+		
+
 
 func _on_chase_to_left_body_entered(body): #behind
 	if not has_flipped:
@@ -40,16 +39,13 @@ func _on_chase_to_right_body_entered(body): #infront
 	playback.travel(run_animation_name)
 	player = body
 	enemy_chase = true
-#	if dead_state && dead_animation_name:
-#		character.velocity = Vector2.ZERO
 
 func _on_chase_to_right_body_exited(_body): #infront
 	emit_signal("interrupt_state", attack_state)
 	playback.travel(attack_animation_name)
 	player = null
 	enemy_chase = false
-#	if dead_state && dead_animation_name:
-#		character.velocity = Vector2.ZERO
+
 
 func on_exit():
 	character.velocity = Vector2.ZERO

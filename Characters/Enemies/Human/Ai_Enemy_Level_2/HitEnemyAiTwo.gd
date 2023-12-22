@@ -31,11 +31,6 @@ func on_damageable_hit(_node: Node, _damage_amount: int, _knockback_direction: V
 		print("character is dead")
 
 
-#func _on_timer_timeout():
-#	timer.stop() #0.6
-#	next_state = return_state
-
-
 func _on_timer_timeout():
 	timer.stop() #0.6
 	next_state = return_state
