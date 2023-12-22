@@ -4508,5 +4508,5 @@ position = Vector2(432, 87)
 collision_layer = 4
 
 [node name="Ai_enemy_Level_2" parent="." instance=ExtResource("8_c028v")]
-position = Vector2(-52, 86)
+position = Vector2(903, 83)
 collision_layer = 4

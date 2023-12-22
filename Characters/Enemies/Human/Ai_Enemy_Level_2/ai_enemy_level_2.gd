@@ -4,7 +4,7 @@ class_name Ai_Enemy2
 
 var player = null
 var enemy_chase: bool = false
-@export var slow_chase: float = 50.0
+@export var slow_chase: float = 10.0
 @export var forward_speed: float = 20
 @export var walk_animation_name: String = "walk"
 var has_flipped: bool = false
