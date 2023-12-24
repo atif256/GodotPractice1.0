@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8d1p7a3oasot"]
+
+[ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/arrow/arrow.gd" id="1_mut86"]
+[ext_resource type="Texture2D" uid="uid://cp3wpdeqqof6n" path="res://art/generic_char_v0.2/hunter/Arrow/Move.png" id="2_xib0a"]
+[ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/arrow/DamageableArrow.gd" id="3_t1x1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd8am"]
+size = Vector2(34, 6)
+
+[sub_resource type="Animation" id="Animation_mr67d"]
+resource_name = "move"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_xib0a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_qx1cp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3ivj"]
+_data = {
+"RESET": SubResource("Animation_qx1cp"),
+"move": SubResource("Animation_mr67d")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6t7s0"]
+animation = &"move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_20t6q"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d1wqw"]
+states/move/node = SubResource("AnimationNodeAnimation_6t7s0")
+states/move/position = Vector2(388, 100)
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_20t6q")]
+
+[node name="Arrow" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_mut86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yd8am")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_xib0a")
+flip_h = true
+hframes = 2
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(0.7, 0.3)
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("3_t1x1d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u3ivj")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_d1wqw")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

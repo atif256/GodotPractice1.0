@@ -4519,7 +4519,7 @@ attack_state = NodePath("../Ai_enemy/CharacterStateMachine/Attack")
 position = Vector2(-52, 86)
 collision_layer = 4
 
-[node name="Ai_enemy_Level_3" parent="." instance=ExtResource("8_c028v")]
+[node name="Ai_enemy_Level_2_1" parent="." instance=ExtResource("8_c028v")]
 position = Vector2(-679, 83)
 collision_layer = 4
 
