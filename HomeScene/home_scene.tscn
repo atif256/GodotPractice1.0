@@ -4433,6 +4433,7 @@ sources/2 = SubResource("TileSetAtlasSource_rxt66")
 sources/3 = SubResource("TileSetAtlasSource_dnfwp")
 
 [node name="HomeScene" type="Node2D"]
+position = Vector2(-2, 236)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1721.0

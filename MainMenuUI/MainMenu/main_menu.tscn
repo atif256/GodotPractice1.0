@@ -1,33 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://8e4buor1rqab"]
+[gd_scene load_steps=4 format=3 uid="uid://8e4buor1rqab"]
 
 [ext_resource type="Script" path="res://MainMenuUI/MainMenu/ControlMenu.gd" id="1_thckn"]
+[ext_resource type="Texture2D" uid="uid://cmvgm5pirvmej" path="res://art/MenuArt/Screenshot (43).png" id="1_wbarb"]
 [ext_resource type="PackedScene" uid="uid://7c2koqsoypf5" path="res://MainMenuUI/LevelMenu/levels_menu.tscn" id="2_fgfqk"]
 
 [node name="MainMenu" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -8.0
+offset_right = 630.0
+offset_bottom = 414.0
+texture = ExtResource("1_wbarb")
+expand_mode = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 490.0
-offset_bottom = 174.0
+offset_right = 1916.0
+offset_bottom = 1079.0
 script = ExtResource("1_thckn")
 scene_to_load = ExtResource("2_fgfqk")
 
-[node name="Levels" type="Button" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 176.0
-offset_top = 21.0
-offset_right = 297.0
-offset_bottom = 52.0
+offset_left = 277.0
+offset_top = 221.0
+offset_right = 326.0
+offset_bottom = 287.0
+alignment = 1
+
+[node name="Levels" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
 text = "Level"
 
-[node name="Quit" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 203.0
-offset_top = 69.0
-offset_right = 275.0
-offset_bottom = 101.0
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="Control/Levels" to="Control" method="_on_levels_pressed"]
-[connection signal="pressed" from="Control/Quit" to="Control" method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Levels" to="Control" method="_on_levels_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control" method="_on_quit_pressed"]

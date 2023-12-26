@@ -12424,6 +12424,7 @@ sources/3 = SubResource("TileSetAtlasSource_b0uhl")
 sources/4 = SubResource("TileSetAtlasSource_jiijb")
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(-1, 232)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -424.0
