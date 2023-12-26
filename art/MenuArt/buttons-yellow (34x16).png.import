@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmvgm5pirvmej"
-path="res://.godot/imported/Screenshot (43).png-b4c9926eca3b39920c79a272a53045d8.ctex"
+uid="uid://dpfispqk15a57"
+path="res://.godot/imported/buttons-yellow (34x16).png-0591e2125b2e49f6d7b0c201fbedc073.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/MenuArt/Screenshot (43).png"
-dest_files=["res://.godot/imported/Screenshot (43).png-b4c9926eca3b39920c79a272a53045d8.ctex"]
+source_file="res://art/MenuArt/buttons-yellow (34x16).png"
+dest_files=["res://.godot/imported/buttons-yellow (34x16).png-0591e2125b2e49f6d7b0c201fbedc073.ctex"]
 
 [params]
 

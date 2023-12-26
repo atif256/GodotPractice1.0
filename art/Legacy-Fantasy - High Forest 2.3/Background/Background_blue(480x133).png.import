@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq2tkd7w1npkb"
-path="res://.godot/imported/buttons-yellow.png-d41b3d05b417ec062600ca74470d28f3.ctex"
+uid="uid://bti2eyetafhkb"
+path="res://.godot/imported/Background_blue(480x133).png-4eb77fd468faa552c49aba941d038a73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/MenuArt/buttons-yellow.png"
-dest_files=["res://.godot/imported/buttons-yellow.png-d41b3d05b417ec062600ca74470d28f3.ctex"]
+source_file="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background_blue(480x133).png"
+dest_files=["res://.godot/imported/Background_blue(480x133).png-4eb77fd468faa552c49aba941d038a73.ctex"]
 
 [params]
 
