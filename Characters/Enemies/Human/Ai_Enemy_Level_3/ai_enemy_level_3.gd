@@ -14,7 +14,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animation_tree.active = true
-	
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -23,7 +22,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
+#first arrow
 func _on_player_detector_body_entered(body):
 	call_deferred("spawn_arrow")
 
@@ -34,3 +33,6 @@ func spawn_arrow():
 	add_child(arrow_ins)
 
 
+#second arrow
+func _on_player_detector_2_body_entered(body):
+	call_deferred("spawn_arrow")

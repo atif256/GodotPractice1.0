@@ -645,10 +645,6 @@ dead_state = NodePath("../Dead")
 return_state = NodePath("../Ground")
 ground_state = NodePath("../Ground")
 
-[node name="Timer" type="Timer" parent="CharacterStateMachine/Hit"]
-wait_time = 0.4
-one_shot = true
-
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("13_2jtcu")
 can_move = false
@@ -686,5 +682,4 @@ script = ExtResource("15_2gkhh")
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="PlayerHealth" method="_on_animation_tree_animation_finished"]
-[connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]

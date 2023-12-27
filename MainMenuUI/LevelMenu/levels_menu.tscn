@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=7 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="Texture2D" uid="uid://bti2eyetafhkb" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background_blue(480x133).png" id="1_ypnk4"]
-[ext_resource type="PackedScene" uid="uid://cpybj5g6d73ol" path="res://HomeScene/home_scene.tscn" id="3_gac07"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
+[ext_resource type="PackedScene" uid="uid://do80ygktoe3ft" path="res://Levels/level_1.tscn" id="4_lse61"]
 [ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="4_nqxin"]
+[ext_resource type="PackedScene" uid="uid://b2d1j6e5slm4" path="res://Levels/level_2.tscn" id="5_jxs8r"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 
@@ -29,7 +30,8 @@ offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_3d3lq")
 tutorial_level = ExtResource("3_iv4e6")
-level_one = ExtResource("3_gac07")
+level_one = ExtResource("4_lse61")
+level_two = ExtResource("5_jxs8r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
@@ -92,4 +94,5 @@ text = "Back
 
 [connection signal="pressed" from="Control/VBoxContainer/GridContainer/Tutorial" to="Control" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/GridContainer/Level1" to="Control" method="_on_level_1_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/GridContainer/Level2" to="Control" method="_on_level_2_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/GridContainer/BackButton" to="Control" method="_on_back_button_pressed"]

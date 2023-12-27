@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=13 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
+[ext_resource type="Texture2D" uid="uid://bti2eyetafhkb" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background_blue(480x133).png" id="2_ajhua"]
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="2_fn52q"]
 [ext_resource type="Texture2D" uid="uid://cwmod8ksw20g" path="res://art/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="3_iaken"]
 [ext_resource type="PackedScene" uid="uid://c5flkl2dibkc7" path="res://Characters/player.tscn" id="3_l3kg1"]
@@ -12423,17 +12424,24 @@ sources/2 = SubResource("TileSetAtlasSource_so76f")
 sources/3 = SubResource("TileSetAtlasSource_b0uhl")
 sources/4 = SubResource("TileSetAtlasSource_jiijb")
 
-[node name="Node2D" type="Node2D"]
+[node name="Level1" type="Node2D"]
 position = Vector2(-1, 232)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -424.0
-offset_top = -125.0
+offset_top = -177.0
 offset_right = 1949.0
-offset_bottom = 147.0
+offset_bottom = 95.0
 scale = Vector2(1.00195, 1)
 texture = ExtResource("1_1gipi")
 stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -424.0
+offset_top = 80.0
+offset_right = 1954.0
+offset_bottom = 433.0
+texture = ExtResource("2_ajhua")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 35)
@@ -12479,6 +12487,7 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-4, 89)
 offset = Vector2(80, 0)
+zoom = Vector2(2.5, 2.5)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -12491,3 +12500,12 @@ collision_layer = 4
 
 [node name="Ai_Enemy_Level_3" parent="." instance=ExtResource("7_jgr0a")]
 position = Vector2(271, 89)
+collision_layer = 4
+
+[node name="Ai_Enemy_Level_3_1" parent="." instance=ExtResource("7_jgr0a")]
+position = Vector2(561, 88)
+collision_layer = 4
+
+[node name="Ai_Enemy_Level_3_2" parent="." instance=ExtResource("7_jgr0a")]
+position = Vector2(745, 88)
+collision_layer = 4
