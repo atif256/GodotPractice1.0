@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=8 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="Texture2D" uid="uid://bti2eyetafhkb" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background_blue(480x133).png" id="1_ypnk4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://do80ygktoe3ft" path="res://Levels/level_1.tscn" id="4_lse61"]
 [ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="4_nqxin"]
 [ext_resource type="PackedScene" uid="uid://b2d1j6e5slm4" path="res://Levels/level_2.tscn" id="5_jxs8r"]
+[ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="7_3v1og"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 
@@ -33,66 +34,94 @@ tutorial_level = ExtResource("3_iv4e6")
 level_one = ExtResource("4_lse61")
 level_two = ExtResource("5_jxs8r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="Title" type="Label" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -129.5
-offset_right = 47.5
-offset_bottom = 55.5
+offset_left = -200.0
+offset_top = 48.0
+offset_right = 200.0
+offset_bottom = 128.0
 grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0, 0.560784, 0, 1)
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 40
+text = "The Forest"
+
+[node name="LevelSelection" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_top = 0.482
+anchor_right = 0.501
+anchor_bottom = 0.482
+offset_left = -473.152
+offset_top = -120.336
+offset_right = 473.848
+offset_bottom = 120.664
+columns = 4
+
+[node name="Tutorial" type="Button" parent="Control/LevelSelection"]
+layout_mode = 2
 theme = ExtResource("4_nqxin")
-theme_type_variation = &"First"
-alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Tutorial" type="Button" parent="Control/VBoxContainer/GridContainer"]
-layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 25
 text = "Tutorial"
 
-[node name="Level1" type="Button" parent="Control/VBoxContainer/GridContainer"]
+[node name="Level1" type="Button" parent="Control/LevelSelection"]
 layout_mode = 2
+theme = ExtResource("4_nqxin")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 25
 text = "Level 1"
 
-[node name="Level2" type="Button" parent="Control/VBoxContainer/GridContainer"]
+[node name="Level2" type="Button" parent="Control/LevelSelection"]
 layout_mode = 2
+theme = ExtResource("4_nqxin")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Level2"
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 25
+text = "Level 2"
 
-[node name="Level3" type="Button" parent="Control/VBoxContainer/GridContainer"]
+[node name="Level3" type="Button" parent="Control/LevelSelection"]
 layout_mode = 2
+theme = ExtResource("4_nqxin")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 25
 text = "Level 3"
 
-[node name="Level4" type="Button" parent="Control/VBoxContainer/GridContainer"]
+[node name="ComingSoon" type="Button" parent="Control/LevelSelection"]
 layout_mode = 2
+theme = ExtResource("4_nqxin")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Level 4"
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 25
+text = "ComingSoon"
 
-[node name="Level5" type="Button" parent="Control/VBoxContainer/GridContainer"]
-layout_mode = 2
+[node name="Back" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -88.0
+offset_right = -60.0
+offset_bottom = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_nqxin")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Level 5
-"
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 25
+text = "Back"
 
-[node name="BackButton" type="Button" parent="Control/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Back
-"
-
-[connection signal="pressed" from="Control/VBoxContainer/GridContainer/Tutorial" to="Control" method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/GridContainer/Level1" to="Control" method="_on_level_1_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/GridContainer/Level2" to="Control" method="_on_level_2_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/GridContainer/BackButton" to="Control" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Control/LevelSelection/Tutorial" to="Control" method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Control/LevelSelection/Level1" to="Control" method="_on_level_1_pressed"]
+[connection signal="pressed" from="Control/LevelSelection/Level2" to="Control" method="_on_level_2_pressed"]
+[connection signal="pressed" from="Control/Back" to="Control" method="_on_back_pressed"]

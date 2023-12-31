@@ -1,41 +1,101 @@
-[gd_scene load_steps=2 format=3 uid="uid://pnr0fwc4ahi2"]
+[gd_scene load_steps=4 format=3 uid="uid://pnr0fwc4ahi2"]
 
 [ext_resource type="Script" path="res://MainMenuUI/OptionMenu/OptionBackMenu.gd" id="1_inbra"]
+[ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="2_fxnik"]
+[ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="3_khukp"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 script = ExtResource("1_inbra")
 
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.119
+anchor_right = 0.508
+anchor_bottom = 0.119
+offset_left = -320.216
+offset_top = -40.112
+offset_right = 319.784
+offset_bottom = 39.888
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.482353, 1)
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 40
+text = "Control Keyboard"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.529
+anchor_top = 0.537
+anchor_right = 0.529
+anchor_bottom = 0.537
+offset_left = -440.408
+offset_top = -187.976
+offset_right = 439.592
+offset_bottom = 128.024
 
 [node name="right" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 20
 text = "Move right: d"
 
 [node name="Left" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 20
 text = "Move left: a"
 
 [node name="Jump" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 20
 text = "Jump: space"
+
+[node name="Jump Combo" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 20
+text = "Jump Combo: space + space"
 
 [node name="Attack" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 20
 text = "Attack: f or left-click"
 
 [node name="Attack Combo" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 20
 text = "Attack Combo: f+f or left-click + left-click"
 
-[node name="MainMenuButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="Panel"]
 layout_mode = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -292.0
+offset_top = -74.0
+offset_right = -27.0
+offset_bottom = -29.0
+theme = ExtResource("3_khukp")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fxnik")
+theme_override_font_sizes/font_size = 25
 text = "Main menu"
 
-[connection signal="pressed" from="Panel/VBoxContainer/MainMenuButton" to="Panel" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Panel/MainMenuButton" to="Panel" method="_on_main_menu_button_pressed"]
