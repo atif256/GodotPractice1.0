@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
+[ext_resource type="Script" path="res://Levels/test_levelGameManager.gd" id="1_sne15"]
 [ext_resource type="PackedScene" uid="uid://c5flkl2dibkc7" path="res://Characters/player.tscn" id="2_1afom"]
+[ext_resource type="PackedScene" uid="uid://d3qh2gi8lo15w" path="res://MainMenuUI/PauseMenu/pause_menu.tscn" id="2_wtgth"]
 [ext_resource type="PackedScene" uid="uid://cdcwf1bhhbacu" path="res://Characters/Enemies/Snail/snail.tscn" id="4_gknwv"]
 [ext_resource type="PackedScene" uid="uid://drs4fdg5hvcl7" path="res://UI/health_changed_manager.tscn" id="5_h3wjc"]
 [ext_resource type="PackedScene" uid="uid://pb04c3xlvbrp" path="res://Characters/Enemies/Boar/boar.tscn" id="6_c2ofg"]
 [ext_resource type="PackedScene" uid="uid://c00o8d8fh5hb1" path="res://Characters/Enemies/Bee/bee.tscn" id="7_57id1"]
-[ext_resource type="PackedScene" uid="uid://ght0hvdnxndq" path="res://UI/Transitions_Scene_1/transitions.tscn" id="8_5k2ul"]
-[ext_resource type="Script" path="res://Levels/TransitionsButton.gd" id="9_dw21k"]
 [ext_resource type="PackedScene" uid="uid://dejfqgo1cypl3" path="res://CollectableItems/Heals/collectable_items.tscn" id="10_irhdi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
@@ -1432,6 +1432,10 @@ sources/0 = SubResource("TileSetAtlasSource_uvns5")
 
 [node name="TestLevel" type="Node2D"]
 position = Vector2(201, 362)
+script = ExtResource("1_sne15")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_wtgth")]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -424.0
@@ -1484,17 +1488,6 @@ collision_layer = 4
 position = Vector2(114, 51)
 collision_layer = 4
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Transitioner" parent="CanvasLayer" instance=ExtResource("8_5k2ul")]
-
-[node name="Transitions Button" type="CheckButton" parent="CanvasLayer" node_paths=PackedStringArray("transitioner")]
-offset_right = 44.0
-offset_bottom = 24.0
-focus_mode = 0
-script = ExtResource("9_dw21k")
-transitioner = NodePath("../Transitioner")
-
 [node name="CollectableItems" parent="." instance=ExtResource("10_irhdi")]
 position = Vector2(-37, 104)
 
@@ -1503,5 +1496,3 @@ position = Vector2(-151, 104)
 
 [node name="CollectableItems2" parent="." instance=ExtResource("10_irhdi")]
 position = Vector2(-103, 105)
-
-[connection signal="toggled" from="CanvasLayer/Transitions Button" to="CanvasLayer/Transitions Button" method="_on_toggled"]

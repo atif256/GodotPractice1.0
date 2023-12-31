@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=14 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
 [ext_resource type="Texture2D" uid="uid://bti2eyetafhkb" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background_blue(480x133).png" id="2_ajhua"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ku48evp0g8p" path="res://art/Legacy-Fantasy - High Forest 2.3/Trees/Green-Tree.png" id="4_ncqmq"]
 [ext_resource type="PackedScene" uid="uid://pb04c3xlvbrp" path="res://Characters/Enemies/Boar/boar.tscn" id="6_52wnf"]
 [ext_resource type="PackedScene" uid="uid://bu4lsy0t13uqp" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/ai_enemy_level_3.tscn" id="7_jgr0a"]
+[ext_resource type="PackedScene" uid="uid://cnh1eqtc7fs7o" path="res://Platforms/plat_move_up_down.tscn" id="9_qnhfo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so76f"]
 texture = ExtResource("2_fn52q")
@@ -12516,3 +12517,6 @@ collision_layer = 4
 [node name="Ai_Enemy_Level_3_2" parent="." instance=ExtResource("7_jgr0a")]
 position = Vector2(745, 88)
 collision_layer = 4
+
+[node name="PlatMoveUpDown" parent="." instance=ExtResource("9_qnhfo")]
+position = Vector2(-107, 80)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bays4n5ehc7hj"]
+[gd_scene load_steps=12 format=3 uid="uid://bays4n5ehc7hj"]
 
 [ext_resource type="Script" path="res://Traps/WormTraps.gd" id="1_mkgsh"]
 [ext_resource type="Texture2D" uid="uid://br3icgtdl015q" path="res://art/TrapsArt/Sandworm trap - Level 1.png" id="1_wmhwa"]
+[ext_resource type="Texture2D" uid="uid://ybeksys3b2xb" path="res://art/TrapsArt/Sandworm trap - Level 1 - Transition.png" id="3_b8dg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8tdx"]
 size = Vector2(32, 8)
@@ -23,7 +24,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_vlkap"]
 resource_name = "bite"
-length = 1.1
+length = 5.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -32,10 +33,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.2, 1.3, 2.2, 3.3, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_wmhwa")]
+"values": [ExtResource("1_wmhwa"), ExtResource("1_wmhwa"), null, ExtResource("3_b8dg6"), ExtResource("1_wmhwa"), ExtResource("1_wmhwa")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -44,10 +45,10 @@ tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.2, 2.2, 3.3, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [11]
+"values": [11, 11, 9, 11, 11]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -56,10 +57,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -68,10 +69,22 @@ tracks/3/path = NodePath("PlayerDetector:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6, 0.7, 3.3, 3.6, 3.7, 3.9, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, false, true, true, false]
+"values": [false, false, true, true, false, false, false, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.3, 2.2, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-100, 0), Vector2(-100, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3tlj7"]
@@ -95,34 +108,36 @@ transitions = ["Start", "bite", SubResource("AnimationNodeStateMachineTransition
 radius = 16.0
 height = 32.0
 
-[node name="WormTrap" type="Area2D"]
-script = ExtResource("1_mkgsh")
+[node name="WormMove" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WormTrap" type="Area2D" parent="."]
+script = ExtResource("1_mkgsh")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="WormTrap"]
 position = Vector2(0, -16)
 texture = ExtResource("1_wmhwa")
 hframes = 11
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WormTrap"]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_i8tdx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WormTrap"]
 libraries = {
 "": SubResource("AnimationLibrary_3tlj7")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="WormTrap"]
 tree_root = SubResource("AnimationNodeStateMachine_kf63h")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="PlayerDetector" type="Area2D" parent="."]
+[node name="PlayerDetector" type="Area2D" parent="WormTrap"]
 collision_layer = 2
 collision_mask = 2
-monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WormTrap/PlayerDetector"]
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_fldmj")
 
-[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_entered" from="WormTrap/PlayerDetector" to="WormTrap" method="_on_player_detector_body_entered"]
