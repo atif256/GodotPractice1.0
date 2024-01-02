@@ -3,10 +3,10 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: float = 200.0
-
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var state_machine:CharacterStateMachine = $CharacterStateMachine
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

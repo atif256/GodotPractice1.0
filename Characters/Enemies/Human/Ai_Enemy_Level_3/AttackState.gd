@@ -8,7 +8,7 @@ extends State
 var arrow_scene = preload("res://Characters/Enemies/Human/Ai_Enemy_Level_3/arrow/arrow.tscn")
 
 #first arrow
-func _on_player_detector_body_entered(body):
+func _on_player_detector_body_entered(_body):
 	call_deferred("spawn_arrow")
 
 func spawn_arrow():
@@ -17,13 +17,13 @@ func spawn_arrow():
 	current_state = attack_state
 
 
-func _on_player_detector_body_exited(body):
+func _on_player_detector_body_exited(_body):
 	emit_signal("interrupt_state", idle_state)
 	playback.travel(idle_animation_name)
 	current_state = next_state
 
 #second arrow
-func _on_player_detector_2_body_entered(body):
+func _on_player_detector_2_body_entered(_body):
 	call_deferred("spawn_arrow_sec")
 
 func spawn_arrow_sec():
@@ -31,7 +31,7 @@ func spawn_arrow_sec():
 	playback.travel(attack_animation_name)
 	current_state = attack_state
 
-func _on_player_detector_2_body_exited(body):
+func _on_player_detector_2_body_exited(_body):
 	emit_signal("interrupt_state", idle_state)
 	playback.travel(idle_animation_name)
 	current_state = next_state

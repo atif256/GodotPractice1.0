@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bu4lsy0t13uqp"]
+[gd_scene load_steps=30 format=3 uid="uid://bu4lsy0t13uqp"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/ai_enemy_level_3.gd" id="1_vxy5p"]
 [ext_resource type="Texture2D" uid="uid://wleyj7nggj5o" path="res://art/generic_char_v0.2/hunter/Character/Idle.png" id="1_w5cto"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/AttackState.gd" id="6_rnttb"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/StateLabel.gd" id="7_1w8ck"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/HitAiThree.gd" id="9_tixs7"]
+[ext_resource type="Texture2D" uid="uid://6hu81drkb4uj" path="res://art/MenuArt/progress.png" id="11_sdnpq"]
+[ext_resource type="Texture2D" uid="uid://d0fukwxmg05i2" path="res://art/MenuArt/over.png" id="12_0jsg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8iyo7"]
 size = Vector2(37, 52)
@@ -195,6 +197,24 @@ size = Vector2(79, 94)
 [node name="Ai_Enemy_Level_3" type="CharacterBody2D"]
 script = ExtResource("1_vxy5p")
 
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -30.0
+offset_top = -55.0
+offset_right = 45.0
+offset_bottom = -48.0
+max_value = 20.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("11_sdnpq")
+texture_over = ExtResource("12_0jsg6")
+texture_progress = ExtResource("11_sdnpq")
+tint_under = Color(0, 0.203922, 0.203922, 1)
+tint_over = Color(0.0509804, 0.0196078, 0, 1)
+tint_progress = Color(0.764706, 0.0627451, 0, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_8iyo7")
@@ -264,10 +284,10 @@ damageable = NodePath("../../Damageable")
 dead_state = NodePath("../dead")
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine", "health_enemy")]
-offset_left = -62.0
-offset_top = -91.0
-offset_right = -17.0
-offset_bottom = -65.0
+offset_left = -52.0
+offset_top = -143.0
+offset_right = 4.0
+offset_bottom = -91.0
 text = "State:
 Health:"
 script = ExtResource("7_1w8ck")

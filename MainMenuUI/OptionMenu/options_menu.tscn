@@ -4,10 +4,10 @@
 [ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="2_fxnik"]
 [ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="3_khukp"]
 
-[node name="OptionsMenu" type="CanvasLayer"]
+[node name="OptionsMenuKeyboard" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

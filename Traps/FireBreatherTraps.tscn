@@ -1,0 +1,258 @@
+[gd_scene load_steps=17 format=3 uid="uid://cscr0ba7hi3g1"]
+
+[ext_resource type="Theme" uid="uid://b7enh4iqn5cqk" path="res://Characters/Enemies/Boar/EnemyHealthBarDesign.tres" id="1_ic3lp"]
+[ext_resource type="Texture2D" uid="uid://xv8ia1d1trjx" path="res://art/TrapsArt/Fire Breather Trap - Level 1.png" id="1_oi4es"]
+[ext_resource type="Script" path="res://Traps/FireBreatherDamageManager.gd" id="1_tdxho"]
+[ext_resource type="Texture2D" uid="uid://7y174ql6lb8q" path="res://art/TrapsArt/Fire Breather Trap - Level 1 - Transition.png" id="2_it07e"]
+[ext_resource type="Texture2D" uid="uid://6hu81drkb4uj" path="res://art/MenuArt/progress.png" id="2_jgquy"]
+[ext_resource type="Texture2D" uid="uid://d0fukwxmg05i2" path="res://art/MenuArt/over.png" id="3_uekve"]
+
+[sub_resource type="Animation" id="Animation_ffu0y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tgbun"]
+resource_name = "disfunction"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_it07e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:region_enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_npcoq"]
+resource_name = "fire"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_oi4es")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerDetector:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:region_enabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_omavj"]
+_data = {
+"RESET": SubResource("Animation_ffu0y"),
+"disfunction": SubResource("Animation_tgbun"),
+"fire": SubResource("Animation_npcoq")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f4p78"]
+animation = &"disfunction"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ijf2j"]
+animation = &"fire"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cmik2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3iert"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ilrq8"]
+states/disfunction/node = SubResource("AnimationNodeAnimation_f4p78")
+states/disfunction/position = Vector2(554, 100)
+states/fire/node = SubResource("AnimationNodeAnimation_ijf2j")
+states/fire/position = Vector2(380, 155)
+transitions = ["Start", "fire", SubResource("AnimationNodeStateMachineTransition_cmik2"), "fire", "disfunction", SubResource("AnimationNodeStateMachineTransition_3iert")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_srovh"]
+
+[node name="FireBreatherTrap" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 7
+
+[node name="HealthBar1" type="ProgressBar" parent="."]
+visible = false
+modulate = Color(1, 0.0235294, 0, 1)
+offset_left = -18.0
+offset_top = -29.0
+offset_right = 169.0
+offset_bottom = -2.0
+scale = Vector2(0.2, 0.2)
+max_value = 20.0
+show_percentage = false
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = -32.0
+theme = ExtResource("1_ic3lp")
+max_value = 20.0
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("2_jgquy")
+texture_over = ExtResource("3_uekve")
+texture_progress = ExtResource("2_jgquy")
+tint_under = Color(0, 0.203922, 0.203922, 1)
+tint_over = Color(0.0509804, 0.0196078, 0, 1)
+tint_progress = Color(0.764706, 0.0627451, 0, 1)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+light_mask = 3
+position = Vector2(0.4, -11.5)
+scale = Vector2(1.4375, 1.875)
+build_mode = 1
+polygon = PackedVector2Array(-1.66957, -2.4, 9.46087, 6.13334, 9.46087, 10.4, -7.23478, 10.4, -1.66957, 6.13334, -7.23478, 1.86667)
+
+[node name="shape" type="Area2D" parent="."]
+collision_layer = 11
+collision_mask = 15
+script = ExtResource("1_tdxho")
+
+[node name="Sprite2D" type="Sprite2D" parent="shape"]
+position = Vector2(-7, -24)
+texture = ExtResource("1_oi4es")
+hframes = 11
+region_rect = Rect2(496, 0, 944, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="shape"]
+position = Vector2(0.4, -11.5)
+scale = Vector2(1.4375, 1.875)
+build_mode = 1
+polygon = PackedVector2Array(-1.66957, -2.4, 9.46087, 6.13334, 9.46087, 10.4, -7.23478, 10.4, -1.66957, 6.13334, -7.23478, 1.86667)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="shape"]
+libraries = {
+"": SubResource("AnimationLibrary_omavj")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="shape"]
+tree_root = SubResource("AnimationNodeStateMachine_ilrq8")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="PlayerDetector" type="Area2D" parent="shape"]
+position = Vector2(-8, -24)
+collision_mask = 3
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shape/PlayerDetector"]
+position = Vector2(-9, 0)
+rotation = -0.785398
+shape = SubResource("CapsuleShape2D_srovh")
+
+[connection signal="body_entered" from="shape/PlayerDetector" to="shape" method="_on_player_detector_body_entered"]

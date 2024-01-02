@@ -14,6 +14,7 @@ class_name HitStateBoar
 @export var return_state: State
 
 @onready var timerboar : Timer = $Timer
+var enemy_count = 0
 
 func _ready():
 	damageable.connect("on_hit", on_damageable_hit)
@@ -29,6 +30,7 @@ func on_damageable_hit(_node: Node, _damage_amount: int, knockback_direction: Ve
 	else:
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
+		
 
 func on_exit():
 	character.velocity = Vector2.ZERO
@@ -36,3 +38,5 @@ func on_exit():
 
 func _on_timer_timeout():
 	next_state = return_state
+
+

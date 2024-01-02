@@ -23,7 +23,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 #first arrow
-func _on_player_detector_body_entered(body):
+func _on_player_detector_body_entered(_body):
 	call_deferred("spawn_arrow")
 
 func spawn_arrow():
@@ -32,7 +32,6 @@ func spawn_arrow():
 	arrow_ins.global_position = $SpamArrow.global_position
 	add_child(arrow_ins)
 
-
 #second arrow
-func _on_player_detector_2_body_entered(body):
+func _on_player_detector_2_body_entered(_body):
 	call_deferred("spawn_arrow")
