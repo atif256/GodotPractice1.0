@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=20 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dejfqgo1cypl3" path="res://CollectableItems/Heals/collectable_items.tscn" id="10_irhdi"]
 [ext_resource type="PackedScene" uid="uid://cscr0ba7hi3g1" path="res://Traps/FireBreatherTraps.tscn" id="11_feybx"]
 [ext_resource type="PackedScene" uid="uid://lruy0yepaf42" path="res://Traps/ArrowTrapsWood.tscn" id="12_pr6xs"]
+[ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="15_y4iwu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
 texture = ExtResource("1_0efv7")
@@ -2852,6 +2853,8 @@ sources/2 = SubResource("TileSetAtlasSource_5q3kw")
 [node name="TestLevel" type="Node2D"]
 position = Vector2(9, 1)
 script = ExtResource("1_sne15")
+
+[node name="PlayerHealthBarUI" parent="." instance=ExtResource("15_y4iwu")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_wtgth")]
 visible = false
