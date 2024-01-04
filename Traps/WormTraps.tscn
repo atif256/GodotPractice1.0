@@ -135,6 +135,7 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="PlayerDetector" type="Area2D" parent="WormTrap"]
 collision_layer = 2
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WormTrap/PlayerDetector"]
 position = Vector2(0, -24)

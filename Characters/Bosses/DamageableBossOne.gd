@@ -1,10 +1,10 @@
 extends Node
 
-class_name DamageableAiTwo
+class_name BossOne
 
 signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2 )
 
-@export var health: float = 80:
+@export var health: float = 100:
 	get:
 		return health
 	set(value):
@@ -14,7 +14,7 @@ signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2 )
 
 func hit(damage: int, knockback_direction: Vector2):
 	health -= damage
-	#print_debug(health)
+	print_debug(health)
 	emit_signal("on_hit", get_parent(), damage, knockback_direction)
 
 

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var heal: int = 30
+@export var heals: int = 30
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
@@ -14,5 +14,5 @@ func _physics_process(_delta):
 func _on_body_entered(body):
 	for child in body.get_children():
 		if child is PlayerHealth:
-			child.heal(heal)
+			child.heal(heals)
 			queue_free()

@@ -3,7 +3,7 @@ extends Node
 class_name Damageable
 
 signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2 )
-#snail health
+#snail health sfsf
 @export var health: float = 30:
 	get:
 		return health

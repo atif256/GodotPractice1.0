@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=18 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
 [ext_resource type="Script" path="res://Levels/level_1GameManager.gd" id="1_qjbq1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cnh1eqtc7fs7o" path="res://Platforms/plat_move_up_down.tscn" id="9_qnhfo"]
 [ext_resource type="PackedScene" uid="uid://dejfqgo1cypl3" path="res://CollectableItems/Heals/collectable_items.tscn" id="10_socdt"]
 [ext_resource type="PackedScene" uid="uid://cscr0ba7hi3g1" path="res://Traps/FireBreatherTraps.tscn" id="11_h4vu5"]
+[ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="13_1g2qr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so76f"]
 texture = ExtResource("2_fn52q")
@@ -12448,6 +12449,8 @@ sources/4 = SubResource("TileSetAtlasSource_jiijb")
 [node name="Level1" type="Node2D"]
 position = Vector2(-1, 232)
 script = ExtResource("1_qjbq1")
+
+[node name="PlayerHealthBarUI" parent="." instance=ExtResource("13_1g2qr")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -424.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2d1j6e5slm4"]
+[gd_scene load_steps=26 format=3 uid="uid://b2d1j6e5slm4"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_8qh6f"]
 [ext_resource type="Script" path="res://Levels/level_2GameManager.gd" id="1_iukqa"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dp04brhvotlxc" path="res://Traps/FireTraps.tscn" id="12_n0tlk"]
 [ext_resource type="PackedScene" uid="uid://bays4n5ehc7hj" path="res://Traps/WormTraps.tscn" id="13_44x31"]
 [ext_resource type="PackedScene" uid="uid://cnh1eqtc7fs7o" path="res://Platforms/plat_move_up_down.tscn" id="14_fox44"]
+[ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="17_xb36s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6gdxc"]
 texture = ExtResource("3_gxbnl")
@@ -15338,3 +15339,5 @@ position = Vector2(1536, 656)
 
 [node name="WormTrap2" parent="." instance=ExtResource("13_44x31")]
 position = Vector2(976, 368)
+
+[node name="PlayerHealthBarUI" parent="." instance=ExtResource("17_xb36s")]

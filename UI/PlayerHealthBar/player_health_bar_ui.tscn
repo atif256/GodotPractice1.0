@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdcy3fiepdjcw"]
+[gd_scene load_steps=3 format=3 uid="uid://bdcy3fiepdjcw"]
 
 [ext_resource type="Texture2D" uid="uid://6hu81drkb4uj" path="res://art/MenuArt/progress.png" id="1_i5onl"]
-[ext_resource type="Script" path="res://UI/PlayerHealthBar/player_health_bar_ui_Manager.gd" id="1_kkfcq"]
 [ext_resource type="Texture2D" uid="uid://d0fukwxmg05i2" path="res://art/MenuArt/over.png" id="2_es1po"]
 
 [node name="PlayerHealthBarUI" type="CanvasLayer"]
-script = ExtResource("1_kkfcq")
 
 [node name="PHealthBar" type="TextureProgressBar" parent="."]
 offset_left = 77.0
@@ -48,7 +46,7 @@ offset_left = 11.0
 offset_top = 9.0
 offset_right = 62.0
 offset_bottom = 58.0
-value = 36.0
+value = 50.0
 fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_left = 1
@@ -59,4 +57,52 @@ texture_under = ExtResource("2_es1po")
 texture_over = ExtResource("2_es1po")
 texture_progress = ExtResource("1_i5onl")
 tint_over = Color(0, 0, 0, 1)
-tint_progress = Color(0.541176, 0.541176, 0, 1)
+tint_progress = Color(0.807843, 0.823529, 0.0235294, 1)
+
+[node name="Coinoftherealm" type="ProgressBar" parent="."]
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 205.0
+offset_bottom = 91.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+max_value = 10.0
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -40.0
+offset_right = 128.0
+offset_bottom = -5.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = -29.0
+offset_right = 174.0
+offset_bottom = 16.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 30
+text = "1000"
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -27.0
+offset_right = 31.0
+offset_bottom = -9.0
+grow_vertical = 0
+texture = ExtResource("2_es1po")
