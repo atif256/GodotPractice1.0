@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://762ei4lqdfqp"]
+[gd_scene load_steps=46 format=3 uid="uid://762ei4lqdfqp"]
 
 [ext_resource type="Texture2D" uid="uid://cxxhebfevjlag" path="res://art/generic_char_v0.2/generic_char_v0.2/png/purple/char_purple_1.png" id="1_2ygb2"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_2/ai_enemy_level_2.gd" id="1_4i7i0"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_2/DamageableAiTwo.gd" id="9_qpn5w"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_2/AttackStateEnemyAiTwo.gd" id="10_vxo0p"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_2/EnemyStateLabel.gd" id="11_jp5fe"]
+[ext_resource type="Theme" uid="uid://b7enh4iqn5cqk" path="res://Characters/Enemies/Boar/EnemyHealthBarDesign.tres" id="13_6jp6v"]
+[ext_resource type="Texture2D" uid="uid://6hu81drkb4uj" path="res://art/MenuArt/progress.png" id="14_e13dl"]
+[ext_resource type="Texture2D" uid="uid://d0fukwxmg05i2" path="res://art/MenuArt/over.png" id="15_h5gvw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n1wm"]
 size = Vector2(24.875, 50)
@@ -366,11 +369,76 @@ tracks/4/keys = {
 "values": [Vector2(0, -2), Vector2(0, -2), Vector2(0, 7), Vector2(0, 7)]
 }
 
+[sub_resource type="Animation" id="Animation_36qp5"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_2ygb2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [40, 41, 42]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(3, 6)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t6oam"]
 _data = {
 "RESET": SubResource("Animation_nosse"),
 "attack": SubResource("Animation_gv74f"),
 "dead": SubResource("Animation_njf82"),
+"hit": SubResource("Animation_36qp5"),
 "idle": SubResource("Animation_chpgn"),
 "run": SubResource("Animation_1d7h2"),
 "walk": SubResource("Animation_sd2nv")
@@ -381,6 +449,9 @@ animation = &"attack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tjcrf"]
 animation = &"dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nvnk6"]
+animation = &"hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i421r"]
 animation = &"idle"
@@ -408,18 +479,24 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lr7xk"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1ne4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ejxlu"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_r7kyh"]
 states/attack/node = SubResource("AnimationNodeAnimation_tcu12")
 states/attack/position = Vector2(641, 47)
 states/dead/node = SubResource("AnimationNodeAnimation_tjcrf")
 states/dead/position = Vector2(717, 119)
+states/hit/node = SubResource("AnimationNodeAnimation_nvnk6")
+states/hit/position = Vector2(666, 258)
 states/idle/node = SubResource("AnimationNodeAnimation_i421r")
 states/idle/position = Vector2(360, 100)
 states/run/node = SubResource("AnimationNodeAnimation_3eoj7")
 states/run/position = Vector2(516, 175)
 states/walk/node = SubResource("AnimationNodeAnimation_k1d8n")
 states/walk/position = Vector2(503, 34)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_mdukw"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_yyy3j"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_87k4c"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_1n8j1"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ak3h0"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_ljsjs"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_cq03u"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_lr7xk")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_mdukw"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_yyy3j"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_87k4c"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_1n8j1"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ak3h0"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_ljsjs"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_cq03u"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_lr7xk"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_g1ne4"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_ejxlu")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhkdp"]
 size = Vector2(41, 25)
@@ -444,10 +521,10 @@ shape = SubResource("RectangleShape2D_7n1wm")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.144999, -4.6855)
 scale = Vector2(1.43375, 1.52016)
-texture = ExtResource("2_7lmfq")
-offset = Vector2(5, -6)
+texture = ExtResource("1_2ygb2")
+offset = Vector2(3, 6)
 hframes = 8
-vframes = 7
+vframes = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -542,14 +619,14 @@ current_state = NodePath(".")
 attack_state = NodePath("../Attack")
 
 [node name="Timer" type="Timer" parent="CharacterStateMachine/Hit"]
-wait_time = 0.6
+wait_time = 0.35
 one_shot = true
 
 [node name="HealthLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine", "health_enemy")]
-offset_left = -64.0
-offset_top = -78.0
-offset_right = -8.0
-offset_bottom = -26.0
+visible = false
+offset_left = -56.0
+offset_top = -90.0
+offset_bottom = -38.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "State:
@@ -557,6 +634,27 @@ Health:"
 script = ExtResource("11_jp5fe")
 state_machine = NodePath("../CharacterStateMachine")
 health_enemy = NodePath("../Damageable")
+
+[node name="THealthbarBar" type="TextureProgressBar" parent="."]
+offset_left = -25.0
+offset_top = -37.0
+offset_right = 29.0
+offset_bottom = -31.0
+theme = ExtResource("13_6jp6v")
+theme_type_variation = &"EnemyHealthar"
+max_value = 80.0
+value = 20.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("14_e13dl")
+texture_over = ExtResource("15_h5gvw")
+texture_progress = ExtResource("14_e13dl")
+tint_under = Color(0, 0.203922, 0.203922, 1)
+tint_over = Color(0.0509804, 0.0196078, 0, 1)
+tint_progress = Color(0.764706, 0.0627451, 0, 1)
 
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="ChaseToLeft" to="CharacterStateMachine/ChaseRun" method="_on_chase_to_left_body_entered"]

@@ -21,9 +21,13 @@ func state_input(event: InputEvent):
 func on_exit():
 	if (next_state == landing_state):
 		playback.travel(landing_animation)
+		$"../../LandingSFX".play()
 		has_double_jumped = false
 
 func double_jump():
 	character.velocity.y = double_jump_velocity
 	playback.travel(double_jump_animation)
+	$"../../Jump1SFX".play()
 	has_double_jumped = true
+
+

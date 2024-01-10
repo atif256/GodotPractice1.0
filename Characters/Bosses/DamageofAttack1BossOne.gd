@@ -28,10 +28,8 @@ func _on_body_entered(body):
 			else:
 				child.hit(damage, Vector2.ZERO)
 
-
-
-func _on_enemy_facing_direction_changed(facing_left: bool):
-	if(facing_left):
+func _on_enemy_facing_direction_changed(facing_right: bool):
+	if(facing_right):
 		facing_shape.position = facing_shape.facing_left_position
 	else:
 		facing_shape.position = facing_shape.facing_right_position

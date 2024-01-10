@@ -49,7 +49,7 @@ func _physics_process(delta):
 	update_facing_direction()
 
 func detect_turn_around():
-	if !raycast.is_colliding() && is_on_floor():
+	if !raycast.is_colliding() && is_on_floor() :
 	#if !raycast.is_colliding() && is_on_floor() && state_machine.check_if_can_move() :
 		scale.x = -scale.x
 		turn_around()

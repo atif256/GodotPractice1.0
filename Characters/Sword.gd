@@ -22,10 +22,12 @@ func _on_body_entered(body):
 			#apply knockback direction
 			if(direction_sign > 0):
 				child.hit(damage, knockback_direction)
-				#print_debug(child)
+#				print(">>0")
 			elif(direction_sign < 0):
 				child.hit(damage, -knockback_direction)
+#				print("<<0")
 			else:
+#				print("==0")
 				child.hit(damage, Vector2.ZERO)
 			
 			

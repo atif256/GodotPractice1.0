@@ -23,7 +23,7 @@ tint_under = Color(0, 0.203922, 0.203922, 1)
 tint_over = Color(0.0509804, 0.0196078, 0, 1)
 tint_progress = Color(0.764706, 0.0627451, 0, 1)
 
-[node name="PStaminaBar" type="TextureProgressBar" parent="."]
+[node name="AttackCooldownBar" type="TextureProgressBar" parent="."]
 offset_left = 77.0
 offset_top = 40.0
 offset_right = 285.0
@@ -39,14 +39,14 @@ texture_over = ExtResource("2_es1po")
 texture_progress = ExtResource("1_i5onl")
 tint_under = Color(0, 0.203922, 0.203922, 1)
 tint_over = Color(0.0509804, 0.0196078, 0, 1)
-tint_progress = Color(0.0313726, 0.631373, 0.6, 1)
+tint_progress = Color(0.243137, 0.454902, 0, 1)
 
 [node name="PlayerDisplay" type="TextureProgressBar" parent="."]
 offset_left = 11.0
 offset_top = 9.0
 offset_right = 62.0
 offset_bottom = 58.0
-value = 50.0
+value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_left = 1
@@ -60,6 +60,7 @@ tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(0.807843, 0.823529, 0.0235294, 1)
 
 [node name="Coinoftherealm" type="ProgressBar" parent="."]
+visible = false
 offset_left = 80.0
 offset_top = 64.0
 offset_right = 205.0

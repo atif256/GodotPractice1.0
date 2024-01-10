@@ -1,9 +1,10 @@
-[gd_scene load_steps=54 format=3 uid="uid://c5flkl2dibkc7"]
+[gd_scene load_steps=69 format=3 uid="uid://c5flkl2dibkc7"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_8leax"]
 [ext_resource type="Texture2D" uid="uid://cbfw7rq6dou33" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_piwpi"]
 [ext_resource type="Texture2D" uid="uid://cey0fygaijkht" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="2_7bjxt"]
 [ext_resource type="Texture2D" uid="uid://cnaowihjitccn" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="2_up62c"]
+[ext_resource type="Texture2D" uid="uid://dh6veabfxmp3j" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Dead/player_hit_animation.png" id="2_wcfbn"]
 [ext_resource type="Texture2D" uid="uid://cryk2faf16ice" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="4_8w0c0"]
 [ext_resource type="Texture2D" uid="uid://domin0sheg1ic" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="5_4opql"]
 [ext_resource type="Script" path="res://Characters/CharacterStateMachine.gd" id="7_pr0wm"]
@@ -17,6 +18,11 @@
 [ext_resource type="Script" path="res://Characters/state.gd" id="13_2jtcu"]
 [ext_resource type="Script" path="res://Characters/FacingCollisionShape2D.gd" id="13_fortt"]
 [ext_resource type="Script" path="res://Characters/PlayerHealth.gd" id="15_2gkhh"]
+[ext_resource type="AudioStream" uid="uid://dmfqi14ft5hl2" path="res://Music/SFX/Swords/swordslash1.mp3" id="18_i60xs"]
+[ext_resource type="AudioStream" uid="uid://w8q5m5iokwog" path="res://Music/SFX/Landing/human-impact-on-ground.mp3" id="19_3mugi"]
+[ext_resource type="AudioStream" uid="uid://1iilvh8oxc4e" path="res://Music/SFX/Running/running.mp3" id="20_frhfx"]
+[ext_resource type="AudioStream" uid="uid://cob3m56an1s0n" path="res://Music/SFX/Death/hoh_deadsfx.mp3" id="21_opn5h"]
+[ext_resource type="AudioStream" uid="uid://cvvrxrqcaseab" path="res://Music/SFX/Landing/jumping1.mp3" id="22_4wyph"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8htxb"]
 radius = 8.0
@@ -268,6 +274,47 @@ tracks/2/keys = {
 "values": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
+[sub_resource type="Animation" id="Animation_64ybw"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_wcfbn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="Animation" id="Animation_4shd7"]
 resource_name = "idle"
 length = 0.4
@@ -485,6 +532,7 @@ _data = {
 "attack2": SubResource("Animation_e3g2s"),
 "dead": SubResource("Animation_qevk8"),
 "double_jump": SubResource("Animation_us64p"),
+"hit": SubResource("Animation_64ybw"),
 "idle": SubResource("Animation_4shd7"),
 "jump_end": SubResource("Animation_2v4wh"),
 "jump_start": SubResource("Animation_chlad"),
@@ -502,6 +550,9 @@ animation = &"dead"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c2vjn"]
 animation = &"double_jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p3v8e"]
+animation = &"hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gpe75"]
 animation = &"jump_end"
@@ -556,6 +607,22 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t8j2g"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0lkbu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b5dnj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mxqrv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kpcu5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5jflk"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lukia"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7pmk7"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rmt02"]
 states/End/position = Vector2(962, 90)
 states/Start/position = Vector2(198, 100)
@@ -564,31 +631,36 @@ states/attack1/position = Vector2(432, 243)
 states/attack2/node = SubResource("AnimationNodeAnimation_5ahej")
 states/attack2/position = Vector2(657, 236)
 states/dead/node = SubResource("AnimationNodeAnimation_nk6st")
-states/dead/position = Vector2(831, 128)
+states/dead/position = Vector2(890, 174)
 states/double_jump/node = SubResource("AnimationNodeAnimation_c2vjn")
-states/double_jump/position = Vector2(662, -30)
+states/double_jump/position = Vector2(649, -45)
+states/hit/node = SubResource("AnimationNodeAnimation_p3v8e")
+states/hit/position = Vector2(948, -30)
 states/jump_end/node = SubResource("AnimationNodeAnimation_gpe75")
-states/jump_end/position = Vector2(731, 68)
+states/jump_end/position = Vector2(729, 82)
 states/jump_start/node = SubResource("AnimationNodeAnimation_ooawc")
 states/jump_start/position = Vector2(432, -6)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_8bxy4")
 states/move/position = Vector2(432, 100)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_re2mi"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_8itpj"), "jump_start", "jump_end", SubResource("AnimationNodeStateMachineTransition_j7cpn"), "jump_end", "move", SubResource("AnimationNodeStateMachineTransition_jfyav"), "jump_start", "double_jump", SubResource("AnimationNodeStateMachineTransition_hsdbv"), "double_jump", "jump_end", SubResource("AnimationNodeStateMachineTransition_171fp"), "move", "attack1", SubResource("AnimationNodeStateMachineTransition_20sij"), "attack1", "move", SubResource("AnimationNodeStateMachineTransition_88cxa"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_fl7xn"), "attack2", "move", SubResource("AnimationNodeStateMachineTransition_xs8v4"), "move", "dead", SubResource("AnimationNodeStateMachineTransition_at72b"), "attack1", "dead", SubResource("AnimationNodeStateMachineTransition_uqc6r"), "attack2", "dead", SubResource("AnimationNodeStateMachineTransition_t8j2g")]
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_re2mi"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_8itpj"), "jump_start", "jump_end", SubResource("AnimationNodeStateMachineTransition_j7cpn"), "jump_end", "move", SubResource("AnimationNodeStateMachineTransition_jfyav"), "jump_start", "double_jump", SubResource("AnimationNodeStateMachineTransition_hsdbv"), "double_jump", "jump_end", SubResource("AnimationNodeStateMachineTransition_171fp"), "move", "attack1", SubResource("AnimationNodeStateMachineTransition_20sij"), "attack1", "move", SubResource("AnimationNodeStateMachineTransition_88cxa"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_fl7xn"), "attack2", "move", SubResource("AnimationNodeStateMachineTransition_xs8v4"), "move", "dead", SubResource("AnimationNodeStateMachineTransition_at72b"), "attack1", "dead", SubResource("AnimationNodeStateMachineTransition_uqc6r"), "attack2", "dead", SubResource("AnimationNodeStateMachineTransition_t8j2g"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_0lkbu"), "move", "hit", SubResource("AnimationNodeStateMachineTransition_b5dnj"), "attack1", "hit", SubResource("AnimationNodeStateMachineTransition_mxqrv"), "attack2", "hit", SubResource("AnimationNodeStateMachineTransition_kpcu5"), "hit", "move", SubResource("AnimationNodeStateMachineTransition_5jflk"), "jump_start", "hit", SubResource("AnimationNodeStateMachineTransition_lukia"), "jump_end", "hit", SubResource("AnimationNodeStateMachineTransition_7pmk7")]
 graph_offset = Vector2(0, -70.6358)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fybff"]
-size = Vector2(39.3017, 54.5559)
+size = Vector2(39.3017, 60.278)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hit_state", "attack_state")]
 collision_layer = 2
+collision_mask = 21
 script = ExtResource("1_8leax")
+hit_state = NodePath("CharacterStateMachine/Hit")
+attack_state = NodePath("CharacterStateMachine/Attack")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8htxb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_up62c")
-hframes = 8
+texture = ExtResource("2_wcfbn")
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -634,7 +706,11 @@ return_state = NodePath("../Ground")
 can_move = false
 
 [node name="Timer" type="Timer" parent="CharacterStateMachine/Attack"]
-wait_time = 0.3
+wait_time = 0.2
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="CharacterStateMachine/Attack"]
+wait_time = 0.2
 one_shot = true
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("playerhealth", "dead_state", "return_state", "ground_state")]
@@ -643,9 +719,10 @@ playerhealth = NodePath("../../PlayerHealth")
 dead_state = NodePath("../Dead")
 return_state = NodePath("../Ground")
 ground_state = NodePath("../Ground")
+can_move = false
 
 [node name="Timer" type="Timer" parent="CharacterStateMachine/Hit"]
-wait_time = 0.05
+wait_time = 0.2
 one_shot = true
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
@@ -667,15 +744,16 @@ state_machine = NodePath("../CharacterStateMachine")
 player_health = NodePath("../PlayerHealth")
 
 [node name="Sword" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
-position = Vector2(-4, -9)
+position = Vector2(0, -9)
 collision_layer = 0
-collision_mask = 12
+collision_mask = 28
+monitoring = false
 script = ExtResource("12_5gbpb")
 player = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
-position = Vector2(26.3492, -2)
+position = Vector2(25, -4)
 shape = SubResource("RectangleShape2D_fybff")
 script = ExtResource("13_fortt")
 facing_left_position = Vector2(-29, 0)
@@ -684,8 +762,27 @@ facing_right_position = Vector2(29, 0)
 [node name="PlayerHealth" type="Node" parent="."]
 script = ExtResource("15_2gkhh")
 
+[node name="SwordSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_i60xs")
+
+[node name="LandingSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_3mugi")
+
+[node name="RunningSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_frhfx")
+volume_db = 24.0
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_opn5h")
+volume_db = -5.5
+
+[node name="Jump1SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_4wyph")
+
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="PlayerHealth" method="_on_animation_tree_animation_finished"]
+[connection signal="timeout" from="CharacterStateMachine/Attack/Timer2" to="CharacterStateMachine/Attack" method="_on_timer_2_timeout"]
 [connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]

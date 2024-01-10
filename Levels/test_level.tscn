@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=21 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://lruy0yepaf42" path="res://Traps/ArrowTrapsWood.tscn" id="12_pr6xs"]
 [ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="15_y4iwu"]
 [ext_resource type="PackedScene" uid="uid://d0us15jiuuy05" path="res://CollectableItems/Coins/coins_collectable.tscn" id="16_akwv6"]
+[ext_resource type="PackedScene" uid="uid://0e0nqn8tkb3j" path="res://Characters/Enemies/Human/Ai_Enemy/ai_enemy.tscn" id="16_dvwbc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
 texture = ExtResource("1_0efv7")
@@ -2865,7 +2866,6 @@ offset_top = -114.0
 offset_right = 930.0
 offset_bottom = 158.0
 texture = ExtResource("1_6m207")
-stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -2980,3 +2980,8 @@ position = Vector2(-464.314, 24)
 
 [node name="CoinsCollectable24" parent="." instance=ExtResource("16_akwv6")]
 position = Vector2(-464.314, 52)
+
+[node name="Ai_Enemy" parent="." instance=ExtResource("16_dvwbc")]
+position = Vector2(465, 89)
+collision_layer = 4
+collision_mask = 3

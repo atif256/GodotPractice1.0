@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ixcv1igt1lj"]
+
+[ext_resource type="Texture2D" uid="uid://6hu81drkb4uj" path="res://art/MenuArt/progress.png" id="1_nivui"]
+[ext_resource type="Texture2D" uid="uid://d0fukwxmg05i2" path="res://art/MenuArt/over.png" id="2_ljh6w"]
+
+[node name="HealthBarBossOne" type="CanvasLayer"]
+
+[node name="HpBossOne" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.488
+anchor_top = 0.915
+anchor_right = 0.488
+anchor_bottom = 0.915
+offset_left = -291.176
+offset_top = -6.92004
+offset_right = 293.824
+offset_bottom = 7.07996
+max_value = 150.0
+value = 60.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("1_nivui")
+texture_over = ExtResource("2_ljh6w")
+texture_progress = ExtResource("1_nivui")
+tint_under = Color(0, 0.203922, 0.203922, 1)
+tint_over = Color(0.0509804, 0.0196078, 0, 1)
+tint_progress = Color(0.764706, 0.0627451, 0, 1)
+
+[node name="BossOneName" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.315
+anchor_top = 0.864
+anchor_right = 0.315
+anchor_bottom = 0.864
+offset_left = -86.88
+offset_top = 0.127991
+offset_right = 6.11996
+offset_bottom = 26.128
+text = "The Nameless Witcher"

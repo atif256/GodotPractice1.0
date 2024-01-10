@@ -20,14 +20,14 @@ func _ready():
 	pass
 	
 
-func _on_player_detector_body_entered(body):
+func _on_player_detector_body_entered(_body):
 	current_state = attack_state
 	emit_signal("interrupt_state", attack_state)
 	timer.start()
 	playback.travel(attack_animation_name)
 	print("the enemy is attacking the player")
 
-func _on_player_detector_body_exited(body):
+func _on_player_detector_body_exited(_body):
 	current_state = return_state
 	emit_signal("interrupt_state", return_state)
 	playback.travel(run_animation_name)

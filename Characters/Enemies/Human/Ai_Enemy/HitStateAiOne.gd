@@ -9,8 +9,9 @@ class_name HitStateAiOne
 @export	var current_state: State
 @export var attack_state: State
 @export var run_animation_name: String = "run"
-@export var idle_animation_name: String = "idle"
+@export var magic_animation: String = "magic"
 @export var attack_animation_name: String = "attack"
+@export var hit_animation: String = "hit"
 @export var knockback_speed: float = 100
 @onready var timer: Timer = $Timer
 
@@ -24,13 +25,30 @@ func on_enter():
 func on_damageable_hit(_node: Node, _damage_amount: int, _knockback_direction: Vector2):
 	if (damageable.health > 0 ):
 		emit_signal("interrupt_state", self)
+		playback.travel(hit_animation)
+		
 	#else:
 	elif (damageable.health <= 0):
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
-		print("character is dead")
+#		print("character is dead")
+#	elif (damageable.health == 20):
+#		emit_signal("interrupt_state", attack_state)
+#		playback.travel(magic_animation)
 
 
 func _on_timer_timeout():
-	timer.stop() #0.6
+#	timer.stop() #0.6
 	next_state = return_state
+	playback.travel(run_animation_name)
+	if damageable.health == 20:
+		emit_signal("interrupt_state", attack_state)
+		playback.travel(magic_animation)
+		
+
+
+
+func _on_animation_tree_animation_finished(anim_name):
+	if (anim_name == magic_animation):
+		emit_signal("interrupt_state", return_state)
+		playback.travel(run_animation_name)

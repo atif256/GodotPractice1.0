@@ -4,7 +4,7 @@ class_name Damageable
 
 signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2 )
 #snail health sfsf
-@export var health: float = 30:
+@export var health: float = 40:
 	get:
 		return health
 	set(value):

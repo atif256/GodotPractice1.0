@@ -37,3 +37,5 @@ func _on_player_detector_body_exited(body):
 	emit_signal("interrupt_state", return_state)
 	playback.travel(run_animation_name)
 	#print_debug(current_state)
+	
+
