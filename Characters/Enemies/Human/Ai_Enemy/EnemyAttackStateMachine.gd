@@ -18,24 +18,18 @@ class_name EnemyAttackStateMachine
 
 func _ready():
 	pass
-	
-	#print_debug(current_state)
 
 func _on_player_detector_body_entered(body):
 	current_state = attack_state
 	emit_signal("interrupt_state", attack_state)
 #	timer.start()
 	playback.travel(attack_animation_name)
-	print("the enemy is atatcking the player")
-	
-	#if (current_state = dead_animation_name):
-	#print_debug(current_state)
+
 
 
 func _on_player_detector_body_exited(body):
 	current_state = return_state
 	emit_signal("interrupt_state", return_state)
 	playback.travel(run_animation_name)
-	#print_debug(current_state)
 	
 

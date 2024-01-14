@@ -4,9 +4,11 @@ extends State
 @export var return_state: State
 @export var idle_state: State
 @export var attack_state: State
+@export var attack_two_state: State
 @export var dead_state: State
 @onready var timer: Timer = $Timer
 @export var attack_one_animation: String = "attack1"
+@export var attack_two_animation: String = "attack2"
 @export var dead_animation: String = "dead"
 @export var idle_animation: String = "idle"
 @export var hit_animation: String = "hit"
@@ -29,42 +31,36 @@ func on_damageable_hit(_node: Node, _damage_amount: int, knockback_direction: Ve
 	elif (damageable.health <= 0):
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation)
-#		if dead_state:
-#			playback.travel(dead_animation)
-#			print("character is dead")
+
 
 func _on_timer_timeout():
 #	if not player_body:
 	next_state = idle_state
 	playback.travel(idle_animation)
-#	if player_body && damageable.health == 140:
-#		next_state = attack_state
-#		playback.travel(attack_one_animation)
-#	elif player_body && damageable.health == 110:
-#		next_state = attack_state
-#		playback.travel(attack_one_animation)
-#	elif player_body && damageable.health == 100:
-#		next_state = attack_state
-#		playback.travel(attack_one_animation)
-#	elif player_body && damageable.health == 80:
-#		next_state = attack_state
-#		playback.travel(attack_one_animation)
 	if (damageable.health == 140 ): #random 140 or 130 or 120. choose one
 		next_state = attack_state
 		emit_signal("interrupt_state", attack_state)
 		playback.travel(attack_one_animation)
+		
 	if (damageable.health == 110 ): #random 110 or 100 or 90. choose one
 		next_state = attack_state
-		emit_signal("interrupt_state", attack_state)
-		playback.travel(attack_one_animation)
+		emit_signal("interrupt_state", attack_two_state)
+		playback.travel(attack_two_animation)
+		
 	if (damageable.health == 80 ): #random 80 or 70 or 60. choose one
 		next_state = attack_state
 		emit_signal("interrupt_state", attack_state)
 		playback.travel(attack_one_animation)
+		
 	if (damageable.health == 50 ): #random 50 or 40 or 30 or 20. choose one
 		next_state = attack_state
-		emit_signal("interrupt_state", attack_state)
-		playback.travel(attack_one_animation)
+		emit_signal("interrupt_state", attack_two_state)
+		playback.travel(attack_two_animation)
+		
+	if (damageable.health == 10 ): #random 50 or 40 or 30 or 20. choose one
+		next_state = attack_state
+		emit_signal("interrupt_state", attack_two_state)
+		playback.travel(attack_two_animation)
 
 
 func on_exit():

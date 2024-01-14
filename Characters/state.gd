@@ -8,6 +8,7 @@ var character : CharacterBody2D
 var playback : AnimationNodeStateMachinePlayback
 var next_state : State
 var controlled_object: Node2D = null
+@onready var animation_player = owner.find_child("AnimationPlayer")
 
 signal interrupt_state(new_state: State)
 

@@ -1,11 +1,27 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
+@onready var pause_menu = $PauseMenu
+var paused = false
+
+
 func _ready():
+	get_tree().set_pause(false)
 	Engine.time_scale = 1
 
+func _process(_delta):
+	if Input.is_action_just_pressed("esc"):
+		pauseMenu()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	
+	paused = !paused
+
+
+

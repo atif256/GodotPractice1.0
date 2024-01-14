@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://c5flkl2dibkc7"]
+[gd_scene load_steps=73 format=3 uid="uid://c5flkl2dibkc7"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_8leax"]
 [ext_resource type="Texture2D" uid="uid://cbfw7rq6dou33" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_piwpi"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://1iilvh8oxc4e" path="res://Music/SFX/Running/running.mp3" id="20_frhfx"]
 [ext_resource type="AudioStream" uid="uid://cob3m56an1s0n" path="res://Music/SFX/Death/hoh_deadsfx.mp3" id="21_opn5h"]
 [ext_resource type="AudioStream" uid="uid://cvvrxrqcaseab" path="res://Music/SFX/Landing/jumping1.mp3" id="22_4wyph"]
+[ext_resource type="AudioStream" uid="uid://bwclnsyrc5nd7" path="res://Music/SFX/Collectable/mixkit-extra-bonus-in-a-video-game-2045.wav" id="24_r1kni"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8htxb"]
 radius = 8.0
@@ -623,6 +624,12 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7pmk7"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r55c5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mnqrc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_up7li"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rmt02"]
 states/End/position = Vector2(962, 90)
 states/Start/position = Vector2(198, 100)
@@ -631,7 +638,7 @@ states/attack1/position = Vector2(432, 243)
 states/attack2/node = SubResource("AnimationNodeAnimation_5ahej")
 states/attack2/position = Vector2(657, 236)
 states/dead/node = SubResource("AnimationNodeAnimation_nk6st")
-states/dead/position = Vector2(890, 174)
+states/dead/position = Vector2(948, 325)
 states/double_jump/node = SubResource("AnimationNodeAnimation_c2vjn")
 states/double_jump/position = Vector2(649, -45)
 states/hit/node = SubResource("AnimationNodeAnimation_p3v8e")
@@ -642,7 +649,7 @@ states/jump_start/node = SubResource("AnimationNodeAnimation_ooawc")
 states/jump_start/position = Vector2(432, -6)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_8bxy4")
 states/move/position = Vector2(432, 100)
-transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_re2mi"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_8itpj"), "jump_start", "jump_end", SubResource("AnimationNodeStateMachineTransition_j7cpn"), "jump_end", "move", SubResource("AnimationNodeStateMachineTransition_jfyav"), "jump_start", "double_jump", SubResource("AnimationNodeStateMachineTransition_hsdbv"), "double_jump", "jump_end", SubResource("AnimationNodeStateMachineTransition_171fp"), "move", "attack1", SubResource("AnimationNodeStateMachineTransition_20sij"), "attack1", "move", SubResource("AnimationNodeStateMachineTransition_88cxa"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_fl7xn"), "attack2", "move", SubResource("AnimationNodeStateMachineTransition_xs8v4"), "move", "dead", SubResource("AnimationNodeStateMachineTransition_at72b"), "attack1", "dead", SubResource("AnimationNodeStateMachineTransition_uqc6r"), "attack2", "dead", SubResource("AnimationNodeStateMachineTransition_t8j2g"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_0lkbu"), "move", "hit", SubResource("AnimationNodeStateMachineTransition_b5dnj"), "attack1", "hit", SubResource("AnimationNodeStateMachineTransition_mxqrv"), "attack2", "hit", SubResource("AnimationNodeStateMachineTransition_kpcu5"), "hit", "move", SubResource("AnimationNodeStateMachineTransition_5jflk"), "jump_start", "hit", SubResource("AnimationNodeStateMachineTransition_lukia"), "jump_end", "hit", SubResource("AnimationNodeStateMachineTransition_7pmk7")]
+transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition_re2mi"), "move", "jump_start", SubResource("AnimationNodeStateMachineTransition_8itpj"), "jump_start", "jump_end", SubResource("AnimationNodeStateMachineTransition_j7cpn"), "jump_end", "move", SubResource("AnimationNodeStateMachineTransition_jfyav"), "jump_start", "double_jump", SubResource("AnimationNodeStateMachineTransition_hsdbv"), "double_jump", "jump_end", SubResource("AnimationNodeStateMachineTransition_171fp"), "move", "attack1", SubResource("AnimationNodeStateMachineTransition_20sij"), "attack1", "move", SubResource("AnimationNodeStateMachineTransition_88cxa"), "attack1", "attack2", SubResource("AnimationNodeStateMachineTransition_fl7xn"), "attack2", "move", SubResource("AnimationNodeStateMachineTransition_xs8v4"), "move", "dead", SubResource("AnimationNodeStateMachineTransition_at72b"), "attack1", "dead", SubResource("AnimationNodeStateMachineTransition_uqc6r"), "attack2", "dead", SubResource("AnimationNodeStateMachineTransition_t8j2g"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_0lkbu"), "move", "hit", SubResource("AnimationNodeStateMachineTransition_b5dnj"), "attack1", "hit", SubResource("AnimationNodeStateMachineTransition_mxqrv"), "attack2", "hit", SubResource("AnimationNodeStateMachineTransition_kpcu5"), "hit", "move", SubResource("AnimationNodeStateMachineTransition_5jflk"), "jump_start", "hit", SubResource("AnimationNodeStateMachineTransition_lukia"), "jump_end", "hit", SubResource("AnimationNodeStateMachineTransition_7pmk7"), "jump_start", "dead", SubResource("AnimationNodeStateMachineTransition_r55c5"), "double_jump", "dead", SubResource("AnimationNodeStateMachineTransition_mnqrc"), "jump_end", "dead", SubResource("AnimationNodeStateMachineTransition_up7li")]
 graph_offset = Vector2(0, -70.6358)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fybff"]
@@ -659,8 +666,8 @@ attack_state = NodePath("CharacterStateMachine/Attack")
 shape = SubResource("CapsuleShape2D_8htxb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wcfbn")
-hframes = 4
+texture = ExtResource("2_up62c")
+hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -778,6 +785,9 @@ volume_db = -5.5
 
 [node name="Jump1SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4wyph")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_r1kni")
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

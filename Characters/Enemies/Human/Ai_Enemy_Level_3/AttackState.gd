@@ -7,6 +7,11 @@ extends State
 @export var idle_state: State
 var arrow_scene = preload("res://Characters/Enemies/Human/Ai_Enemy_Level_3/arrow/arrow.tscn")
 
+@onready var timer = $Timer
+
+func on_enter():
+	timer.start()
+
 #first arrow
 func _on_player_detector_body_entered(_body):
 	call_deferred("spawn_arrow")
@@ -33,5 +38,11 @@ func spawn_arrow_sec():
 
 func _on_player_detector_2_body_exited(_body):
 	emit_signal("interrupt_state", idle_state)
+	playback.travel(idle_animation_name)
+	current_state = next_state
+	
+
+
+func _on_timer_timeout():
 	playback.travel(idle_animation_name)
 	current_state = next_state

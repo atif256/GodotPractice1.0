@@ -1,17 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxhfopdbopvtp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se4ig"]
-size = Vector2(53, 879)
+size = Vector2(53, 631.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxdnr"]
-size = Vector2(4043.5, 54)
+size = Vector2(5539.25, 54)
 
 [node name="InvisibleBarriersLeft" type="StaticBody2D"]
 collision_layer = 31
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Left" type="CollisionShape2D" parent="."]
+position = Vector2(0, 123.75)
 shape = SubResource("RectangleShape2D_se4ig")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(1996.25, 414)
+[node name="right" type="CollisionShape2D" parent="."]
+position = Vector2(5506, 124)
+shape = SubResource("RectangleShape2D_se4ig")
+
+[node name="Down" type="CollisionShape2D" parent="."]
+position = Vector2(2744, 414)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_wxdnr")
+
+[node name="Top" type="CollisionShape2D" parent="."]
+position = Vector2(2744.38, -172)
 shape = SubResource("RectangleShape2D_wxdnr")

@@ -1,7 +1,7 @@
 extends Area2D 
 
 
-@export var damage : int =10 #10 initial
+@export var damage : int =5 #10 initial
 @export var enemy_ai: Ai_Enemy
 @export var facing_shape: FacingShape2DEnemy1
 

@@ -1,13 +1,15 @@
-[gd_scene load_steps=49 format=3 uid="uid://0e0nqn8tkb3j"]
+[gd_scene load_steps=50 format=3 uid="uid://0e0nqn8tkb3j"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/ai_enemy.gd" id="1_44m3n"]
 [ext_resource type="Texture2D" uid="uid://stnxgji4qb3" path="res://art/generic_char_v0.2/generic_char_v0.2/png/red/char_red_1.png" id="1_imlc0"]
+[ext_resource type="AudioStream" uid="uid://nvcrxjyi48yr" path="res://Music/SFX/Swords/swordslash2.mp3" id="3_3ga3d"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/Sword.gd" id="3_ccuma"]
 [ext_resource type="Script" path="res://Characters/CharacterStateMachine.gd" id="3_f7qho"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/DamageableAiOne.gd" id="3_qfihd"]
 [ext_resource type="Texture2D" uid="uid://c50qxj0lbw6ep" path="res://art/generic_char_v0.2/generic_char_v0.2/png/red/char_red_magic.png" id="3_s437g"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/CollisionShape2D.gd" id="3_u2t0j"]
 [ext_resource type="Script" path="res://Characters/state.gd" id="4_x2hdn"]
+[ext_resource type="AudioStream" uid="uid://mfnks6pvm5gw" path="res://Music/SFX/Running/running_man2.mp3" id="5_psm4a"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/HitStateAiOne.gd" id="6_r3j5m"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/EnemyAttackStateMachine.gd" id="6_wqond"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/EnemyStateLabel.gd" id="7_bnp5m"]
@@ -15,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://6hu81drkb4uj" path="res://art/MenuArt/progress.png" id="12_4prkg"]
 [ext_resource type="Texture2D" uid="uid://d0fukwxmg05i2" path="res://art/MenuArt/over.png" id="13_tc1md"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/MagicDamageAreaManager.gd" id="15_ratii"]
+[ext_resource type="AudioStream" uid="uid://cqipp41n8ojx" path="res://Music/SFX/Hurt/hurt_man_voice.wav" id="17_lb5u8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ankac"]
 size = Vector2(24, 48)
@@ -200,11 +203,41 @@ tracks/7/path = NodePath("Sword:monitoring")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true, false, true, true]
+"values": [false, true, true, false, true, true, false]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("swordSFX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_3ga3d")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/8/use_blend = true
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("swordSFX")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_3ga3d")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_w86yn"]
 resource_name = "dead"
@@ -280,6 +313,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-1, -4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerDetector:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_6gyo7"]
@@ -611,6 +656,21 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(-12, 3)]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("runSFX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_psm4a")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = false
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifk8o"]
 _data = {
@@ -684,13 +744,7 @@ states/run/position = Vector2(394, 116)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qawmk"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_rmhr5"), "Start", "run", SubResource("AnimationNodeStateMachineTransition_t6545"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_87f83"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_hc518"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_owk1s"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_5k77u"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_6wx8j"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_nsep7"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_5o3jg"), "run", "magic", SubResource("AnimationNodeStateMachineTransition_0n77c"), "magic", "dead", SubResource("AnimationNodeStateMachineTransition_ddm1h"), "magic", "run", SubResource("AnimationNodeStateMachineTransition_1voad")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndkyn"]
-size = Vector2(45.8033, 23.8545)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_16c08"]
-size = Vector2(22.5, 90)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf5s7"]
-size = Vector2(93, 44)
+size = Vector2(48.1403, 23.8545)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_42wid"]
 radius = 35.0
@@ -737,24 +791,26 @@ collision_mask = 3
 [node name="Sword" type="Area2D" parent="." node_paths=PackedStringArray("enemy_ai", "facing_shape")]
 position = Vector2(-17, 0)
 collision_layer = 0
-collision_mask = 6
+collision_mask = 2
 monitoring = false
 script = ExtResource("3_ccuma")
 enemy_ai = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+position = Vector2(-1.25002, 0)
 scale = Vector2(1.06979, 0.922256)
 shape = SubResource("RectangleShape2D_ndkyn")
 script = ExtResource("3_u2t0j")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 2
+monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(-29.25, -24)
-shape = SubResource("RectangleShape2D_16c08")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
+position = Vector2(-41, 23)
+polygon = PackedVector2Array(0, 0, 0, -91, 55, -92, 56, -48, 22, -48, 22, 0)
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("3_qfihd")
@@ -836,23 +892,24 @@ tint_under = Color(0, 0.203922, 0.203922, 1)
 tint_over = Color(0.0509804, 0.0196078, 0, 1)
 tint_progress = Color(0.764706, 0.0627451, 0, 1)
 
-[node name="AboveDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AboveDetector"]
-position = Vector2(4.5, -36)
-shape = SubResource("RectangleShape2D_mf5s7")
-
 [node name="MagicDamageArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 2
 monitoring = false
 script = ExtResource("15_ratii")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MagicDamageArea"]
 position = Vector2(13, -37)
 shape = SubResource("CircleShape2D_42wid")
+
+[node name="swordSFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = 1.0
+
+[node name="hurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_lb5u8")
+volume_db = -8.0
+
+[node name="runSFX" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="CharacterStateMachine/Attack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]

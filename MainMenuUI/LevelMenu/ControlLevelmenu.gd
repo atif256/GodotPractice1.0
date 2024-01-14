@@ -3,12 +3,7 @@ extends Control
 @export var tutorial_level: PackedScene
 @export var level_one: PackedScene
 @export var level_two: PackedScene
-
-
-#tutorial level
-
-
-#level one scene
+@export var level_three: PackedScene
 
 
 
@@ -29,7 +24,13 @@ func _on_level_1_pressed():
 func _on_level_2_pressed():
 	get_tree().change_scene_to_packed(level_two)
 
+func _on_level_3_pressed():
+	get_tree().change_scene_to_packed(level_three)
+
 
 #new back button design
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://MainMenuUI/MainMenu/main_menu.tscn")
+
+
+

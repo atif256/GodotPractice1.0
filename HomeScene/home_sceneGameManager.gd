@@ -3,9 +3,6 @@ extends Node2D
 @onready var pause_menu = $PauseMenu
 var paused = false
 
-#@onready var player =$Player
-#@onready var boss = $BossOne
-#@onready var camera = $Camera2D
 
 func _ready():
 	pass

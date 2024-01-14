@@ -25,7 +25,7 @@ func _on_player_detector_body_entered(_body):
 	emit_signal("interrupt_state", attack_state)
 	timer.start()
 	playback.travel(attack_animation_name)
-	print("the enemy is attacking the player")
+
 
 func _on_player_detector_body_exited(_body):
 	current_state = return_state
@@ -34,5 +34,7 @@ func _on_player_detector_body_exited(_body):
 
 
 func _on_timer_timeout():
-	print("Timer timeout")
+#	print("Timer timeout")
 	next_state = return_state
+
+

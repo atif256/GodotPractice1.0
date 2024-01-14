@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://bu4lsy0t13uqp"]
+[gd_scene load_steps=36 format=3 uid="uid://bu4lsy0t13uqp"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/ai_enemy_level_3.gd" id="1_vxy5p"]
 [ext_resource type="Texture2D" uid="uid://wleyj7nggj5o" path="res://art/generic_char_v0.2/hunter/Character/Idle.png" id="1_w5cto"]
 [ext_resource type="Texture2D" uid="uid://b74hek1jx1v4e" path="res://art/generic_char_v0.2/hunter/Character/Attack.png" id="2_4uccn"]
+[ext_resource type="Texture2D" uid="uid://d0avwxu58sfr6" path="res://art/generic_char_v0.2/hunter/Character/Get Hit.png" id="4_nl8p8"]
 [ext_resource type="Texture2D" uid="uid://4sdt35udehd3" path="res://art/generic_char_v0.2/hunter/Character/Death.png" id="4_utwp2"]
 [ext_resource type="Script" path="res://Characters/CharacterStateMachine.gd" id="4_uummn"]
 [ext_resource type="Script" path="res://Characters/state.gd" id="5_4bw8m"]
@@ -110,6 +111,58 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PlayerDetector2:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PlayerDetector:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rv3jt"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_nl8p8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
 
 [sub_resource type="Animation" id="Animation_wb8fs"]
 resource_name = "idle"
@@ -156,6 +209,7 @@ _data = {
 "RESET": SubResource("Animation_nngva"),
 "attack": SubResource("Animation_43img"),
 "dead": SubResource("Animation_nrwll"),
+"hit": SubResource("Animation_rv3jt"),
 "idle": SubResource("Animation_wb8fs")
 }
 
@@ -164,6 +218,9 @@ animation = &"attack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sv7fb"]
 animation = &"dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b8rca"]
+animation = &"hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a2agd"]
 animation = &"idle"
@@ -177,16 +234,25 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8dc8q"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pc7qc"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mo2l5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6iinb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_56pa2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lxuwg"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pypev"]
+states/End/position = Vector2(904, 139)
 states/attack/node = SubResource("AnimationNodeAnimation_i6str")
 states/attack/position = Vector2(571, 44)
 states/dead/node = SubResource("AnimationNodeAnimation_sv7fb")
-states/dead/position = Vector2(475, 139)
+states/dead/position = Vector2(444, 166)
+states/hit/node = SubResource("AnimationNodeAnimation_b8rca")
+states/hit/position = Vector2(786, 109)
 states/idle/node = SubResource("AnimationNodeAnimation_a2agd")
 states/idle/position = Vector2(353, 49)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_62051"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_1e7fi"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tkbiy"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_8dc8q"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_pc7qc")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_62051"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_1e7fi"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_tkbiy"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_8dc8q"), "Start", "hit", SubResource("AnimationNodeStateMachineTransition_mo2l5"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_6iinb"), "hit", "attack", SubResource("AnimationNodeStateMachineTransition_56pa2"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_lxuwg")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gaor"]
 size = Vector2(79, 94)
@@ -195,6 +261,7 @@ size = Vector2(79, 94)
 size = Vector2(79, 94)
 
 [node name="Ai_Enemy_Level_3" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_vxy5p")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
@@ -274,14 +341,23 @@ current_state = NodePath("../Idle")
 idle_state = NodePath("../Idle")
 can_move = false
 
+[node name="Timer" type="Timer" parent="CharacterStateMachine/Attack"]
+wait_time = 0.6
+one_shot = true
+
 [node name="dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("5_4bw8m")
 can_move = false
 
-[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state")]
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "return_state")]
 script = ExtResource("9_tixs7")
 damageable = NodePath("../../Damageable")
 dead_state = NodePath("../dead")
+return_state = NodePath("../Idle")
+
+[node name="Timer" type="Timer" parent="CharacterStateMachine/Hit"]
+wait_time = 0.3
+one_shot = true
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine", "health_enemy")]
 offset_left = -52.0
@@ -301,3 +377,5 @@ health_enemy = NodePath("../Damageable")
 [connection signal="body_entered" from="PlayerDetector2" to="." method="_on_player_detector_2_body_entered"]
 [connection signal="body_entered" from="PlayerDetector2" to="CharacterStateMachine/Attack" method="_on_player_detector_2_body_entered"]
 [connection signal="body_exited" from="PlayerDetector2" to="CharacterStateMachine/Attack" method="_on_player_detector_2_body_exited"]
+[connection signal="timeout" from="CharacterStateMachine/Attack/Timer" to="CharacterStateMachine/Attack" method="_on_timer_timeout"]
+[connection signal="timeout" from="CharacterStateMachine/Hit/Timer" to="CharacterStateMachine/Hit" method="_on_timer_timeout"]

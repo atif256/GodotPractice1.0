@@ -1,7 +1,7 @@
 extends Node
 
 class_name PlayerHealth #node from player
-
+@onready var player = $".."
 # handle coins collect
 var score: int = 0
 signal on_score(node: Node, score_taken: int)
@@ -9,6 +9,8 @@ signal on_score(node: Node, score_taken: int)
 signal health_changed(health: float)
 signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2 )
 signal on_heal(node: Node, heal_taken: int)
+#signal on_fall(node: Node, fall_taken: int)
+
 
 #snail health
 @export var health: float = 100: #100
@@ -48,16 +50,23 @@ func heal(heals):
 		health = 100
 	update_health_bar()
 
+#func fall(fall_damage):
+#	health -= fall_damage
+#	print_debug(health)
+#	emit_signal("on_fall", get_parent(), fall_damage)
+#	update_health_bar()
 
 func coin(coins):
 	score += coins
 	print_debug("score = ", score)
 	emit_signal("on_score", get_parent, coins)
+	$"../AudioStreamPlayer2D".play()
 	update_score_bar()
 
 func _on_animation_tree_animation_finished(anim_name):
 	if (anim_name == dead_animation_name):
 		get_parent().queue_free()
+		player.position = Vector2.ZERO
 
 func update_health_bar():
 	if health_bar:

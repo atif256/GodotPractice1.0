@@ -26,11 +26,10 @@ func on_damageable_hit(_node: Node, _damage_amount: int, _knockback_direction: V
 	if (damageable.health > 0 ):
 		emit_signal("interrupt_state", self)
 		playback.travel(hit_animation)
-	#else:
+		$"../../hurtSFX".play()
 	elif (damageable.health <= 0):
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
-		print("character is dead")
 
 
 func _on_timer_timeout():
