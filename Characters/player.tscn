@@ -657,7 +657,7 @@ size = Vector2(39.3017, 60.278)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hit_state", "attack_state")]
 collision_layer = 2
-collision_mask = 21
+collision_mask = 53
 script = ExtResource("1_8leax")
 hit_state = NodePath("CharacterStateMachine/Hit")
 attack_state = NodePath("CharacterStateMachine/Attack")

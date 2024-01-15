@@ -9,12 +9,10 @@ class_name EnemyAttackStateMachine
 #note that emit signal is to use to call a change in state machine
 @export var return_state: State
 @export var current_state: State
-@export var idle_state: State
+@export var dead_state: State
 @export var attack_state: State
-#@export var run_state: State
+@export var damageable: DamageableAiOne
 
-#@onready var timer: Timer = $AttackAnimTimer
-#@onready var animation_tree: AnimationTree = $AnimationTree
 
 func _ready():
 	pass
@@ -22,14 +20,16 @@ func _ready():
 func _on_player_detector_body_entered(body):
 	current_state = attack_state
 	emit_signal("interrupt_state", attack_state)
-#	timer.start()
 	playback.travel(attack_animation_name)
 
 
-
 func _on_player_detector_body_exited(body):
-	current_state = return_state
-	emit_signal("interrupt_state", return_state)
-	playback.travel(run_animation_name)
+	if (damageable.health > 0):
+		current_state = return_state
+		emit_signal("interrupt_state", return_state)
+		playback.travel(run_animation_name)
+	else:
+		current_state = dead_state
+		emit_signal("interrupt_state", dead_state)
 	
 

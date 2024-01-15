@@ -46,7 +46,8 @@ _data = {
 [node name="MovingPlat" type="Node2D"]
 
 [node name="PlatMoveUpDown" type="AnimatableBody2D" parent="."]
-collision_layer = 3
+collision_layer = 32
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="PlatMoveUpDown"]
 texture = ExtResource("1_3jksu")

@@ -63,11 +63,9 @@ drag_vertical_enabled = true
 
 [node name="Ai_Enemy_Level_3" parent="." instance=ExtResource("8_ms4oo")]
 position = Vector2(1432, 344)
-collision_layer = 4
 
 [node name="Ai_Enemy_Level_4" parent="." instance=ExtResource("8_ms4oo")]
 position = Vector2(1715, 483)
-collision_layer = 4
 
 [node name="CollectableItems" parent="." instance=ExtResource("9_git77")]
 position = Vector2(1360, 360)

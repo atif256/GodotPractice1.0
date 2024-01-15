@@ -57,7 +57,6 @@ func detect_turn_around():
 
 func turn_around():
 	starting_move_direction = - starting_move_direction
-#	print("turn around")
 
 #new added
 var direction: Vector2 = Vector2.ZERO

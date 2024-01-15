@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c50qxj0lbw6ep" path="res://art/generic_char_v0.2/generic_char_v0.2/png/red/char_red_magic.png" id="3_s437g"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/CollisionShape2D.gd" id="3_u2t0j"]
 [ext_resource type="Script" path="res://Characters/state.gd" id="4_x2hdn"]
-[ext_resource type="AudioStream" uid="uid://mfnks6pvm5gw" path="res://Music/SFX/Running/running_man2.mp3" id="5_psm4a"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/HitStateAiOne.gd" id="6_r3j5m"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/EnemyAttackStateMachine.gd" id="6_wqond"]
 [ext_resource type="Script" path="res://Characters/Enemies/Human/Ai_Enemy/EnemyStateLabel.gd" id="7_bnp5m"]
@@ -313,18 +312,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-1, -4)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerDetector:monitoring")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_6gyo7"]
@@ -656,21 +643,6 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(-12, 3)]
 }
-tracks/7/type = "audio"
-tracks/7/imported = false
-tracks/7/enabled = false
-tracks/7/path = NodePath("runSFX")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("5_psm4a")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/7/use_blend = false
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifk8o"]
 _data = {
@@ -728,20 +700,22 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1voad"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ee0od"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_um62y"]
 states/attack/node = SubResource("AnimationNodeAnimation_4ub21")
 states/attack/position = Vector2(570, 32)
 states/dead/node = SubResource("AnimationNodeAnimation_u6v0u")
 states/dead/position = Vector2(767, 116)
 states/hit/node = SubResource("AnimationNodeAnimation_8hq81")
-states/hit/position = Vector2(538, 162)
+states/hit/position = Vector2(636, 231)
 states/idle/node = SubResource("AnimationNodeAnimation_vmag1")
 states/idle/position = Vector2(394, 32)
 states/magic/node = SubResource("AnimationNodeAnimation_0aaku")
 states/magic/position = Vector2(746, 45)
 states/run/node = SubResource("AnimationNodeAnimation_c4wun")
 states/run/position = Vector2(394, 116)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qawmk"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_rmhr5"), "Start", "run", SubResource("AnimationNodeStateMachineTransition_t6545"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_87f83"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_hc518"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_owk1s"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_5k77u"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_6wx8j"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_nsep7"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_5o3jg"), "run", "magic", SubResource("AnimationNodeStateMachineTransition_0n77c"), "magic", "dead", SubResource("AnimationNodeStateMachineTransition_ddm1h"), "magic", "run", SubResource("AnimationNodeStateMachineTransition_1voad")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qawmk"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_rmhr5"), "Start", "run", SubResource("AnimationNodeStateMachineTransition_t6545"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_87f83"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_hc518"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_owk1s"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_5k77u"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_6wx8j"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_nsep7"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_5o3jg"), "run", "magic", SubResource("AnimationNodeStateMachineTransition_0n77c"), "magic", "dead", SubResource("AnimationNodeStateMachineTransition_ddm1h"), "magic", "run", SubResource("AnimationNodeStateMachineTransition_1voad"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_ee0od")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndkyn"]
 size = Vector2(48.1403, 23.8545)
@@ -806,7 +780,6 @@ script = ExtResource("3_u2t0j")
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
 position = Vector2(-41, 23)
@@ -828,12 +801,13 @@ can_move = false
 [node name="run" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("4_x2hdn")
 
-[node name="Attack" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("return_state", "current_state", "idle_state", "attack_state")]
+[node name="Attack" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("return_state", "current_state", "dead_state", "attack_state", "damageable")]
 script = ExtResource("6_wqond")
 return_state = NodePath("../run")
 current_state = NodePath("../run")
-idle_state = NodePath("../idle")
+dead_state = NodePath("../dead")
 attack_state = NodePath(".")
+damageable = NodePath("../../Damageable")
 can_move = false
 
 [node name="AttackAnimTimer" type="Timer" parent="CharacterStateMachine/Attack"]
@@ -858,6 +832,7 @@ script = ExtResource("4_x2hdn")
 can_move = false
 
 [node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine", "health_enemy")]
+visible = false
 offset_left = -47.0
 offset_top = -80.0
 offset_right = 41.0

@@ -55,6 +55,7 @@ func _physics_process(delta):
 	update_facing_direction()
 
 func update_animation_parameter():
+	#sadasidjas
 	animation_tree.set("parameters/move/blend_position", direction.x)
 
 func update_facing_direction():
@@ -69,4 +70,6 @@ func update_facing_direction():
 	
 	emit_signal("facing_direction_changed", !sprite.flip_h)
 
+func player():
+	pass
 

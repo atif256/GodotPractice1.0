@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cxhfopdbopvtp" path="res://Platforms/invisible_barriers_shape.tscn" id="17_yfjpg"]
 [ext_resource type="PackedScene" uid="uid://ccw7uixcum01d" path="res://Characters/Enemies/Human/Ai_Enemy_Level_4/ai_enemy_level_4.tscn" id="18_loatf"]
 [ext_resource type="PackedScene" uid="uid://501bxhfdweym" path="res://Traps/falldamage.tscn" id="19_5aubs"]
-[ext_resource type="PackedScene" uid="uid://bu4lsy0t13uqp" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/ai_enemy_level_3.tscn" id="20_bs10k"]
+[ext_resource type="PackedScene" uid="uid://cnh1eqtc7fs7o" path="res://Platforms/plat_move_up_down.tscn" id="21_jejfi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
 texture = ExtResource("1_0efv7")
@@ -2856,6 +2856,7 @@ sources/1 = SubResource("TileSetAtlasSource_8h7qd")
 sources/2 = SubResource("TileSetAtlasSource_5q3kw")
 
 [node name="TestLevel" type="Node2D"]
+process_mode = 1
 position = Vector2(78, 121)
 script = ExtResource("1_sne15")
 
@@ -2887,12 +2888,15 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(393221, 983040, 21, 393222, 983040, 21, 327685, 983040, 21, 327686, 983040, 21, 262149, 983040, 21, 262150, 983040, 21, 393220, 983040, 21, 327684, 983040, 21, 262148, 983040, 21)
 
 [node name="Player" parent="." instance=ExtResource("2_1afom")]
+process_mode = 1
 position = Vector2(-1036, 87)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+process_mode = 1
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 1
 position = Vector2(-1036, 87)
 zoom = Vector2(2.5, 2.5)
 process_callback = 0
@@ -2989,7 +2993,7 @@ position = Vector2(465, 89)
 collision_layer = 4
 
 [node name="InvisibleBarriersLeft" parent="." instance=ExtResource("17_yfjpg")]
-position = Vector2(-217, -7.00001)
+position = Vector2(-1344, -521)
 
 [node name="Ai_Enemy_Level_4" parent="." instance=ExtResource("18_loatf")]
 position = Vector2(189, 3)
@@ -2997,5 +3001,9 @@ position = Vector2(189, 3)
 [node name="Area2D" parent="." instance=ExtResource("19_5aubs")]
 position = Vector2(-1489, 292)
 
-[node name="Ai_Enemy_Level_3" parent="." instance=ExtResource("20_bs10k")]
-position = Vector2(-693, 84)
+[node name="enemy camera" type="Camera2D" parent="."]
+position = Vector2(-691, 73)
+zoom = Vector2(2.5, 2.5)
+
+[node name="MovingPlat" parent="." instance=ExtResource("21_jejfi")]
+position = Vector2(-1091, 70)
