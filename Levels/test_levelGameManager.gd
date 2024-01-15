@@ -5,8 +5,11 @@ extends Node2D
 var paused = false
 @onready var camera2d = $Camera2D
 @onready var player = $Player
+var raycast : RayCast2D = null
 
 func _ready():
+#	raycast = get_node("/root/TestLevel/Player/world")
+	raycast = get_node("Player/world")
 	get_tree().set_pause(false)
 	Engine.time_scale = 1
 
@@ -26,7 +29,7 @@ func _process(_delta):
 
 
 func pauseMenu():
-	if player.is_on_floor():
+	if raycast != null and raycast.is_colliding():
 		if paused:
 			pause_menu.hide()
 			Engine.time_scale = 1
@@ -34,6 +37,14 @@ func pauseMenu():
 			pause_menu.show()
 			Engine.time_scale = 0
 	
+		paused = !paused
+	elif raycast == null:
+		if paused:
+			pause_menu.hide()
+			Engine.time_scale = 1
+		else:
+			pause_menu.show()
+			Engine.time_scale = 0
 		paused = !paused
 	else:
 		print("cannot pause meh")
