@@ -21,7 +21,6 @@ script = ExtResource("1_rb4xd")
 visible = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 offset_left = -1721.0
 offset_top = -224.0
 offset_right = 4410.0
@@ -57,9 +56,7 @@ dead_state = NodePath("../Ai_enemy/CharacterStateMachine/dead")
 attack_state = NodePath("../Ai_enemy/CharacterStateMachine/Attack")
 
 [node name="Ai_enemy_Level_2" parent="." instance=ExtResource("8_c028v")]
-position = Vector2(-52, 86)
-collision_layer = 0
-collision_mask = 0
+position = Vector2(-52, 71)
 
 [node name="Ai_enemy_Level_2_1" parent="." instance=ExtResource("8_c028v")]
 position = Vector2(-679, 83)

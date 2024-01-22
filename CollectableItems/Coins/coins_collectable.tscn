@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0us15jiuuy05"]
+[gd_scene load_steps=9 format=3 uid="uid://d0us15jiuuy05"]
 
 [ext_resource type="Script" path="res://CollectableItems/Coins/CoinsCollectableManager.gd" id="1_tw2fk"]
 [ext_resource type="Texture2D" uid="uid://beogem4cvxy1h" path="res://art/CoinsArt/coin2_20x20.png" id="1_wwia5"]
@@ -32,6 +32,11 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+
+[sub_resource type="Animation" id="Animation_jywim"]
+resource_name = "sparkling"
+length = 0.5
+loop_mode = 1
 
 [sub_resource type="Animation" id="Animation_u3ne0"]
 resource_name = "spin"
@@ -89,6 +94,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnrl0"]
 _data = {
 "RESET": SubResource("Animation_lau6x"),
+"sparkling": SubResource("Animation_jywim"),
 "spin": SubResource("Animation_u3ne0")
 }
 

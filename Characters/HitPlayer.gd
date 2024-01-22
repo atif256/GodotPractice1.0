@@ -24,6 +24,7 @@ func on_damageable_hit(_node: Node, _damage_amount: int, knockback_direction: Ve
 		character.velocity = knockback_speed  *  knockback_direction
 		emit_signal("interrupt_state", self)
 		playback.travel(hit_animation)
+		call_deferred("blood")
 #		next_state = return_state
 	#else:
 	elif (playerhealth.health <= 0):
@@ -37,7 +38,12 @@ func _on_timer_timeout(): #new add
 	next_state = return_state
 	
 
-
 func _on_animation_tree_animation_finished(anim_name):
 	if (anim_name == hit_animation):
 		next_state = return_state
+
+func blood():
+	const bleeding = preload("res://Effect/blood_fx.tscn")
+	var start_bleed = bleeding.instantiate()
+	get_parent().add_child(start_bleed)
+	start_bleed.global_position = $"../..".global_position

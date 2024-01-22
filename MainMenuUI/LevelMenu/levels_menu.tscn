@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=8 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
-[ext_resource type="Texture2D" uid="uid://bti2eyetafhkb" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background_blue(480x133).png" id="1_ypnk4"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
 [ext_resource type="PackedScene" uid="uid://do80ygktoe3ft" path="res://Levels/level_1.tscn" id="4_lse61"]
 [ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="4_nqxin"]
@@ -10,26 +9,29 @@
 [ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="7_3v1og"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
+follow_viewport_enabled = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.890196, 0.894118, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = -428.0
-offset_right = 700.0
-offset_bottom = 428.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ypnk4")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
 script = ExtResource("1_3d3lq")
 tutorial_level = ExtResource("3_iv4e6")
 level_one = ExtResource("4_lse61")

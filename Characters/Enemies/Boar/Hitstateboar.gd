@@ -30,7 +30,7 @@ func on_damageable_hit(_node: Node, _damage_amount: int, knockback_direction: Ve
 	else:
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
-		
+		call_deferred("drop")
 
 func on_exit():
 	character.velocity = Vector2.ZERO
@@ -38,5 +38,16 @@ func on_exit():
 
 func _on_timer_timeout():
 	next_state = return_state
+
+func drop():
+	const coin = preload("res://CollectableItems/Coins/coins_collectable.tscn")
+	var coin_drop = coin.instantiate()
+	get_tree().get_root().add_child(coin_drop)
+	coin_drop.global_position = $"../..".global_position
+	
+#const heal = preload("res://CollectableItems/Heals/collectable_items.tscn")
+#	var healing = heal.instantiate()
+#	get_tree().get_root().add_child(healing)
+#	healing.global_position = $"../..".global_position
 
 

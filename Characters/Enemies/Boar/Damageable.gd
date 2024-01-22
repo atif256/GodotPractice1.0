@@ -1,7 +1,6 @@
 extends Node
 
 class_name DamageableBoar
-
 signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2)
 
 @export var health: float = 40:

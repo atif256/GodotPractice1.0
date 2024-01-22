@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 
 var arrow_scene = preload("res://Characters/Enemies/Human/Ai_Enemy_Level_3/arrow/arrow.tscn")
-@onready var animation_tree: AnimationTree = $AnimationTree
+#@onready var animation_tree: AnimationTree = $AnimationTree
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	animation_tree.active = true
+	pass
+#	animation_tree.active = true
 
 func _physics_process(delta):
 	# Add the gravity.

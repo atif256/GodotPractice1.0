@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjdxsmkp210p4"]
+
+[ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="1_bnwxn"]
+
+[node name="FinishedScene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+offset_left = -52.0
+offset_top = -13.0
+offset_right = 52.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.662745, 0, 1)
+theme_override_fonts/font = ExtResource("1_bnwxn")
+text = "Level Cleared"

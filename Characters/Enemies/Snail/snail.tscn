@@ -135,17 +135,17 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-48.8917, 0)
 
 [node name="Snail" type="CharacterBody2D" node_paths=PackedStringArray("hit_state")]
-position = Vector2(107, 89)
+position = Vector2(-1, -1)
 collision_layer = 4
 script = ExtResource("1_bcgb2")
 hit_state = NodePath("CharacterStateMachine/Hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-107.5, -83)
+position = Vector2(1, 5)
 shape = SubResource("RectangleShape2D_tdsko")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-107, -88)
+position = Vector2(1, 0)
 texture = ExtResource("1_3501e")
 hframes = 8
 
@@ -186,6 +186,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = -128.0
 offset_top = -129.0
 offset_right = -88.0

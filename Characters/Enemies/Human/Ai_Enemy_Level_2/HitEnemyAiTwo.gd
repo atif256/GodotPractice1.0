@@ -30,9 +30,16 @@ func on_damageable_hit(_node: Node, _damage_amount: int, _knockback_direction: V
 	elif (damageable.health <= 0):
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
+		call_deferred("drop")
 
 
 func _on_timer_timeout():
 	timer.stop() #0.6
 	next_state = return_state
 	playback.travel(idle_animation_name)
+
+func drop():
+	const coin = preload("res://CollectableItems/Coins/coins_collectable.tscn")
+	var coin_drop = coin.instantiate()
+	get_tree().get_root().add_child(coin_drop)
+	coin_drop.global_position = $"../..".global_position

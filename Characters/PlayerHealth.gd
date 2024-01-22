@@ -26,6 +26,8 @@ signal on_heal(node: Node, heal_taken: int)
 @export var dead_animation_name: String = "dead"
 var health_bar: TextureProgressBar = null
 var score_bar: ProgressBar = null
+var coin_indicator: TextureProgressBar = null
+var anim_play: AnimationPlayer = null
 
 func _ready():
 	print_debug("score = ", score)
@@ -33,12 +35,16 @@ func _ready():
 	health_bar = get_node("../../PlayerHealthBarUI/PHealthBar")
 	# new added
 	score_bar = get_node("../../PlayerHealthBarUI/Coinoftherealm")
+	coin_indicator = get_node("../../PlayerHealthBarUI/CoinsIndicator")
+	anim_play = get_node("../../PlayerHealthBarUI/AnimationPlayer")
 	
 	update_health_bar()
 	update_score_bar()
+	update_coin_indicator()
 
 func hit(damage: int, knockback_direction: Vector2):
 	health -= damage
+	anim_play.play("hit")
 	emit_signal("on_hit", get_parent(), damage, knockback_direction)
 	update_health_bar()
 
@@ -56,12 +62,15 @@ func heal(heals):
 #	emit_signal("on_fall", get_parent(), fall_damage)
 #	update_health_bar()
 
-func coin(coins):
+func coin(coins): # here is the score!!!!!!!!
 	score += coins
 	print_debug("score = ", score)
 	emit_signal("on_score", get_parent, coins)
 	$"../AudioStreamPlayer2D".play()
 	update_score_bar()
+	update_coin_indicator()
+	if score == 10:
+		anim_play.play("full")
 
 func _on_animation_tree_animation_finished(anim_name):
 	if (anim_name == dead_animation_name):
@@ -77,3 +86,9 @@ func update_score_bar():
 	if score_bar:
 		score_bar.value = score
 
+func update_coin_indicator():
+	if coin_indicator:
+		coin_indicator.value = score
+
+func get_score() -> int: # to pass a value of score
+	return score

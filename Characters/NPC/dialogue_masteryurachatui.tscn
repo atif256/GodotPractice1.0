@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://6b8wqidi8wa4"]
+
+[ext_resource type="Script" path="res://Characters/NPC/dialogue_masteryurachatui.gd" id="1_mk67v"]
+[ext_resource type="Texture2D" uid="uid://bo6y3rwspdlqy" path="res://art/MenuArt/inventory-slot.png" id="1_wx300"]
+[ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="3_btykn"]
+[ext_resource type="FontFile" uid="uid://87dj2pbxfdv2" path="res://art/FontArt/PressStart2P.ttf" id="4_c5ihx"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchor_top = -0.171
+anchor_bottom = -0.171
+offset_left = -93.0
+offset_top = 6.808
+offset_right = 91.0
+offset_bottom = 63.808
+script = ExtResource("1_mk67v")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.754
+anchor_right = 0.484
+anchor_bottom = 0.754
+offset_left = -88.056
+offset_top = -33.978
+offset_right = 87.944
+offset_bottom = 34.022
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wx300")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.061
+anchor_top = 0.062
+anchor_right = 0.073
+anchor_bottom = 0.079
+offset_left = -0.736001
+offset_top = -9.216
+offset_right = 162.152
+offset_bottom = 14.628
+theme_override_fonts/normal_font = ExtResource("3_btykn")
+theme_override_font_sizes/normal_font_size = 8
+text = "Name: Master Yura"
+scroll_active = false
+tab_size = 1
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.061
+anchor_right = 0.073
+anchor_bottom = 0.079
+offset_left = 5.264
+offset_top = 17.0
+offset_right = 177.152
+offset_bottom = 65.628
+scale = Vector2(0.87, 0.87)
+theme_override_fonts/normal_font = ExtResource("4_c5ihx")
+theme_override_font_sizes/normal_font_size = 8
+text = "Chating................"
+fit_content = true
+autowrap_mode = 2

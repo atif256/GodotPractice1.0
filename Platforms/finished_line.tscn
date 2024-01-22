@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://diis4fwtoyc8j"]
+
+[ext_resource type="Texture2D" uid="uid://c0aoqn2a16pj" path="res://art/CoinsArt/flags.png" id="1_34o1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ndcd"]
+size = Vector2(6, 44)
+
+[sub_resource type="Animation" id="Animation_pwi5v"]
+resource_name = "flag"
+length = 0.55
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_mhpgl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmpou"]
+_data = {
+"RESET": SubResource("Animation_mhpgl"),
+"flag": SubResource("Animation_pwi5v")
+}
+
+[node name="FinishedLine" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_34o1x")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 0)
+shape = SubResource("RectangleShape2D_1ndcd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "flag"
+libraries = {
+"": SubResource("AnimationLibrary_gmpou")
+}

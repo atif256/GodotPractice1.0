@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://4xv1gnj40hoo"]
+
+[ext_resource type="Script" path="res://CollectableItems/Coins/effectmanager.gd" id="1_jkgkw"]
+[ext_resource type="Texture2D" uid="uid://drshpyfng7f4j" path="res://art/CoinsArt/Effect 2 - Sprite Sheet.png" id="2_xrdm7"]
+
+[sub_resource type="Animation" id="Animation_w1tl7"]
+resource_name = "sparkling"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_jvnm1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdxu0"]
+_data = {
+"RESET": SubResource("Animation_jvnm1"),
+"sparkling": SubResource("Animation_w1tl7")
+}
+
+[node name="SparklingEffect" type="Node2D"]
+script = ExtResource("1_jkgkw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xrdm7")
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "sparkling"
+libraries = {
+"": SubResource("AnimationLibrary_fdxu0")
+}
