@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=28 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5flkl2dibkc7" path="res://Characters/player.tscn" id="2_1afom"]
 [ext_resource type="PackedScene" uid="uid://d3qh2gi8lo15w" path="res://MainMenuUI/PauseMenu/pause_menu.tscn" id="2_wtgth"]
 [ext_resource type="PackedScene" uid="uid://cdcwf1bhhbacu" path="res://Characters/Enemies/Snail/snail.tscn" id="4_gknwv"]
+[ext_resource type="PackedScene" uid="uid://bbh3oqba0yqjg" path="res://MainMenuUI/finished_menu/next_level_menu.tscn" id="4_sqtd3"]
 [ext_resource type="Texture2D" uid="uid://cdwq5ctgj10nb" path="res://art/Legacy-Fantasy - High Forest 2.3/HUD/Base-01.png" id="5_ehoj6"]
 [ext_resource type="PackedScene" uid="uid://drs4fdg5hvcl7" path="res://UI/health_changed_manager.tscn" id="5_h3wjc"]
 [ext_resource type="Texture2D" uid="uid://ct564vne5j2ey" path="res://art/Legacy-Fantasy - High Forest 2.3/HUD/Undergroundmine_Props.png" id="6_0cutu"]
@@ -2855,6 +2856,9 @@ sources/0 = SubResource("TileSetAtlasSource_uvns5")
 sources/1 = SubResource("TileSetAtlasSource_8h7qd")
 sources/2 = SubResource("TileSetAtlasSource_5q3kw")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7lor"]
+size = Vector2(129, 146)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud6mq"]
 size = Vector2(515, 593)
 
@@ -2868,10 +2872,13 @@ script = ExtResource("1_sne15")
 [node name="PauseMenu" parent="." instance=ExtResource("2_wtgth")]
 visible = false
 
+[node name="NextLevelMenu" parent="." instance=ExtResource("4_sqtd3")]
+visible = false
+
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = -1352.0
+offset_left = -1361.0
 offset_top = -162.0
-offset_right = 3425.0
+offset_right = 3416.0
 offset_bottom = 110.0
 texture = ExtResource("1_6m207")
 stretch_mode = 1
@@ -2892,6 +2899,16 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="FinishedLine" parent="." instance=ExtResource("18_fa2uv")]
 position = Vector2(858, 90)
+
+[node name="DoorToNextLevel" type="Area2D" parent="FinishedLine"]
+position = Vector2(106, -52)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishedLine/DoorToNextLevel"]
+self_modulate = Color(1, 0, 1, 1)
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_u7lor")
 
 [node name="Player" parent="." instance=ExtResource("2_1afom")]
 process_mode = 1
@@ -2920,14 +2937,6 @@ position = Vector2(850, 32)
 
 [node name="Snail" parent="." instance=ExtResource("4_gknwv")]
 position = Vector2(276, 93)
-
-[node name="HealthChangedManager" parent="." instance=ExtResource("5_h3wjc")]
-offset_left = -50.0
-offset_top = 12.0
-offset_right = 6.0
-offset_bottom = 47.0
-health_changed_label = null
-metadata/_edit_use_anchors_ = true
 
 [node name="Boar" parent="." instance=ExtResource("6_c2ofg")]
 position = Vector2(-505, 96)
@@ -2995,4 +3004,13 @@ position = Vector2(419, 23)
 [node name="MasterYuraNPC" parent="." instance=ExtResource("17_3fy5a")]
 position = Vector2(-871, 79)
 
+[node name="HealthChangedManager" parent="." instance=ExtResource("5_h3wjc")]
+offset_left = -50.0
+offset_top = 12.0
+offset_right = 6.0
+offset_bottom = 47.0
+health_changed_label = null
+metadata/_edit_use_anchors_ = true
+
 [connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]
+[connection signal="body_entered" from="FinishedLine/DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]

@@ -22,6 +22,8 @@ func _ready():
 	animation_tree.active = true
 
 func _physics_process(delta):
+	if Engine.time_scale == 0: #skip the phy process if the game is pause
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

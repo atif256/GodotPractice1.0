@@ -17,17 +17,14 @@ func _on_body_entered(body):
 			
 			#to check the player is pasing to the left or right
 			var player_facing_right = facing_shape.position == facing_shape.facing_right_position
-			var knockback_direction = Vector2.RIGHT if player_facing_right else Vector2.LEFT
+#			var knockback_direction = Vector2.RIGHT if player_facing_right else Vector2.LEFT
 			
 			#apply knockback direction
 			if(direction_sign > 0):
-				child.hit(damage, knockback_direction)
-#				print(">>0")
+				child.hit(damage, Vector2.RIGHT)
 			elif(direction_sign < 0):
-				child.hit(damage, -knockback_direction)
-#				print("<<0")
+				child.hit(damage,  Vector2.LEFT)
 			else:
-#				print("==0")
 				child.hit(damage, Vector2.ZERO)
 			
 			
@@ -41,10 +38,10 @@ func _on_body_entered(body):
 			
 			#apply knockback direction
 			if(direction_sign > 0):
-				child.hit(damage, knockback_direction)
+				child.hit(damage, Vector2.RIGHT)
 				#print_debug(child)
 			elif(direction_sign < 0):
-				child.hit(damage, -knockback_direction)
+				child.hit(damage, Vector2.LEFT)
 			else:
 				child.hit(damage, Vector2.ZERO)
 				

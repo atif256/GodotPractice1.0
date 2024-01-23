@@ -105,6 +105,8 @@ size = Vector2(23, 23.5)
 script = ExtResource("1_tw2fk")
 
 [node name="CoinsCollectable" type="CharacterBody2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CoinsCollectable"]
 texture = ExtResource("1_wwia5")
@@ -122,8 +124,8 @@ libraries = {
 }
 
 [node name="PlayerDetector" type="Area2D" parent="CoinsCollectable"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinsCollectable/PlayerDetector"]
 shape = SubResource("RectangleShape2D_mnal8")

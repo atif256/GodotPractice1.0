@@ -30,7 +30,8 @@ func _on_player_detector_body_entered(body):
 
 func hit(damage: int, knockback_direction: Vector2):
 	health -= damage
-	print_debug(health)
+#	print_debug(health)
+	call_deferred("health_floating")
 	emit_signal("on_hit", get_parent(), damage, knockback_direction)
 	if health < 20:
 		health_bar.visible =true
@@ -43,3 +44,8 @@ func update_health_bar():
 	if health_bar:
 		health_bar.value = health
 
+func health_floating():
+	const floating = preload("res://UI/health_floating_indicator.tscn")
+	var health_floating_node = floating.instantiate()
+	get_tree().get_root().add_child(health_floating_node)
+	health_floating_node.global_position = $"..".global_position

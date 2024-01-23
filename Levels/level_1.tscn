@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=27 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
 [ext_resource type="Script" path="res://Levels/level_1GameManager.gd" id="1_qjbq1"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c5flkl2dibkc7" path="res://Characters/player.tscn" id="3_l3kg1"]
 [ext_resource type="Texture2D" uid="uid://b3ku48evp0g8p" path="res://art/Legacy-Fantasy - High Forest 2.3/Trees/Green-Tree.png" id="4_ncqmq"]
 [ext_resource type="PackedScene" uid="uid://bu4lsy0t13uqp" path="res://Characters/Enemies/Human/Ai_Enemy_Level_3/ai_enemy_level_3.tscn" id="7_jgr0a"]
+[ext_resource type="PackedScene" uid="uid://diis4fwtoyc8j" path="res://Platforms/finished_line.tscn" id="8_gkxfu"]
 [ext_resource type="PackedScene" uid="uid://bays4n5ehc7hj" path="res://Traps/WormTraps.tscn" id="9_jypm8"]
 [ext_resource type="PackedScene" uid="uid://cnh1eqtc7fs7o" path="res://Platforms/plat_move_up_down.tscn" id="9_qnhfo"]
+[ext_resource type="PackedScene" uid="uid://bbo418xgoveoi" path="res://MainMenuUI/finished_menu/collect_more_coins_menu.tscn" id="9_qtjiv"]
 [ext_resource type="PackedScene" uid="uid://dejfqgo1cypl3" path="res://CollectableItems/Heals/collectable_items.tscn" id="10_socdt"]
 [ext_resource type="PackedScene" uid="uid://cscr0ba7hi3g1" path="res://Traps/FireBreatherTraps.tscn" id="11_h4vu5"]
 [ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="13_1g2qr"]
@@ -17,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://0e0nqn8tkb3j" path="res://Characters/Enemies/Human/Ai_Enemy/ai_enemy.tscn" id="14_uylpw"]
 [ext_resource type="PackedScene" uid="uid://501bxhfdweym" path="res://Traps/falldamage.tscn" id="16_kqbev"]
 [ext_resource type="PackedScene" uid="uid://d3qh2gi8lo15w" path="res://MainMenuUI/PauseMenu/pause_menu.tscn" id="17_armuk"]
+[ext_resource type="PackedScene" uid="uid://bjdxsmkp210p4" path="res://MainMenuUI/finished_menu/finished_scene_menu.tscn" id="20_cwpnf"]
+[ext_resource type="PackedScene" uid="uid://d0us15jiuuy05" path="res://CollectableItems/Coins/coins_collectable.tscn" id="21_jcfd4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so76f"]
 texture = ExtResource("2_fn52q")
@@ -12517,6 +12521,9 @@ layer_5/y_sort_origin = 0
 layer_5/z_index = 0
 layer_5/tile_data = PackedInt32Array()
 
+[node name="FinishedLine" parent="." instance=ExtResource("8_gkxfu")]
+position = Vector2(5126, 94)
+
 [node name="Player" parent="." instance=ExtResource("3_l3kg1")]
 position = Vector2(-57, 90)
 metadata/_edit_group_ = true
@@ -12534,6 +12541,14 @@ rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 metadata/_edit_group_ = true
+
+[node name="CollectMoreCoins" parent="." instance=ExtResource("9_qtjiv")]
+visible = false
+position = Vector2(5111.09, 40.3839)
+
+[node name="FinishedScene" parent="." instance=ExtResource("20_cwpnf")]
+visible = false
+position = Vector2(5112.98, 54.542)
 
 [node name="Ai_Enemy_Level_3_1" parent="." instance=ExtResource("7_jgr0a")]
 position = Vector2(722, 88)
@@ -12603,3 +12618,29 @@ visible = false
 
 [node name="Ai_Enemy_Level_3" parent="." instance=ExtResource("7_jgr0a")]
 position = Vector2(378, 89)
+
+[node name="Coins" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(3365, 176)
+
+[node name="Coins2" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(3391, 176)
+
+[node name="Coins3" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(3365, 203)
+
+[node name="Coins4" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(3391, 203)
+
+[node name="Coins5" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(1186, 195)
+
+[node name="Coins6" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(2930, 182)
+
+[node name="Coins7" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(2959, 182)
+
+[node name="Coins8" parent="." instance=ExtResource("21_jcfd4")]
+position = Vector2(2944, 211)
+
+[connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]

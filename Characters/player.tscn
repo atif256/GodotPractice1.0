@@ -666,7 +666,7 @@ attack_state = NodePath("CharacterStateMachine/Attack")
 shape = SubResource("CapsuleShape2D_8htxb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_piwpi")
+texture = ExtResource("2_wcfbn")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

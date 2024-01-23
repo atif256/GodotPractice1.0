@@ -27,10 +27,12 @@ func on_damageable_hit(_node: Node, _damage_amount: int, knockback_direction: Ve
 		character.velocity = knockback_speed  *  knockback_direction
 		emit_signal("interrupt_state", self)
 		playback.travel(run_animation_name)
+		call_deferred("health_floating")
 	else:
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
 		call_deferred("drop")
+		call_deferred("health_floating")
 
 func on_exit():
 	character.velocity = Vector2.ZERO
@@ -50,4 +52,8 @@ func drop():
 #	get_tree().get_root().add_child(healing)
 #	healing.global_position = $"../..".global_position
 
-
+func health_floating():
+	const floating = preload("res://UI/health_floating_indicator.tscn")
+	var health_floating_node = floating.instantiate()
+	get_tree().get_root().add_child(health_floating_node)
+	health_floating_node.global_position = $"../..".global_position

@@ -17,13 +17,13 @@ class_name EnemyAttackStateMachine
 func _ready():
 	pass
 
-func _on_player_detector_body_entered(body):
+func _on_player_detector_body_entered(_body):
 	current_state = attack_state
 	emit_signal("interrupt_state", attack_state)
 	playback.travel(attack_animation_name)
 
 
-func _on_player_detector_body_exited(body):
+func _on_player_detector_body_exited(_body):
 	if (damageable.health > 0):
 		current_state = return_state
 		emit_signal("interrupt_state", return_state)

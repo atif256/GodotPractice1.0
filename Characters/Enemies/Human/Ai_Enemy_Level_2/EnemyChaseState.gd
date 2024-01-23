@@ -14,7 +14,7 @@ var has_flipped: bool = false
 func _ready():
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if enemy_chase and player:
 		# Access the position property of the controlled object
 		controlled_object.position += (player.global_position - controlled_object.global_position) / slow_chase
@@ -29,7 +29,7 @@ func _on_chase_to_left_body_entered(body): #behind
 			controlled_object.scale.x = -controlled_object.scale.x
 			has_flipped = true
 
-func _on_chase_to_left_body_exited(body): #behind
+func _on_chase_to_left_body_exited(_body): #behind
 	player = null
 	#enemy_chase = true
 	has_flipped = false

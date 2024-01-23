@@ -52,6 +52,7 @@ func hit(damage: int, knockback_direction: Vector2):
 func heal(heals):
 	health += heals
 	emit_signal("on_heal", get_parent(), heals)
+	call_deferred("healing_effect")
 	if health > 100:
 		health = 100
 	update_health_bar()
@@ -92,3 +93,10 @@ func update_coin_indicator():
 
 func get_score() -> int: # to pass a value of score
 	return score
+
+func healing_effect():
+	const healing = preload("res://Effect/healing_effect.tscn")
+	var health_effect_node = healing.instantiate()
+	get_parent().add_child(health_effect_node)
+	health_effect_node.global_position = $"..".global_position
+	

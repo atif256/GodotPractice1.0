@@ -8,7 +8,7 @@ signal on_hit(node: Node, damage_taken: int, knockback_direction: Vector2 )
 	get:
 		return health
 	set(value):
-		#SignalBus.emit_signal("on_health_changed", get_parent(), value - health)
+		SignalBus.emit_signal("on_health_changed", get_parent(), value - health)
 		health = value
 
 @export var dead_animation_name: String = "dead"
