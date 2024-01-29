@@ -42,7 +42,7 @@ func update_health_bar():
 		health_bar.value = health
 		emit_signal("health_changed", health)
 
-func _on_healthbar_visible_on_body_entered(body):
+func _on_healthbar_visible_on_body_entered(_body):
 	print("body enter")
 	health_bar.visible = true
 	name_label.visible = true

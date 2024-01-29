@@ -2,15 +2,14 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var speed: float = 200.0
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var state_machine:CharacterStateMachine = $CharacterStateMachine
-@export var hit_state: State
-@export var attack_state: State
-
 @onready var run_sfx: AudioStreamPlayer2D = $RunningSFX
 
+@export var hit_state: State
+@export var attack_state: State
+@export var speed: float = 200.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -41,7 +40,6 @@ func _physics_process(delta):
 		if not run_sfx.is_playing():
 			run_sfx.play()
 		
-		
 	elif state_machine.current_state != hit_state:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		run_sfx.stop()
@@ -57,19 +55,15 @@ func _physics_process(delta):
 	update_facing_direction()
 
 func update_animation_parameter():
-	#sadasidjas
 	animation_tree.set("parameters/move/blend_position", direction.x)
 
 func update_facing_direction():
 	if direction.x > 0:
 		sprite.flip_h = false
-#		print("kanan")
 		
 	elif direction.x < 0:
 		sprite.flip_h = true
-#		print("kiri")
-	
-	
+		
 	emit_signal("facing_direction_changed", !sprite.flip_h)
 
 func player():

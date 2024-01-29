@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://8e4buor1rqab"]
+[gd_scene load_steps=9 format=3 uid="uid://8e4buor1rqab"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_h8rm6"]
 [ext_resource type="Script" path="res://MainMenuUI/MainMenu/ControlMenu.gd" id="1_thckn"]
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="2_cijce"]
 [ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="5_i4dld"]
 [ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="5_x8s34"]
+[ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="6_nvr50"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fwprf"]
 texture = ExtResource("2_cijce")
@@ -518,6 +519,40 @@ grow_vertical = 2
 texture = ExtResource("1_h8rm6")
 expand_mode = 3
 
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 72.0
+offset_right = 400.0
+offset_bottom = 198.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_i4dld")
+theme_override_font_sizes/font_size = 40
+text = "Sword of Redemption:
+   Rena's Journey"
+
+[node name="Title2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 71.0
+offset_right = 400.0
+offset_bottom = 151.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.917647, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_i4dld")
+theme_override_font_sizes/font_size = 40
+text = "Redemption:
+"
+
 [node name="TileMap" type="TileMap" parent="Control"]
 position = Vector2(-0.5, -1)
 tile_set = SubResource("TileSet_bayah")
@@ -536,6 +571,10 @@ offset_right = 128.0
 offset_bottom = 77.558
 theme = ExtResource("5_x8s34")
 theme_override_constants/separation = 10
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="Control/MainMenuElements"]
+position = Vector2(-448, -264)
+stream = ExtResource("6_nvr50")
 
 [node name="Play" type="Button" parent="Control/MainMenuElements"]
 layout_mode = 2

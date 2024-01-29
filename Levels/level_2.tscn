@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2d1j6e5slm4"]
+[gd_scene load_steps=20 format=3 uid="uid://b2d1j6e5slm4"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_8qh6f"]
 [ext_resource type="Script" path="res://Levels/level_2GameManager.gd" id="1_iukqa"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dp04brhvotlxc" path="res://Traps/FireTraps.tscn" id="12_n0tlk"]
 [ext_resource type="PackedScene" uid="uid://bays4n5ehc7hj" path="res://Traps/WormTraps.tscn" id="13_44x31"]
 [ext_resource type="PackedScene" uid="uid://cnh1eqtc7fs7o" path="res://Platforms/plat_move_up_down.tscn" id="14_fox44"]
+[ext_resource type="PackedScene" uid="uid://dt83aar6u3vnc" path="res://MainMenuUI/finished_menu/death_scene_menu.tscn" id="16_wipgn"]
+[ext_resource type="AudioStream" uid="uid://dgm7yk3ox3skl" path="res://art/BGM/Adventure-320bit(chosic.com).mp3" id="17_0pfxj"]
 [ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="17_xb36s"]
 [ext_resource type="PackedScene" uid="uid://762ei4lqdfqp" path="res://Characters/Enemies/Human/Ai_Enemy_Level_2/ai_enemy_level_2.tscn" id="18_wgit8"]
 [ext_resource type="PackedScene" uid="uid://0e0nqn8tkb3j" path="res://Characters/Enemies/Human/Ai_Enemy/ai_enemy.tscn" id="19_qn8nd"]
@@ -23,82 +25,86 @@ size = Vector2(39, 192)
 size = Vector2(48, 88)
 
 [node name="level2" type="Node2D"]
+position = Vector2(328, 184)
 script = ExtResource("1_iukqa")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 6112.0
-offset_bottom = 272.0
+offset_left = -401.0
+offset_top = -368.0
+offset_right = 5711.0
+offset_bottom = -96.0
 texture = ExtResource("1_8qh6f")
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_top = 272.0
-offset_right = 6112.0
-offset_bottom = 648.0
+offset_left = -401.0
+offset_top = -96.0
+offset_right = 5711.0
+offset_bottom = 280.0
 texture = ExtResource("2_73vpc")
 
 [node name="TileMap" parent="." instance=ExtResource("4_j4sw7")]
+position = Vector2(-192, -96)
 
 [node name="MovingPlat" parent="." instance=ExtResource("14_fox44")]
-position = Vector2(704, 472)
+position = Vector2(303, 104)
 
 [node name="MovingPlat2" parent="." instance=ExtResource("14_fox44")]
-position = Vector2(1888, 616)
+position = Vector2(1487, 248)
 
 [node name="Player" parent="." instance=ExtResource("3_qcxmj")]
-position = Vector2(176, 344)
+position = Vector2(-225, -24)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 position = Vector2(0, 3)
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(176, 347)
+position = Vector2(-225, -21)
 zoom = Vector2(2.5, 2.5)
 process_callback = 0
-limit_left = 110
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Ai_Enemy_Level_3" parent="." instance=ExtResource("8_ms4oo")]
-position = Vector2(1432, 344)
+position = Vector2(1031, -24)
 
 [node name="Ai_Enemy_Level_4" parent="." instance=ExtResource("8_ms4oo")]
-position = Vector2(1715, 483)
+position = Vector2(1314, 115)
 
 [node name="CollectableItems" parent="." instance=ExtResource("9_git77")]
-position = Vector2(1360, 360)
+position = Vector2(959, -8)
 
 [node name="CollectableItems2" parent="." instance=ExtResource("9_git77")]
-position = Vector2(1038, 504)
+position = Vector2(637, 136)
 
 [node name="FireTrap" parent="." instance=ExtResource("12_n0tlk")]
-position = Vector2(856, 512)
+position = Vector2(455, 144)
 
 [node name="FireTrap180" parent="." instance=ExtResource("12_n0tlk")]
-position = Vector2(984, 443)
+position = Vector2(583, 75)
 rotation = 3.14159
 
 [node name="FireTrap2" parent="." instance=ExtResource("12_n0tlk")]
-position = Vector2(1112, 512)
+position = Vector2(711, 144)
 
 [node name="WormTrap" parent="." instance=ExtResource("13_44x31")]
-position = Vector2(1536, 656)
+position = Vector2(1135, 288)
 
 [node name="WormTrap2" parent="." instance=ExtResource("13_44x31")]
-position = Vector2(1256, 512)
+position = Vector2(855, 144)
 
 [node name="PlayerHealthBarUI" parent="." instance=ExtResource("17_xb36s")]
 
 [node name="Ai_enemy_Level_2" parent="." instance=ExtResource("18_wgit8")]
-position = Vector2(400, 331)
+position = Vector2(-1, -37)
 
 [node name="Ai_Enemy" parent="." instance=ExtResource("19_qn8nd")]
-position = Vector2(954, 343)
+position = Vector2(553, -25)
 
 [node name="InvisibleBarriersLeft" parent="." instance=ExtResource("20_arr2s")]
-position = Vector2(112, 323)
+position = Vector2(-289, -45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleBarriersLeft"]
 position = Vector2(1408, -51)
@@ -108,8 +114,17 @@ shape = SubResource("RectangleShape2D_kjr2h")
 visible = false
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(494.981, 627.763)
+position = Vector2(93.981, 259.763)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-14.9813, 0.236877)
 shape = SubResource("RectangleShape2D_oci2h")
+
+[node name="DeathSceneMenu" parent="." instance=ExtResource("16_wipgn")]
+visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-401, -368)
+stream = ExtResource("17_0pfxj")
+volume_db = 10.0
+max_distance = 2e+08

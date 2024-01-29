@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ytck76w7jjfq"]
+[gd_scene load_steps=11 format=3 uid="uid://ytck76w7jjfq"]
 
 [ext_resource type="PackedScene" uid="uid://wt1426kpp1h1" path="res://TileMap/tile_map2.tscn" id="1_mpuww"]
 [ext_resource type="Script" path="res://Levels/level_3_Manager.gd" id="1_ralu8"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://cyvbhgijcvrim" path="res://art/lightart/2d_lights_and_shadows_neutral_point_light.webp" id="4_151gn"]
 [ext_resource type="PackedScene" uid="uid://d0us15jiuuy05" path="res://CollectableItems/Coins/coins_collectable.tscn" id="5_d0ygs"]
 [ext_resource type="PackedScene" uid="uid://d3qh2gi8lo15w" path="res://MainMenuUI/PauseMenu/pause_menu.tscn" id="7_2bjw1"]
+[ext_resource type="PackedScene" uid="uid://bjdxsmkp210p4" path="res://MainMenuUI/finished_menu/finished_scene_menu.tscn" id="9_u1qsr"]
+[ext_resource type="PackedScene" uid="uid://bbo418xgoveoi" path="res://MainMenuUI/finished_menu/collect_more_coins_menu.tscn" id="10_36ul7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86wlw"]
+size = Vector2(30, 53)
 
 [node name="Level3" type="Node2D"]
 position = Vector2(0, 9)
@@ -260,3 +265,22 @@ position = Vector2(672, -302)
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_2bjw1")]
 visible = false
+
+[node name="FinishedLineType2" type="Area2D" parent="."]
+position = Vector2(826, -370)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishedLineType2"]
+position = Vector2(0.422913, 0.332062)
+shape = SubResource("RectangleShape2D_86wlw")
+
+[node name="FinishedScene" parent="." instance=ExtResource("9_u1qsr")]
+visible = false
+position = Vector2(826.09, -421.939)
+
+[node name="CollectMoreCoins" parent="." instance=ExtResource("10_36ul7")]
+visible = false
+position = Vector2(823.57, -420.049)
+
+[connection signal="body_entered" from="FinishedLineType2" to="." method="_on_finished_line_type_2_body_entered"]

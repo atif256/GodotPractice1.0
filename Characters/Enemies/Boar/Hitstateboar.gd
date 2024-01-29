@@ -28,6 +28,8 @@ func on_damageable_hit(_node: Node, _damage_amount: int, knockback_direction: Ve
 		emit_signal("interrupt_state", self)
 		playback.travel(run_animation_name)
 		call_deferred("health_floating")
+#	elif (damageable.health == 30):
+#		character.Velocity = Vector2.RIGHT
 	else:
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)

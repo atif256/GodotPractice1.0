@@ -13,7 +13,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		if player_in_chat_zone:
 			$Dialogue.start()

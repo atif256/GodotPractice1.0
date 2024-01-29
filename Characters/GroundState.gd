@@ -38,6 +38,8 @@ func state_process(_delta):
 		
 
 func state_input(event : InputEvent):
+	if Engine.time_scale == 0: #skip the phy process if the game is pause
+		return
 	if(event.is_action_pressed("jump")):
 		jump()
 		

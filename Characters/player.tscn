@@ -770,24 +770,31 @@ facing_right_position = Vector2(29, 0)
 script = ExtResource("15_2gkhh")
 
 [node name="SwordSFX" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1.00332)
 stream = ExtResource("18_i60xs")
+bus = &"SFX"
 
 [node name="LandingSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_3mugi")
+bus = &"SFX"
 
 [node name="RunningSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_frhfx")
 volume_db = 24.0
+bus = &"SFX"
 
 [node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_opn5h")
 volume_db = -5.5
+bus = &"SFX"
 
 [node name="Jump1SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_4wyph")
+bus = &"SFX"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_r1kni")
+bus = &"SFX"
 
 [node name="world" type="RayCast2D" parent="."]
 target_position = Vector2(0, 31)

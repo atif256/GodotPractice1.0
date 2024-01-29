@@ -12,11 +12,13 @@ var controlled_object: Node2D = null
 
 signal interrupt_state(new_state: State)
 
-func state_process(_delta):
-	pass
+func state_process(_delta): #pass
+	if Engine.time_scale == 0: #skip the phy process if the game is pause
+		return
 
-func state_input(_event : InputEvent):
-	pass
+func state_input(_event : InputEvent): #pass
+	if Engine.time_scale == 0: #skip the phy process if the game is pause
+		return
 
 func on_enter():
 	pass

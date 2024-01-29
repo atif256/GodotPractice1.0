@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl8r2uovutwoc"]
+[gd_scene load_steps=12 format=3 uid="uid://bl8r2uovutwoc"]
 
 [ext_resource type="Texture2D" uid="uid://dxvmi2v7m7h57" path="res://art/NPC art/Master yura/IDLE.png" id="1_3cgf7"]
 [ext_resource type="Script" path="res://Characters/NPC/master_yura_npc.gd" id="1_g5ptf"]
@@ -49,6 +49,43 @@ size = Vector2(15, 32.6667)
 [sub_resource type="CircleShape2D" id="CircleShape2D_uc22o"]
 radius = 64.622
 
+[sub_resource type="Animation" id="Animation_2fwww"]
+resource_name = "bling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_67ce1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bscbi"]
+_data = {
+"RESET": SubResource("Animation_67ce1"),
+"bling": SubResource("Animation_2fwww")
+}
+
 [node name="MasterYuraNPC" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 16
@@ -88,6 +125,12 @@ offset_top = -79.0
 offset_right = 69.0
 offset_bottom = -53.0
 text = "Press 'E' to chat"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chat"]
+autoplay = "bling"
+libraries = {
+"": SubResource("AnimationLibrary_bscbi")
+}
 
 [node name="Dialogue" parent="." instance=ExtResource("3_2qm4k")]
 anchors_preset = 0

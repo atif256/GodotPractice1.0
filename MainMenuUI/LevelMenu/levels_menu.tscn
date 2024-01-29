@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=10 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
 [ext_resource type="PackedScene" uid="uid://do80ygktoe3ft" path="res://Levels/level_1.tscn" id="4_lse61"]
 [ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="4_nqxin"]
 [ext_resource type="PackedScene" uid="uid://b2d1j6e5slm4" path="res://Levels/level_2.tscn" id="5_jxs8r"]
+[ext_resource type="PackedScene" uid="uid://barah76wmshmq" path="res://Levels/level_4.tscn" id="6_ancq7"]
 [ext_resource type="PackedScene" uid="uid://ytck76w7jjfq" path="res://Levels/level_3.tscn" id="6_jxpax"]
 [ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="7_3v1og"]
+[ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="8_io2bc"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -37,6 +39,11 @@ tutorial_level = ExtResource("3_iv4e6")
 level_one = ExtResource("4_lse61")
 level_two = ExtResource("5_jxs8r")
 level_three = ExtResource("6_jxpax")
+level_four = ExtResource("6_ancq7")
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="Control"]
+position = Vector2(-448, -264)
+stream = ExtResource("8_io2bc")
 
 [node name="Title" type="Label" parent="Control"]
 layout_mode = 1
@@ -147,4 +154,5 @@ text = "Back"
 [connection signal="pressed" from="Control/LevelSelection/Level1" to="Control" method="_on_level_1_pressed"]
 [connection signal="pressed" from="Control/LevelSelection/Level2" to="Control" method="_on_level_2_pressed"]
 [connection signal="pressed" from="Control/LevelSelection/Level3" to="Control" method="_on_level_3_pressed"]
+[connection signal="pressed" from="Control/LevelSelection/Level4" to="Control" method="_on_level_4_pressed"]
 [connection signal="pressed" from="Control/Back" to="Control" method="_on_back_pressed"]

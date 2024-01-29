@@ -25,5 +25,5 @@ func spawn_arrow():
 	add_child(arrow_ins)
 
 
-func _on_player_detector_body_entered(body):
+func _on_player_detector_body_entered(_body):
 	call_deferred("spawn_arrow")

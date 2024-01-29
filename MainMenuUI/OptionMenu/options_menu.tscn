@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pnr0fwc4ahi2"]
+[gd_scene load_steps=5 format=3 uid="uid://pnr0fwc4ahi2"]
 
 [ext_resource type="Script" path="res://MainMenuUI/OptionMenu/OptionBackMenu.gd" id="1_inbra"]
 [ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="2_fxnik"]
 [ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="3_khukp"]
+[ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="4_dam1r"]
 
 [node name="OptionsMenuKeyboard" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -113,5 +114,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_fxnik")
 theme_override_font_sizes/font_size = 25
 text = "Main menu"
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="Panel"]
+position = Vector2(-448, -264)
+stream = ExtResource("4_dam1r")
 
 [connection signal="pressed" from="Panel/MainMenuButton" to="Panel" method="_on_main_menu_button_pressed"]

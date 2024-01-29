@@ -25,6 +25,7 @@ func on_damageable_hit(_node: Node, _damage_amount: int, knockback_direction: Ve
 		emit_signal("interrupt_state", dead_state)
 		playback.travel(dead_animation_node)
 		call_deferred("drop")
+		call_deferred("health_floating")
 
 func on_exit():
 	character.velocity = Vector2.ZERO
