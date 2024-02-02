@@ -15,6 +15,8 @@ func _ready():
 	Engine.time_scale = 1
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), false)
 	$AudioStreamPlayer2D.play()
+#	if !$ControlLevelMenu.level1:
+#		$ControlLevelMenu.level1 = true
 
 func _process(_delta):
 	if Input.is_action_just_pressed("esc"):
@@ -57,7 +59,16 @@ func _on_finished_line_body_entered(body):
 			unfinish_line.visible = true
 			print("collect more coin to pass")
 
+func _on_door_to_next_level_body_entered(body):
+	if finish_line.visible:
+		get_tree().change_scene_to_file("res://Levels/level_2.tscn")
+		ControlLevelmenu.level2 = true
+		ControlLevelmenu.save_data()
+
 func death_menu():
 	if player == null:
 		$DeathSceneMenu.visible = true
 		$AudioStreamPlayer2D.stop()
+
+
+

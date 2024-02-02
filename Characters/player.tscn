@@ -1,8 +1,9 @@
-[gd_scene load_steps=73 format=3 uid="uid://c5flkl2dibkc7"]
+[gd_scene load_steps=74 format=3 uid="uid://c5flkl2dibkc7"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_8leax"]
 [ext_resource type="Texture2D" uid="uid://cbfw7rq6dou33" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_piwpi"]
 [ext_resource type="Texture2D" uid="uid://cey0fygaijkht" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Dead/Dead-Sheet.png" id="2_7bjxt"]
+[ext_resource type="Resource" uid="uid://br74duf4ai5hx" path="res://UI/InventoryUI/playerinv.tres" id="2_rrypc"]
 [ext_resource type="Texture2D" uid="uid://cnaowihjitccn" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="2_up62c"]
 [ext_resource type="Texture2D" uid="uid://dh6veabfxmp3j" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Dead/player_hit_animation.png" id="2_wcfbn"]
 [ext_resource type="Texture2D" uid="uid://cryk2faf16ice" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="4_8w0c0"]
@@ -661,6 +662,7 @@ collision_mask = 53
 script = ExtResource("1_8leax")
 hit_state = NodePath("CharacterStateMachine/Hit")
 attack_state = NodePath("CharacterStateMachine/Attack")
+inv = ExtResource("2_rrypc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8htxb")

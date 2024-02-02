@@ -1,45 +1,76 @@
-extends Control
+extends Control #this is gd from level menu and already autoload it named as ControlLevelMenu
 
 @export var tutorial_level: PackedScene
 @export var level_one: PackedScene
 @export var level_two: PackedScene
 @export var level_three: PackedScene
 @export var level_four: PackedScene
-var level0: bool = true
-var level1: bool = false
-var level2: bool = false
-var level3: bool = false
-var level4: bool = false
-var level5: bool = false
 
+@export var level0: bool = true
+@export var level1: bool = false
+@export var level2: bool = false
+@export var level3: bool = false
+@export var level4: bool = false
+@export var level5: bool = false
 
-#this is level0
+func _ready():
+#	for i in range(6):
+#		var level_name = "level" + str(i) 
+#		print_debug(level_name, " = ", get(level_name))
+	load_saved_data()
+#	pass # for now i will pass
+
+#this is level0 and is always unlocked
 func _on_tutorial_pressed():
 	$ButtonClick.play()
 	await $ButtonClick.finished
 	get_tree().change_scene_to_packed(tutorial_level)
 
-#this is level1
 func _on_level_1_pressed():
-	$ButtonClick.play()
-	await $ButtonClick.finished
-	get_tree().change_scene_to_packed(level_one)
-	
-#this is level2
+	if level1:
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		get_tree().change_scene_to_packed(level_one)
+	else:
+		$Locked.visible = true
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		$Locked.visible = false
+
+
 func _on_level_2_pressed():
-	$ButtonClick.play()
-	await $ButtonClick.finished
-	get_tree().change_scene_to_packed(level_two)
+	if level2:
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		get_tree().change_scene_to_packed(level_two)
+	else:
+		$Locked.visible = true
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		$Locked.visible = false
 
 func _on_level_3_pressed():
-	$ButtonClick.play()
-	await $ButtonClick.finished
-	get_tree().change_scene_to_packed(level_three)
+	if level3:
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		get_tree().change_scene_to_packed(level_three)
+	else:
+		$Locked.visible = true
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		$Locked.visible = false
 
 func _on_level_4_pressed():
-	$ButtonClick.play()
-	await $ButtonClick.finished
-	get_tree().change_scene_to_packed(level_four)
+	if level4:
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		get_tree().change_scene_to_packed(level_four)
+	else:
+		$Locked.visible = true
+		$ButtonClick.play()
+		await $ButtonClick.finished
+		$Locked.visible = false
+#	get_tree().change_scene_to_packed(level_four)
 
 #new back button design
 func _on_back_pressed():
@@ -47,7 +78,27 @@ func _on_back_pressed():
 	await $ButtonClick.finished
 	get_tree().change_scene_to_file("res://MainMenuUI/MainMenu/main_menu.tscn")
 
+#saving level data
+func save_data():
+	var config = ConfigFile.new()
+	
+	for i in range(1,5): #level1,level2,level3 and level4
+		var level_name = "level" + str(i)
+		config.set_value("Game", level_name, get(level_name))
+	config.save("user://saved_data.cfg")
 
+#to load current saving
+func load_saved_data():
+	var config = ConfigFile.new()
+	if config.load("user://saved_data.cfg") == OK:
+		for i in range(1, 5):
+			var level_name = "level" + str(i)
+			var value = config.get_value("Game", level_name, get(level_name))
+			set(level_name, value)
+	else:
+		print("your system is failed to load a data")
 
-
-
+#to hide the locked message
+#func _on_timer_timeout():
+#	if $Locked.visible:
+#		$Locked.visible = false

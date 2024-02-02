@@ -12526,6 +12526,15 @@ layer_5/tile_data = PackedInt32Array()
 [node name="FinishedLine" parent="." instance=ExtResource("8_gkxfu")]
 position = Vector2(5126, 94)
 
+[node name="DoorToNextLevel" type="Area2D" parent="FinishedLine"]
+position = Vector2(-5126, -94)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishedLine/DoorToNextLevel"]
+position = Vector2(5300, -42.25)
+shape = SubResource("RectangleShape2D_27tav")
+
 [node name="Player" parent="." instance=ExtResource("3_l3kg1")]
 position = Vector2(-57, 90)
 metadata/_edit_group_ = true
@@ -12597,12 +12606,6 @@ hit_state = NodePath("../Ai_Enemy/CharacterStateMachine/hit")
 dead_state = NodePath("../Ai_Enemy/CharacterStateMachine/dead")
 attack_state = NodePath("../Ai_Enemy/CharacterStateMachine/Attack")
 
-[node name="CompletedLevelArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CompletedLevelArea"]
-position = Vector2(5300, -42.25)
-shape = SubResource("RectangleShape2D_27tav")
-
 [node name="FallDamage" parent="." instance=ExtResource("16_kqbev")]
 position = Vector2(4006, 411)
 
@@ -12654,3 +12657,4 @@ max_distance = 2e+09
 visible = false
 
 [connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]
+[connection signal="body_entered" from="FinishedLine/DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]

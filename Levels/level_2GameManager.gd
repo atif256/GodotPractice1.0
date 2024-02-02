@@ -12,6 +12,7 @@ func _ready():
 	Engine.time_scale = 1
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), false)
 	$AudioStreamPlayer2D.play()
+	
 
 func _process(_delta):
 	if Input.is_action_just_pressed("esc"):

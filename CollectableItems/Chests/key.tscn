@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj7t1gosylmsj"]
+
+[ext_resource type="Script" path="res://CollectableItems/Chests/keyscript.gd" id="1_juxeo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5g7wh"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evfx8"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_67ce1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2fwww"]
+resource_name = "bling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bscbi"]
+_data = {
+"RESET": SubResource("Animation_67ce1"),
+"bling": SubResource("Animation_2fwww")
+}
+
+[node name="Key" type="StaticBody2D"]
+script = ExtResource("1_juxeo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+region_rect = Rect2(240, 320, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5g7wh")
+
+[node name="Playerdetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Playerdetector"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_evfx8")
+
+[node name="Chat" type="Label" parent="."]
+visible = false
+offset_left = -99.0
+offset_top = -78.0
+offset_right = 99.0
+offset_bottom = -52.0
+text = "Press 'E' to collect the key"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chat"]
+autoplay = "bling"
+libraries = {
+"": SubResource("AnimationLibrary_bscbi")
+}
+
+[connection signal="body_entered" from="Playerdetector" to="." method="_on_playerdetector_body_entered"]
+[connection signal="body_exited" from="Playerdetector" to="." method="_on_playerdetector_body_exited"]

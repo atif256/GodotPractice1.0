@@ -1,6 +1,7 @@
 extends Control
 
 @onready var main = $"../../"
+#@onready var inv: Inv = preload("res://UI/InventoryUI/playerinv.tres")
 
 func _ready():
 	#hide()
@@ -17,6 +18,8 @@ func _on_restart_pressed():
 	$ButtonClick.play()
 	await $ButtonClick.finished
 	get_tree().reload_current_scene()
+#	if inv != null:
+#	inv.reset_slot() # to reset the inventory
 
 
 func _on_option_pressed():

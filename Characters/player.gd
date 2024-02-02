@@ -11,6 +11,8 @@ class_name Player
 @export var attack_state: State
 @export var speed: float = 200.0
 
+@export var inv: Inv
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2 = Vector2.ZERO
@@ -69,3 +71,9 @@ func update_facing_direction():
 func player():
 	pass
 
+func collect(item):
+	inv.insert(item)
+
+func drop(item):
+	inv.destroy(item)
+	print("drop -1 for " + item.name)
