@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=12 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://barah76wmshmq" path="res://Levels/level_4.tscn" id="6_ancq7"]
 [ext_resource type="PackedScene" uid="uid://ytck76w7jjfq" path="res://Levels/level_3.tscn" id="6_jxpax"]
 [ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="7_3v1og"]
+[ext_resource type="PackedScene" uid="uid://8taqystu8u4a" path="res://UI/LevelCompletedUI/starholder1_3_star.tscn" id="7_t64ov"]
 [ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="8_io2bc"]
+[ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="10_fv0yp"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -89,6 +91,8 @@ offset_left = -526.152
 offset_top = -120.336
 offset_right = 520.848
 offset_bottom = 120.664
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 80
 columns = 4
 
 [node name="Tutorial" type="Button" parent="Control/LevelSelection"]
@@ -167,6 +171,104 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_3v1og")
 theme_override_font_sizes/font_size = 25
 text = "Back"
+
+[node name="Starholder1" parent="Control" instance=ExtResource("7_t64ov")]
+layout_mode = 1
+
+[node name="Starholder2" type="GridContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 360.0
+offset_top = 128.0
+offset_right = 522.0
+offset_bottom = 208.0
+theme_override_constants/h_separation = -15
+columns = 3
+
+[node name="StarAnim1" parent="Control/Starholder2" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim2" parent="Control/Starholder2" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim3" parent="Control/Starholder2" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="Starholder3" type="GridContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 656.0
+offset_top = 128.0
+offset_right = 818.0
+offset_bottom = 208.0
+theme_override_constants/h_separation = -15
+columns = 3
+
+[node name="StarAnim1" parent="Control/Starholder3" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim2" parent="Control/Starholder3" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim3" parent="Control/Starholder3" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="Starholder4" type="GridContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 912.0
+offset_top = 128.0
+offset_right = 1074.0
+offset_bottom = 208.0
+theme_override_constants/h_separation = -15
+columns = 3
+
+[node name="StarAnim1" parent="Control/Starholder4" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim2" parent="Control/Starholder4" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim3" parent="Control/Starholder4" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="Starholder5" type="GridContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 88.0
+offset_top = 254.0
+offset_right = 250.0
+offset_bottom = 334.0
+theme_override_constants/h_separation = -15
+columns = 3
+
+[node name="StarAnim1" parent="Control/Starholder5" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim2" parent="Control/Starholder5" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim3" parent="Control/Starholder5" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="Starholder6" type="GridContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 368.0
+offset_top = 256.0
+offset_right = 530.0
+offset_bottom = 336.0
+theme_override_constants/h_separation = -15
+columns = 3
+
+[node name="StarAnim1" parent="Control/Starholder6" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim2" parent="Control/Starholder6" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
+
+[node name="StarAnim3" parent="Control/Starholder6" instance=ExtResource("10_fv0yp")]
+layout_mode = 2
 
 [connection signal="pressed" from="Control/LevelSelection/Tutorial" to="Control" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Control/LevelSelection/Level1" to="Control" method="_on_level_1_pressed"]

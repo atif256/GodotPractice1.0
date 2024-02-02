@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://signal_bus.gd"
 ControlLevelmenu="*res://MainMenuUI/LevelMenu/ControlLevelmenu.gd"
+StarholderBus="*res://UI/LevelCompletedUI/starholder1script.gd"
 
 [display]
 

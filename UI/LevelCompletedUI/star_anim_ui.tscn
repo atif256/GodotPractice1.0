@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckwyrstxu6iyv"]
+
+[ext_resource type="Texture2D" uid="uid://dxv4n06qayarc" path="res://art/CoinsArt/Star.png" id="1_5to3k"]
+
+[sub_resource type="Animation" id="Animation_xgdo5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_sb7eg"]
+resource_name = "star"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ycjh"]
+_data = {
+"RESET": SubResource("Animation_xgdo5"),
+"star": SubResource("Animation_sb7eg")
+}
+
+[node name="StarAnim" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_5to3k")
+centered = false
+hframes = 13
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "star"
+libraries = {
+"": SubResource("AnimationLibrary_7ycjh")
+}

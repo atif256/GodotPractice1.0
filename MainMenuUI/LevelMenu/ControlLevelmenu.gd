@@ -13,12 +13,27 @@ extends Control #this is gd from level menu and already autoload it named as Con
 @export var level4: bool = false
 @export var level5: bool = false
 
+#this is for Starholder1
+#@export var star_one: bool = false
+#@export var star_two: bool = false
+#@export var star_three: bool = false
+
+#@onready var star_anim_1 = get_node("Starholder1/StarAnim1")
+#@onready var star_anim_2 = get_node("Starholder1/StarAnim2")
+#@onready var star_anim_3 = get_node("Starholder1/StarAnim3")
+
+#@onready var star_anim_1: Panel = $Starholder1/StarAnim1
+#@onready var star_anim_2: Panel = $Starholder1/StarAnim2
+#@onready var star_anim_3: Panel = $Starholder1/StarAnim3
+
+#@onready var star_anim_1 = get_parent().find_child("StarAnim1")
+#@onready var star_anim_2 = get_parent().find_child("Starholder1/StarAnim2")
+#@onready var star_anim_3 = get_parent().find_child("Starholder1/StarAnim2")
+
+#@onready var starholder = %Starholder1
 func _ready():
-#	for i in range(6):
-#		var level_name = "level" + str(i) 
-#		print_debug(level_name, " = ", get(level_name))
+#	print(starholder)
 	load_saved_data()
-#	pass # for now i will pass
 
 #this is level0 and is always unlocked
 func _on_tutorial_pressed():
@@ -98,7 +113,3 @@ func load_saved_data():
 	else:
 		print("your system is failed to load a data")
 
-#to hide the locked message
-#func _on_timer_timeout():
-#	if $Locked.visible:
-#		$Locked.visible = false

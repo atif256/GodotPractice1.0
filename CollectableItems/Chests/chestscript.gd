@@ -41,18 +41,21 @@ func open_chest():
 
 func _on_key_collected(): # only key_item can open the Chest
 	chest_is_open = true
-	player.drop(item) # drop -1 for item1
+	player.drop(item)
 	$open.visible = true
 	$closed.visible = false
 	$Chat.visible = false
+	StarholderBus.star_visibility1 = true
+	StarholderBus.save_star()
 
 func _on_key_collected_2(): # only key_item_2 can open the Chest2
 	chest_is_open = true
-	player.drop(item) # drop -1 for item1. i want the output in here is drop -1 for item2. in here error is related to the player
+	player.drop(item) 
 	$open.visible = true
 	$closed.visible = false
 	$Chat.visible = false
-
+	StarholderBus.star_visibility2 = true
+	StarholderBus.save_star()
 
 
 
