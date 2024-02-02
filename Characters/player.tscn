@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://c5flkl2dibkc7"]
+[gd_scene load_steps=75 format=3 uid="uid://c5flkl2dibkc7"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_8leax"]
 [ext_resource type="Texture2D" uid="uid://cbfw7rq6dou33" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_piwpi"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://cob3m56an1s0n" path="res://Music/SFX/Death/hoh_deadsfx.mp3" id="21_opn5h"]
 [ext_resource type="AudioStream" uid="uid://cvvrxrqcaseab" path="res://Music/SFX/Landing/jumping1.mp3" id="22_4wyph"]
 [ext_resource type="AudioStream" uid="uid://bwclnsyrc5nd7" path="res://Music/SFX/Collectable/mixkit-extra-bonus-in-a-video-game-2045.wav" id="24_r1kni"]
+[ext_resource type="AudioStream" uid="uid://bwtk8y6r4me2o" path="res://Music/SFX/Collectable/collectitemSFX.mp3" id="26_kx7nv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8htxb"]
 radius = 8.0
@@ -800,6 +801,11 @@ bus = &"SFX"
 
 [node name="world" type="RayCast2D" parent="."]
 target_position = Vector2(0, 31)
+
+[node name="CollectItemSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_kx7nv")
+volume_db = -3.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce2rsfryqj7u7"]
+
+[ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="1_liem2"]
+[ext_resource type="Theme" uid="uid://c5gyoq0yillmg" path="res://MainMenuUI/MainMenu/MainMenuArt/MainMenuArt.tres" id="2_vjmko"]
+[ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="3_e2pqp"]
+
+[node name="OptionsMenuKeyboard_2" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.286275, 0.286275, 1)
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.119
+anchor_right = 0.508
+anchor_bottom = 0.119
+offset_left = -320.216
+offset_top = -40.112
+offset_right = 319.784
+offset_bottom = 39.888
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.482353, 1)
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 40
+text = "Control Keyboard"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.529
+anchor_top = 0.537
+anchor_right = 0.529
+anchor_bottom = 0.537
+offset_left = -440.408
+offset_top = -230.976
+offset_right = 439.592
+offset_bottom = 213.024
+
+[node name="Tab" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 20
+text = "Open Inventory: Tab"
+
+[node name="Tab2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 20
+text = "Close Inventory: Tab"
+
+[node name="Left" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 20
+text = "Move left: A"
+
+[node name="Jump" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 20
+text = "Jump: Space"
+
+[node name="Jump Combo" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 20
+text = "Jump Combo: Space + Space"
+
+[node name="Attack" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 20
+text = "Attack: F or left-click"
+
+[node name="Attack Combo" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 20
+text = "Attack Combo: F+F or left-click + left-click"
+
+[node name="MainMenuButton" type="Button" parent="Panel"]
+layout_mode = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -292.0
+offset_top = -74.0
+offset_right = -27.0
+offset_bottom = -29.0
+theme = ExtResource("2_vjmko")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_liem2")
+theme_override_font_sizes/font_size = 25
+text = "Main menu"
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="Panel"]
+position = Vector2(-448, -264)
+stream = ExtResource("3_e2pqp")
+
+[connection signal="pressed" from="Panel/MainMenuButton" to="Panel" method="_on_main_menu_button_pressed" flags=18]

@@ -72,8 +72,13 @@ func player():
 	pass
 
 func collect(item):
+	$CollectItemSFX.play()
 	inv.insert(item)
 
 func drop(item):
 	inv.destroy(item)
-	print("drop -1 for " + item.name)
+	print("drop -1 for " + item.name) # drop -1 for item1
+
+#func drop_item2(item2):
+#	inv.destroy_item2(item2)
+#	print("drop -1 for " + item2.name) # drop -1 for item2

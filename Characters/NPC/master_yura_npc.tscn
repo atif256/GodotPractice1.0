@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dxvmi2v7m7h57" path="res://art/NPC art/Master yura/IDLE.png" id="1_3cgf7"]
 [ext_resource type="Script" path="res://Characters/NPC/master_yura_npc.gd" id="1_g5ptf"]
 [ext_resource type="PackedScene" uid="uid://6b8wqidi8wa4" path="res://Characters/NPC/dialogue_masteryurachatui.tscn" id="3_2qm4k"]
+[ext_resource type="PackedScene" uid="uid://dki4l5xcykrd" path="res://Characters/NPC/dialogue2_masteryurachatui.tscn" id="4_e1utp"]
 
 [sub_resource type="Animation" id="Animation_8m263"]
 length = 0.001
@@ -45,9 +46,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xhtk"]
 size = Vector2(15, 32.6667)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_uc22o"]
-radius = 64.622
 
 [sub_resource type="Animation" id="Animation_67ce1"]
 length = 0.001
@@ -110,14 +108,6 @@ position = Vector2(5, 9.5)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_3xhtk")
 
-[node name="ChatDetectionArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetectionArea"]
-position = Vector2(5, -5)
-shape = SubResource("CircleShape2D_uc22o")
-
 [node name="Chat" type="Label" parent="."]
 visible = false
 offset_left = -52.0
@@ -133,14 +123,16 @@ libraries = {
 }
 
 [node name="Dialogue" parent="." instance=ExtResource("3_2qm4k")]
-anchors_preset = 0
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_left = -125.0
-offset_top = -90.0
-offset_right = 132.0
-offset_bottom = -57.0
+offset_left = -87.0
+offset_top = -97.0
+offset_right = 87.0
+offset_bottom = -31.0
 
-[connection signal="body_entered" from="ChatDetectionArea" to="." method="_on_chat_detection_area_body_entered"]
-[connection signal="body_exited" from="ChatDetectionArea" to="." method="_on_chat_detection_area_body_exited"]
+[node name="Dialogue2" parent="." instance=ExtResource("4_e1utp")]
+offset_left = -88.0
+offset_top = -99.0
+offset_right = 88.0
+offset_bottom = -31.0
+
 [connection signal="dialogue_finished" from="Dialogue" to="." method="_on_dialogue_dialogue_finished"]
+[connection signal="dialogue_finished" from="Dialogue2" to="." method="_on_dialogue_2_dialogue_finished"]

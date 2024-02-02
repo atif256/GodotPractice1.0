@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc3dv2tt6o6pv"]
+[gd_scene load_steps=7 format=3 uid="uid://dc3dv2tt6o6pv"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_61rhm"]
 [ext_resource type="Script" path="res://CollectableItems/Chests/chestscript.gd" id="1_fg312"]
-[ext_resource type="Resource" uid="uid://bn4e5jcp3nsyd" path="res://UI/InventoryUI/Key.tres" id="2_hss7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dlvi"]
 size = Vector2(30, 27)
@@ -46,7 +45,6 @@ _data = {
 
 [node name="Chest" type="StaticBody2D"]
 script = ExtResource("1_fg312")
-item = ExtResource("2_hss7t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
@@ -69,7 +67,9 @@ offset_left = -99.0
 offset_top = -78.0
 offset_right = 99.0
 offset_bottom = -52.0
-text = "Press 'E' to open the chess"
+text = "Press 'E' to open"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chat"]
 autoplay = "bling"

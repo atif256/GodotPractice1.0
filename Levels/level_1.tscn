@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=32 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
 [ext_resource type="Script" path="res://Levels/level_1GameManager.gd" id="1_qjbq1"]
@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://d0us15jiuuy05" path="res://CollectableItems/Coins/coins_collectable.tscn" id="21_jcfd4"]
 [ext_resource type="AudioStream" uid="uid://dgm7yk3ox3skl" path="res://art/BGM/Adventure-320bit(chosic.com).mp3" id="22_nc34c"]
 [ext_resource type="PackedScene" uid="uid://dt83aar6u3vnc" path="res://MainMenuUI/finished_menu/death_scene_menu.tscn" id="23_5tm85"]
+[ext_resource type="PackedScene" uid="uid://bl8r2uovutwoc" path="res://Characters/NPC/master_yura_npc.tscn" id="24_drgh6"]
+[ext_resource type="PackedScene" uid="uid://3km3wmleu2va" path="res://UI/InventoryUI/inventory_player_ui.tscn" id="25_6pa65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so76f"]
 texture = ExtResource("2_fn52q")
@@ -12459,6 +12461,9 @@ sources/4 = SubResource("TileSetAtlasSource_jiijb")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27tav"]
 size = Vector2(131, 314.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqh0d"]
+radius = 63.3248
+
 [node name="Level1" type="Node2D"]
 position = Vector2(-1, 232)
 script = ExtResource("1_qjbq1")
@@ -12536,22 +12541,20 @@ position = Vector2(5300, -42.25)
 shape = SubResource("RectangleShape2D_27tav")
 
 [node name="Player" parent="." instance=ExtResource("3_l3kg1")]
-position = Vector2(-57, 90)
-metadata/_edit_group_ = true
+position = Vector2(104, 89)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-57, 90)
-offset = Vector2(80, 0)
+position = Vector2(104, 89)
+offset = Vector2(0, -20)
 zoom = Vector2(2.5, 2.5)
 process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-metadata/_edit_group_ = true
 
 [node name="CollectMoreCoins" parent="." instance=ExtResource("9_qtjiv")]
 visible = false
@@ -12562,7 +12565,7 @@ visible = false
 position = Vector2(5112.98, 54.542)
 
 [node name="Ai_Enemy_Level_3_1" parent="." instance=ExtResource("7_jgr0a")]
-position = Vector2(722, 88)
+position = Vector2(1091, 88)
 
 [node name="Ai_Enemy_Level_3_2" parent="." instance=ExtResource("7_jgr0a")]
 position = Vector2(2207, 89)
@@ -12622,7 +12625,7 @@ position = Vector2(-453, 448)
 visible = false
 
 [node name="Ai_Enemy_Level_3" parent="." instance=ExtResource("7_jgr0a")]
-position = Vector2(378, 89)
+position = Vector2(766, 88)
 
 [node name="Coins" parent="." instance=ExtResource("21_jcfd4")]
 position = Vector2(3365, 176)
@@ -12656,5 +12659,22 @@ max_distance = 2e+09
 [node name="DeathSceneMenu" parent="." instance=ExtResource("23_5tm85")]
 visible = false
 
+[node name="MasterYuraNPC" parent="." instance=ExtResource("24_drgh6")]
+position = Vector2(-13, 81)
+
+[node name="Dialogue2DetectorArea" type="Area2D" parent="MasterYuraNPC"]
+position = Vector2(2.48976, -0.378174)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MasterYuraNPC/Dialogue2DetectorArea"]
+position = Vector2(-0.749161, -1.49832)
+shape = SubResource("CircleShape2D_gqh0d")
+
+[node name="InventoryPlayerUI" parent="." instance=ExtResource("25_6pa65")]
+visible = false
+
 [connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]
 [connection signal="body_entered" from="FinishedLine/DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]
+[connection signal="body_entered" from="MasterYuraNPC/Dialogue2DetectorArea" to="MasterYuraNPC" method="_on_dialogue_2_detector_area_body_entered"]
+[connection signal="body_exited" from="MasterYuraNPC/Dialogue2DetectorArea" to="MasterYuraNPC" method="_on_dialogue_2_detector_area_body_exited"]

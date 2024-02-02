@@ -8,6 +8,10 @@ var raycast : RayCast2D = null
 @onready var finish_line = $FinishedScene
 @onready var unfinish_line = $CollectMoreCoins
 
+
+var is_inventory_closed: bool = true
+@onready var inv: Inv = preload("res://UI/InventoryUI/playerinv.tres")
+
 func _ready():
 	raycast = get_node("Player/world")
 	# 3 thing need to add in ready func for every level
@@ -15,13 +19,18 @@ func _ready():
 	Engine.time_scale = 1
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), false)
 	$AudioStreamPlayer2D.play()
-#	if !$ControlLevelMenu.level1:
-#		$ControlLevelMenu.level1 = true
+	inv.reset_slot()
+
 
 func _process(_delta):
 	if Input.is_action_just_pressed("esc"):
 		pauseMenu()
 	death_menu()
+	if Input.is_action_just_pressed("tab"): #to open inventory
+		if is_inventory_closed:
+			inventory_open()
+		else:
+			inventory_closed()
 
 func pauseMenu():
 	if raycast != null and raycast.is_colliding():
@@ -44,7 +53,12 @@ func pauseMenu():
 	else:
 		print("cannot pause meh")
 
-
+func inventory_open():
+	$InventoryPlayerUI.visible = true
+	is_inventory_closed = false
+func inventory_closed():
+	$InventoryPlayerUI.visible = false
+	is_inventory_closed = true
 
 func _on_finished_line_body_entered(body):
 	var player_health = get_node("Player/PlayerHealth")

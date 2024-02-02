@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dki4l5xcykrd"]
+
+[ext_resource type="Script" path="res://Characters/NPC/dialogue2_masteryurachatui.gd" id="1_23ele"]
+[ext_resource type="Texture2D" uid="uid://bo6y3rwspdlqy" path="res://art/MenuArt/inventory-slot.png" id="1_ep12r"]
+[ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="2_eldrh"]
+[ext_resource type="FontFile" uid="uid://87dj2pbxfdv2" path="res://art/FontArt/PressStart2P.ttf" id="3_60wok"]
+
+[node name="Dialogue2" type="Control"]
+custom_minimum_size = Vector2(176, 68)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 176.0
+offset_bottom = 68.0
+script = ExtResource("1_23ele")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(176, 68)
+layout_mode = 1
+offset_right = 176.0
+offset_bottom = 68.0
+texture = ExtResource("1_ep12r")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 142.0
+offset_bottom = 19.0
+theme_override_fonts/normal_font = ExtResource("2_eldrh")
+theme_override_font_sizes/normal_font_size = 8
+text = "Name: Master Yura"
+scroll_active = false
+tab_size = 1
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+custom_minimum_size = Vector2(174, 55)
+layout_mode = 1
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 195.0
+offset_bottom = 71.0
+scale = Vector2(0.87, 0.87)
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("3_60wok")
+theme_override_font_sizes/normal_font_size = 8
+text = "Chating................"
+scroll_active = false
+autowrap_mode = 2
