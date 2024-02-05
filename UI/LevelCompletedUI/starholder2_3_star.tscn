@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ilkbnsxds2s"]
+
+[ext_resource type="Script" path="res://UI/LevelCompletedUI/starholder2_3_star.gd" id="1_dsdcy"]
+[ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="1_n13up"]
+
+[node name="Starholder2" type="GridContainer"]
+offset_left = 352.0
+offset_top = 128.0
+offset_right = 514.0
+offset_bottom = 208.0
+theme_override_constants/h_separation = -15
+columns = 3
+script = ExtResource("1_dsdcy")
+
+[node name="StarAnim1" parent="." instance=ExtResource("1_n13up")]
+visible = false
+layout_mode = 2
+
+[node name="StarAnim2" parent="." instance=ExtResource("1_n13up")]
+visible = false
+layout_mode = 2
+
+[node name="StarAnim3" parent="." instance=ExtResource("1_n13up")]
+visible = false
+layout_mode = 2

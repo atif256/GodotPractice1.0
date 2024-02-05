@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=49 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
@@ -20,8 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="15_y4iwu"]
 [ext_resource type="PackedScene" uid="uid://d0us15jiuuy05" path="res://CollectableItems/Coins/coins_collectable.tscn" id="16_akwv6"]
 [ext_resource type="PackedScene" uid="uid://bl8r2uovutwoc" path="res://Characters/NPC/master_yura_npc.tscn" id="17_3fy5a"]
+[ext_resource type="Resource" uid="uid://mirlnq1wh72o" path="res://UI/InventoryUI/Key_blue.tres" id="17_fn7sw"]
 [ext_resource type="PackedScene" uid="uid://cxhfopdbopvtp" path="res://Platforms/invisible_barriers_shape.tscn" id="17_yfjpg"]
 [ext_resource type="PackedScene" uid="uid://diis4fwtoyc8j" path="res://Platforms/finished_line.tscn" id="18_fa2uv"]
+[ext_resource type="Texture2D" uid="uid://ltb3sntv72n1" path="res://art/CoinsArt/KeyBlue.png" id="18_y5q51"]
 [ext_resource type="PackedScene" uid="uid://501bxhfdweym" path="res://Traps/falldamage.tscn" id="19_5aubs"]
 [ext_resource type="AudioStream" uid="uid://dgm7yk3ox3skl" path="res://art/BGM/Adventure-320bit(chosic.com).mp3" id="22_oldri"]
 [ext_resource type="PackedScene" uid="uid://dt83aar6u3vnc" path="res://MainMenuUI/finished_menu/death_scene_menu.tscn" id="23_cx16c"]
@@ -4003,6 +4005,9 @@ radius = 37.9332
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1knh"]
 radius = 37.2323
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkre2"]
+radius = 37.9067
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7lor"]
 size = Vector2(129, 146)
 
@@ -4083,7 +4088,7 @@ layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(196747, 1376259, 7, 262283, 1376259, 8, 327819, 1376259, 9, 393355, 1376259, 10, 196748, 1441795, 7, 262284, 1441795, 8, 327820, 1441795, 9, 393356, 1441795, 10, 196749, 1507331, 7, 262285, 1507331, 8, 327821, 1507331, 9, 393357, 1507331, 10, 131214, 524291, 6, 196750, 524291, 7, 262286, 524291, 8, 327822, 524291, 9, 393358, 524291, 6, 262281, 1310723, 7, 327817, 1310723, 8, 131207, 524291, 6, 196743, 524291, 7, 262279, 524291, 8, 327815, 524291, 9, 393351, 524291, 6)
 
 [node name="Chest" parent="." instance=ExtResource("27_3q0ly")]
-position = Vector2(-589, 95)
+position = Vector2(-350, 94)
 item = ExtResource("29_2bj6b")
 
 [node name="ChestArea2D" type="Area2D" parent="Chest"]
@@ -4114,6 +4119,26 @@ collision_mask = 2
 position = Vector2(-1.22961, -0.55127)
 shape = SubResource("CircleShape2D_e1knh")
 
+[node name="Chest3" parent="." instance=ExtResource("27_3q0ly")]
+position = Vector2(-500, 95)
+item = ExtResource("17_fn7sw")
+
+[node name="ColorRect" type="ColorRect" parent="Chest3"]
+offset_left = -4.0
+offset_top = 10.0
+offset_right = 4.0
+offset_bottom = 14.0
+color = Color(0.396078, 0.662745, 0.921569, 0.466667)
+
+[node name="Chest3Area2D" type="Area2D" parent="Chest3"]
+position = Vector2(-0.192261, 0.0705566)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest3/Chest3Area2D"]
+position = Vector2(1.33633, 0.8909)
+shape = SubResource("CircleShape2D_qkre2")
+
 [node name="Key" parent="." instance=ExtResource("28_hgro1")]
 position = Vector2(-711, 107)
 item = ExtResource("29_2bj6b")
@@ -4129,6 +4154,14 @@ item = ExtResource("32_vrt62")
 [node name="Sprite2D2" type="Sprite2D" parent="Key2"]
 position = Vector2(0.578064, 0.162628)
 texture = ExtResource("31_ibjb2")
+
+[node name="Key3" parent="." instance=ExtResource("28_hgro1")]
+position = Vector2(-604, 108)
+item = ExtResource("17_fn7sw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Key3"]
+position = Vector2(-0.29657, -1.4144)
+texture = ExtResource("18_y5q51")
 
 [node name="InventoryPlayerUI" parent="." instance=ExtResource("29_l68mn")]
 visible = false
@@ -4287,12 +4320,14 @@ position = Vector2(3800.9, -221.105)
 position = Vector2(1500, 94)
 
 [node name="Ring" parent="." instance=ExtResource("34_467fs")]
-position = Vector2(-507, 104)
+position = Vector2(-202, 35)
 
 [connection signal="body_entered" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_exited"]
 [connection signal="body_entered" from="Chest2/Chest2Area2D" to="Chest2" method="_on_chest_2_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest2/Chest2Area2D" to="Chest2" method="_on_chest_2_area_2d_body_exited"]
+[connection signal="body_entered" from="Chest3/Chest3Area2D" to="Chest3" method="_on_chest_3_area_2d_body_entered"]
+[connection signal="body_exited" from="Chest3/Chest3Area2D" to="Chest3" method="_on_chest_3_area_2d_body_exited"]
 [connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]
 [connection signal="body_entered" from="FinishedLine/DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]
 [connection signal="body_entered" from="MasterYuraNPC/DialogueDetectorArea" to="MasterYuraNPC" method="_on_dialogue_detector_area_body_entered"]

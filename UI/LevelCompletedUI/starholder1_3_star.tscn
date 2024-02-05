@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8taqystu8u4a"]
 
-[ext_resource type="Script" path="res://UI/LevelCompletedUI/starholder1script.gd" id="1_h70y2"]
 [ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="1_sgoow"]
+[ext_resource type="Script" path="res://UI/LevelCompletedUI/starholder1_3_star.gd" id="1_x2mrv"]
 
 [node name="Starholder1" type="GridContainer"]
 anchors_preset = -1
@@ -15,13 +15,16 @@ offset_right = 80.656
 offset_bottom = 40.168
 theme_override_constants/h_separation = -15
 columns = 3
-script = ExtResource("1_h70y2")
+script = ExtResource("1_x2mrv")
 
 [node name="StarAnim1" parent="." instance=ExtResource("1_sgoow")]
+visible = false
 layout_mode = 2
 
 [node name="StarAnim2" parent="." instance=ExtResource("1_sgoow")]
+visible = false
 layout_mode = 2
 
 [node name="StarAnim3" parent="." instance=ExtResource("1_sgoow")]
+visible = false
 layout_mode = 2

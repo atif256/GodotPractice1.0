@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=13 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://8taqystu8u4a" path="res://UI/LevelCompletedUI/starholder1_3_star.tscn" id="7_t64ov"]
 [ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="8_io2bc"]
 [ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="10_fv0yp"]
+[ext_resource type="PackedScene" uid="uid://d2ilkbnsxds2s" path="res://UI/LevelCompletedUI/starholder2_3_star.tscn" id="11_30nch"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -175,24 +176,12 @@ text = "Back"
 [node name="Starholder1" parent="Control" instance=ExtResource("7_t64ov")]
 layout_mode = 1
 
-[node name="Starholder2" type="GridContainer" parent="Control"]
-visible = false
+[node name="Starholder2" parent="Control" instance=ExtResource("11_30nch")]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 128.0
-offset_right = 522.0
-offset_bottom = 208.0
-theme_override_constants/h_separation = -15
-columns = 3
-
-[node name="StarAnim1" parent="Control/Starholder2" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim2" parent="Control/Starholder2" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim3" parent="Control/Starholder2" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 162.0
+offset_bottom = 80.0
 
 [node name="Starholder3" type="GridContainer" parent="Control"]
 visible = false

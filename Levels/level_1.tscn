@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=37 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
 [ext_resource type="Script" path="res://Levels/level_1GameManager.gd" id="1_qjbq1"]
@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://dt83aar6u3vnc" path="res://MainMenuUI/finished_menu/death_scene_menu.tscn" id="23_5tm85"]
 [ext_resource type="PackedScene" uid="uid://bl8r2uovutwoc" path="res://Characters/NPC/master_yura_npc.tscn" id="24_drgh6"]
 [ext_resource type="PackedScene" uid="uid://3km3wmleu2va" path="res://UI/InventoryUI/inventory_player_ui.tscn" id="25_6pa65"]
+[ext_resource type="PackedScene" uid="uid://cj7t1gosylmsj" path="res://CollectableItems/Chests/key.tscn" id="26_03asa"]
+[ext_resource type="Resource" uid="uid://bn4e5jcp3nsyd" path="res://UI/InventoryUI/Key.tres" id="27_07bx5"]
+[ext_resource type="Texture2D" uid="uid://77sxguvlp82t" path="res://art/CoinsArt/KeyTexture.png" id="28_m1rf4"]
+[ext_resource type="PackedScene" uid="uid://dc3dv2tt6o6pv" path="res://CollectableItems/Chests/chest.tscn" id="29_ls4je"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so76f"]
 texture = ExtResource("2_fn52q")
@@ -12464,6 +12468,9 @@ size = Vector2(131, 314.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqh0d"]
 radius = 63.3248
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j687f"]
+radius = 41.1987
+
 [node name="Level1" type="Node2D"]
 position = Vector2(-1, 232)
 script = ExtResource("1_qjbq1")
@@ -12674,7 +12681,30 @@ shape = SubResource("CircleShape2D_gqh0d")
 [node name="InventoryPlayerUI" parent="." instance=ExtResource("25_6pa65")]
 visible = false
 
+[node name="Key" parent="." instance=ExtResource("26_03asa")]
+position = Vector2(258, 109)
+item = ExtResource("27_07bx5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Key"]
+position = Vector2(-0.465576, 0.393265)
+texture = ExtResource("28_m1rf4")
+
+[node name="Chest" parent="." instance=ExtResource("29_ls4je")]
+position = Vector2(393, 98)
+item = ExtResource("27_07bx5")
+
+[node name="ChestArea2D" type="Area2D" parent="Chest"]
+position = Vector2(0.912994, 0.596191)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/ChestArea2D"]
+position = Vector2(-1.06067, 0.353577)
+shape = SubResource("CircleShape2D_j687f")
+
 [connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]
 [connection signal="body_entered" from="FinishedLine/DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]
 [connection signal="body_entered" from="MasterYuraNPC/Dialogue2DetectorArea" to="MasterYuraNPC" method="_on_dialogue_2_detector_area_body_entered"]
 [connection signal="body_exited" from="MasterYuraNPC/Dialogue2DetectorArea" to="MasterYuraNPC" method="_on_dialogue_2_detector_area_body_exited"]
+[connection signal="body_entered" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_entered"]
+[connection signal="body_exited" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_exited"]
