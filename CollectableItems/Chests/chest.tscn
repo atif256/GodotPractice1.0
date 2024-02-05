@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc3dv2tt6o6pv"]
+[gd_scene load_steps=6 format=3 uid="uid://dc3dv2tt6o6pv"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_61rhm"]
-[ext_resource type="Script" path="res://CollectableItems/Chests/chestscript.gd" id="1_fg312"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dlvi"]
 size = Vector2(30, 27)
@@ -44,7 +43,6 @@ _data = {
 }
 
 [node name="Chest" type="StaticBody2D"]
-script = ExtResource("1_fg312")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)

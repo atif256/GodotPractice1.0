@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=44 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
 [ext_resource type="Script" path="res://Levels/level_1GameManager.gd" id="1_qjbq1"]
@@ -29,6 +29,11 @@
 [ext_resource type="Resource" uid="uid://bn4e5jcp3nsyd" path="res://UI/InventoryUI/Key.tres" id="27_07bx5"]
 [ext_resource type="Texture2D" uid="uid://77sxguvlp82t" path="res://art/CoinsArt/KeyTexture.png" id="28_m1rf4"]
 [ext_resource type="PackedScene" uid="uid://dc3dv2tt6o6pv" path="res://CollectableItems/Chests/chest.tscn" id="29_ls4je"]
+[ext_resource type="Script" path="res://CollectableItems/Chests/chestscript_level1.gd" id="30_5nmev"]
+[ext_resource type="Resource" uid="uid://snlokw6fy1ho" path="res://UI/InventoryUI/Key_red.tres" id="31_kb5yg"]
+[ext_resource type="Texture2D" uid="uid://b4lg753ajf472" path="res://art/CoinsArt/KeyRed.png" id="32_4q216"]
+[ext_resource type="Resource" uid="uid://mirlnq1wh72o" path="res://UI/InventoryUI/Key_blue.tres" id="33_5f6vi"]
+[ext_resource type="Texture2D" uid="uid://ltb3sntv72n1" path="res://art/CoinsArt/KeyBlue.png" id="33_sfdgk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so76f"]
 texture = ExtResource("2_fn52q")
@@ -12471,6 +12476,12 @@ radius = 63.3248
 [sub_resource type="CircleShape2D" id="CircleShape2D_j687f"]
 radius = 41.1987
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sojcj"]
+radius = 37.9778
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iuovc"]
+radius = 33.3599
+
 [node name="Level1" type="Node2D"]
 position = Vector2(-1, 232)
 script = ExtResource("1_qjbq1")
@@ -12682,7 +12693,7 @@ shape = SubResource("CircleShape2D_gqh0d")
 visible = false
 
 [node name="Key" parent="." instance=ExtResource("26_03asa")]
-position = Vector2(258, 109)
+position = Vector2(618, 109)
 item = ExtResource("27_07bx5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Key"]
@@ -12690,7 +12701,8 @@ position = Vector2(-0.465576, 0.393265)
 texture = ExtResource("28_m1rf4")
 
 [node name="Chest" parent="." instance=ExtResource("29_ls4je")]
-position = Vector2(393, 98)
+position = Vector2(1533, 98)
+script = ExtResource("30_5nmev")
 item = ExtResource("27_07bx5")
 
 [node name="ChestArea2D" type="Area2D" parent="Chest"]
@@ -12702,9 +12714,72 @@ collision_mask = 2
 position = Vector2(-1.06067, 0.353577)
 shape = SubResource("CircleShape2D_j687f")
 
+[node name="Key2" parent="." instance=ExtResource("26_03asa")]
+position = Vector2(1342, 223)
+item = ExtResource("31_kb5yg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Key2"]
+position = Vector2(1.08411, 0)
+texture = ExtResource("32_4q216")
+
+[node name="Chest2" parent="." instance=ExtResource("29_ls4je")]
+position = Vector2(3430, 242)
+script = ExtResource("30_5nmev")
+item = ExtResource("31_kb5yg")
+
+[node name="Chest2Area2D" type="Area2D" parent="Chest2"]
+position = Vector2(0.51709, -0.547363)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest2/Chest2Area2D"]
+position = Vector2(0.725098, -1.53482)
+shape = SubResource("CircleShape2D_sojcj")
+
+[node name="ColorRect" type="ColorRect" parent="Chest2"]
+offset_left = -4.0
+offset_top = 10.0
+offset_right = 4.0
+offset_bottom = 14.0
+color = Color(1, 0, 0, 0.466667)
+
+[node name="Key3" parent="." instance=ExtResource("26_03asa")]
+position = Vector2(3120, 255)
+item = ExtResource("33_5f6vi")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Key3"]
+position = Vector2(-1.8999, -1.50677)
+texture = ExtResource("33_sfdgk")
+
+[node name="Chest3" parent="." instance=ExtResource("29_ls4je")]
+position = Vector2(4995, 98)
+script = ExtResource("30_5nmev")
+item = ExtResource("33_5f6vi")
+
+[node name="Chest3Area2D" type="Area2D" parent="Chest3"]
+position = Vector2(-0.805176, 0.0227356)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest3/Chest3Area2D"]
+position = Vector2(0.445313, 0)
+shape = SubResource("CircleShape2D_iuovc")
+
+[node name="ColorRect" type="ColorRect" parent="Chest3"]
+offset_left = -4.0
+offset_top = 10.0
+offset_right = 4.0
+offset_bottom = 14.0
+color = Color(0.396078, 0.662745, 0.921569, 0.466667)
+metadata/_edit_use_anchors_ = true
+
 [connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]
 [connection signal="body_entered" from="FinishedLine/DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]
 [connection signal="body_entered" from="MasterYuraNPC/Dialogue2DetectorArea" to="MasterYuraNPC" method="_on_dialogue_2_detector_area_body_entered"]
 [connection signal="body_exited" from="MasterYuraNPC/Dialogue2DetectorArea" to="MasterYuraNPC" method="_on_dialogue_2_detector_area_body_exited"]
 [connection signal="body_entered" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_exited"]
+[connection signal="body_entered" from="Chest2/Chest2Area2D" to="Chest2" method="_on_chest_2_area_2d_body_entered"]
+[connection signal="body_exited" from="Chest2/Chest2Area2D" to="Chest2" method="_on_chest_2_area_2d_body_exited"]
+[connection signal="body_entered" from="Chest3/Chest3Area2D" to="Chest3" method="_on_chest_3_area_2d_body_entered"]
+[connection signal="body_exited" from="Chest3/Chest3Area2D" to="Chest3" method="_on_chest_3_area_2d_body_exited"]

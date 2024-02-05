@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dsurps10g7u6o"]
+[gd_scene load_steps=50 format=3 uid="uid://dsurps10g7u6o"]
 
 [ext_resource type="Texture2D" uid="uid://m6tc3h5am4og" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_0efv7"]
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_6m207"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bjdxsmkp210p4" path="res://MainMenuUI/finished_menu/finished_scene_menu.tscn" id="10_i8hyg"]
 [ext_resource type="PackedScene" uid="uid://dejfqgo1cypl3" path="res://CollectableItems/Heals/collectable_items.tscn" id="10_irhdi"]
 [ext_resource type="PackedScene" uid="uid://bbo418xgoveoi" path="res://MainMenuUI/finished_menu/collect_more_coins_menu.tscn" id="11_rvpkk"]
+[ext_resource type="Script" path="res://CollectableItems/Chests/chestscript.gd" id="12_g6d5k"]
 [ext_resource type="PackedScene" uid="uid://lruy0yepaf42" path="res://Traps/ArrowTrapsWood.tscn" id="12_pr6xs"]
 [ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="15_y4iwu"]
 [ext_resource type="PackedScene" uid="uid://d0us15jiuuy05" path="res://CollectableItems/Coins/coins_collectable.tscn" id="16_akwv6"]
@@ -4089,6 +4090,7 @@ layer_3/tile_data = PackedInt32Array(196747, 1376259, 7, 262283, 1376259, 8, 327
 
 [node name="Chest" parent="." instance=ExtResource("27_3q0ly")]
 position = Vector2(-350, 94)
+script = ExtResource("12_g6d5k")
 item = ExtResource("29_2bj6b")
 
 [node name="ChestArea2D" type="Area2D" parent="Chest"]
@@ -4102,6 +4104,7 @@ shape = SubResource("CircleShape2D_q1lbs")
 
 [node name="Chest2" parent="." instance=ExtResource("27_3q0ly")]
 position = Vector2(-424, 96)
+script = ExtResource("12_g6d5k")
 item = ExtResource("32_vrt62")
 
 [node name="ColorRect" type="ColorRect" parent="Chest2"]
@@ -4121,6 +4124,7 @@ shape = SubResource("CircleShape2D_e1knh")
 
 [node name="Chest3" parent="." instance=ExtResource("27_3q0ly")]
 position = Vector2(-500, 95)
+script = ExtResource("12_g6d5k")
 item = ExtResource("17_fn7sw")
 
 [node name="ColorRect" type="ColorRect" parent="Chest3"]

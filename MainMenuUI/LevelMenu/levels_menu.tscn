@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=14 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="8_io2bc"]
 [ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="10_fv0yp"]
 [ext_resource type="PackedScene" uid="uid://d2ilkbnsxds2s" path="res://UI/LevelCompletedUI/starholder2_3_star.tscn" id="11_30nch"]
+[ext_resource type="PackedScene" uid="uid://dhcyxrtfvoppd" path="res://UI/LevelCompletedUI/starholder3_3_star.tscn" id="12_1viux"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -47,39 +48,6 @@ level_four = ExtResource("6_ancq7")
 [node name="ButtonClick" type="AudioStreamPlayer2D" parent="Control"]
 position = Vector2(-448, -264)
 stream = ExtResource("8_io2bc")
-
-[node name="Title" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_top = 48.0
-offset_right = 200.0
-offset_bottom = 128.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0.560784, 0, 1)
-theme_override_fonts/font = ExtResource("7_3v1og")
-theme_override_font_sizes/font_size = 40
-text = "The Forest"
-
-[node name="Locked" type="Label" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -375.0
-offset_top = 116.0
-offset_right = 375.0
-offset_bottom = 181.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.772549, 0.266667, 0.188235, 1)
-theme_override_fonts/font = ExtResource("7_3v1og")
-theme_override_font_sizes/font_size = 25
-text = "Locked !!!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="LevelSelection" type="GridContainer" parent="Control"]
 layout_mode = 1
@@ -177,30 +145,28 @@ text = "Back"
 layout_mode = 1
 
 [node name="Starholder2" parent="Control" instance=ExtResource("11_30nch")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 162.0
-offset_bottom = 80.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.383
+anchor_top = 0.272
+anchor_right = 0.383
+anchor_bottom = 0.272
+offset_left = -81.216
+offset_top = -48.256
+offset_right = 80.784
+offset_bottom = 31.744
 
-[node name="Starholder3" type="GridContainer" parent="Control"]
-visible = false
-layout_mode = 0
-offset_left = 656.0
-offset_top = 128.0
-offset_right = 818.0
-offset_bottom = 208.0
-theme_override_constants/h_separation = -15
-columns = 3
-
-[node name="StarAnim1" parent="Control/Starholder3" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim2" parent="Control/Starholder3" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim3" parent="Control/Starholder3" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
+[node name="Starholder3" parent="Control" instance=ExtResource("12_1viux")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.64
+anchor_top = 0.259
+anchor_right = 0.64
+anchor_bottom = 0.259
+offset_left = -81.28
+offset_top = -39.832
+offset_right = 80.72
+offset_bottom = 40.168
 
 [node name="Starholder4" type="GridContainer" parent="Control"]
 visible = false
@@ -258,6 +224,39 @@ layout_mode = 2
 
 [node name="StarAnim3" parent="Control/Starholder6" instance=ExtResource("10_fv0yp")]
 layout_mode = 2
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 48.0
+offset_right = 200.0
+offset_bottom = 128.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.560784, 0, 1)
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 40
+text = "The Forest"
+
+[node name="Locked" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_top = 96.0
+offset_right = 374.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.772549, 0.266667, 0.188235, 1)
+theme_override_fonts/font = ExtResource("7_3v1og")
+theme_override_font_sizes/font_size = 25
+text = "Locked !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Control/LevelSelection/Tutorial" to="Control" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Control/LevelSelection/Level1" to="Control" method="_on_level_1_pressed"]

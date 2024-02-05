@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2d1j6e5slm4"]
+[gd_scene load_steps=30 format=3 uid="uid://b2d1j6e5slm4"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_8qh6f"]
 [ext_resource type="Script" path="res://Levels/level_2GameManager.gd" id="1_iukqa"]
@@ -17,12 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://762ei4lqdfqp" path="res://Characters/Enemies/Human/Ai_Enemy_Level_2/ai_enemy_level_2.tscn" id="18_wgit8"]
 [ext_resource type="PackedScene" uid="uid://cj7t1gosylmsj" path="res://CollectableItems/Chests/key.tscn" id="19_dt5as"]
 [ext_resource type="PackedScene" uid="uid://0e0nqn8tkb3j" path="res://Characters/Enemies/Human/Ai_Enemy/ai_enemy.tscn" id="19_qn8nd"]
+[ext_resource type="Script" path="res://CollectableItems/Chests/chestscript_level2.gd" id="19_y2nf8"]
 [ext_resource type="PackedScene" uid="uid://cxhfopdbopvtp" path="res://Platforms/invisible_barriers_shape.tscn" id="20_arr2s"]
 [ext_resource type="Resource" uid="uid://bn4e5jcp3nsyd" path="res://UI/InventoryUI/Key.tres" id="20_ctgcs"]
 [ext_resource type="PackedScene" uid="uid://d3qh2gi8lo15w" path="res://MainMenuUI/PauseMenu/pause_menu.tscn" id="21_cbkw2"]
 [ext_resource type="Texture2D" uid="uid://77sxguvlp82t" path="res://art/CoinsArt/KeyTexture.png" id="21_lqw7v"]
 [ext_resource type="Resource" uid="uid://snlokw6fy1ho" path="res://UI/InventoryUI/Key_red.tres" id="22_hykjm"]
 [ext_resource type="Texture2D" uid="uid://b4lg753ajf472" path="res://art/CoinsArt/KeyRed.png" id="23_ylycx"]
+[ext_resource type="PackedScene" uid="uid://3km3wmleu2va" path="res://UI/InventoryUI/inventory_player_ui.tscn" id="25_76mnw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjr2h"]
 size = Vector2(39, 192)
@@ -147,6 +149,8 @@ max_distance = 2e+08
 
 [node name="Chest" parent="." instance=ExtResource("18_fisfj")]
 position = Vector2(-48, -16)
+script = ExtResource("19_y2nf8")
+item = ExtResource("20_ctgcs")
 
 [node name="ChestArea2D" type="Area2D" parent="Chest"]
 position = Vector2(2.17023, -2.42415)
@@ -159,6 +163,8 @@ shape = SubResource("CircleShape2D_cuwg3")
 
 [node name="Chest2" parent="." instance=ExtResource("18_fisfj")]
 position = Vector2(88, -16)
+script = ExtResource("19_y2nf8")
+item = ExtResource("22_hykjm")
 
 [node name="ColorRect" type="ColorRect" parent="Chest2"]
 offset_left = -4.0
@@ -202,6 +208,9 @@ color = Color(0.231373, 0.537255, 0.909804, 0.466667)
 [node name="Sprite2D2" type="Sprite2D" parent="Key2"]
 position = Vector2(-0.375549, -0.333588)
 texture = ExtResource("23_ylycx")
+
+[node name="InventoryPlayerUI" parent="." instance=ExtResource("25_76mnw")]
+visible = false
 
 [connection signal="body_entered" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_exited"]
