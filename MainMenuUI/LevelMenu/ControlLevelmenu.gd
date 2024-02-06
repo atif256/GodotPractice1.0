@@ -5,6 +5,8 @@ extends Control #this is gd from level menu and already autoload it named as Con
 @export var level_two: PackedScene
 @export var level_three: PackedScene
 @export var level_four: PackedScene
+@export var level_five: PackedScene
+
 
 @export var level0: bool = true
 @export var level1: bool = false
@@ -13,26 +15,9 @@ extends Control #this is gd from level menu and already autoload it named as Con
 @export var level4: bool = false
 @export var level5: bool = false
 
-#this is for Starholder1
-#@export var star_one: bool = false
-#@export var star_two: bool = false
-#@export var star_three: bool = false
 
-#@onready var star_anim_1 = get_node("Starholder1/StarAnim1")
-#@onready var star_anim_2 = get_node("Starholder1/StarAnim2")
-#@onready var star_anim_3 = get_node("Starholder1/StarAnim3")
 
-#@onready var star_anim_1: Panel = $Starholder1/StarAnim1
-#@onready var star_anim_2: Panel = $Starholder1/StarAnim2
-#@onready var star_anim_3: Panel = $Starholder1/StarAnim3
-
-#@onready var star_anim_1 = get_parent().find_child("StarAnim1")
-#@onready var star_anim_2 = get_parent().find_child("Starholder1/StarAnim2")
-#@onready var star_anim_3 = get_parent().find_child("Starholder1/StarAnim2")
-
-#@onready var starholder = %Starholder1
 func _ready():
-#	print(starholder)
 	load_saved_data()
 
 #this is level0 and is always unlocked
@@ -86,6 +71,12 @@ func _on_level_4_pressed():
 		await $ButtonClick.finished
 		$Locked.visible = false
 #	get_tree().change_scene_to_packed(level_four)
+
+
+
+
+
+
 
 #new back button design
 func _on_back_pressed():

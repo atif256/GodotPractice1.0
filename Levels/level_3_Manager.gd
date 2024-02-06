@@ -59,17 +59,6 @@ func inventory_closed():
 	is_inventory_closed = true
 
 
-#func _on_finished_line_body_entered(body):
-#	var player_health = get_node("Player/PlayerHealth")
-#	if player_health != null and player_health.has_method("get_score"):
-#		var score = player_health.get_score()
-#		if score >= 10:
-#			finish_line.visible = true
-#			unfinish_line.visible = false
-#		else:
-#			unfinish_line.visible = true
-#			print("collect more coin to pass")
-
 
 func _on_finished_line_type_2_body_entered(_body):
 	var player_health = get_node("Player/PlayerHealth")
