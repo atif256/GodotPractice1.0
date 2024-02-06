@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=15 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="10_fv0yp"]
 [ext_resource type="PackedScene" uid="uid://d2ilkbnsxds2s" path="res://UI/LevelCompletedUI/starholder2_3_star.tscn" id="11_30nch"]
 [ext_resource type="PackedScene" uid="uid://dhcyxrtfvoppd" path="res://UI/LevelCompletedUI/starholder3_3_star.tscn" id="12_1viux"]
+[ext_resource type="PackedScene" uid="uid://bxheuv1xhopgx" path="res://UI/LevelCompletedUI/starholder4_3_star.tscn" id="13_a15s7"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -168,24 +169,8 @@ offset_top = -39.832
 offset_right = 80.72
 offset_bottom = 40.168
 
-[node name="Starholder4" type="GridContainer" parent="Control"]
-visible = false
-layout_mode = 0
-offset_left = 912.0
-offset_top = 128.0
-offset_right = 1074.0
-offset_bottom = 208.0
-theme_override_constants/h_separation = -15
-columns = 3
-
-[node name="StarAnim1" parent="Control/Starholder4" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim2" parent="Control/Starholder4" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim3" parent="Control/Starholder4" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
+[node name="Starholder4" parent="Control" instance=ExtResource("13_a15s7")]
+layout_mode = 1
 
 [node name="Starholder5" type="GridContainer" parent="Control"]
 visible = false

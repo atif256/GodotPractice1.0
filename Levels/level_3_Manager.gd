@@ -10,15 +10,25 @@ var raycast : RayCast2D = null
 #@onready var next_level_menu = $NextLevelMenu
 var completed = false
 
+
+var is_inventory_closed: bool = true
+@onready var inv: Inv = preload("res://UI/InventoryUI/playerinv.tres")
+
 func _ready():
 	raycast = get_node("Player/world")
 	get_tree().set_pause(false)
 	Engine.time_scale = 1
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), false)
+	inv.reset_slot()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("esc") && completed == false:
 		pauseMenu()
+	if Input.is_action_just_pressed("tab"): #to open inventory
+		if is_inventory_closed:
+			inventory_open()
+		else:
+			inventory_closed()
 
 func pauseMenu():
 	if raycast != null and raycast.is_colliding():
@@ -41,6 +51,13 @@ func pauseMenu():
 	else:
 		print("cannot pause meh")
 
+func inventory_open():
+	$InventoryPlayerUI.visible = true
+	is_inventory_closed = false
+func inventory_closed():
+	$InventoryPlayerUI.visible = false
+	is_inventory_closed = true
+
 
 #func _on_finished_line_body_entered(body):
 #	var player_health = get_node("Player/PlayerHealth")
@@ -54,7 +71,7 @@ func pauseMenu():
 #			print("collect more coin to pass")
 
 
-func _on_finished_line_type_2_body_entered(body):
+func _on_finished_line_type_2_body_entered(_body):
 	var player_health = get_node("Player/PlayerHealth")
 	if player_health != null and player_health.has_method("get_score"):
 		var score = player_health.get_score()

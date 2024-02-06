@@ -58,7 +58,7 @@ func health_floating():
 func _on_timer_timeout():
 	set_physics_process(true)
 
-func _on_player_detector_body_entered(body):
+func _on_player_detector_body_entered(_body):
 	if damageable.health > 0:
 		set_physics_process(true)
 		anim_player.play("fly")
@@ -67,7 +67,7 @@ func _on_player_detector_body_entered(body):
 		anim_player.play("hit")
 
 
-func _on_sting_body_entered(body):
+func _on_sting_body_entered(_body):
 	if damageable.health > 0:
 		set_physics_process(false)
 		anim_player.play("sting")
@@ -75,7 +75,7 @@ func _on_sting_body_entered(body):
 		set_physics_process(false)
 		anim_player.play("hit")
 
-func _on_sting_body_exited(body):
+func _on_sting_body_exited(_body):
 	if damageable.health > 0:
 		set_physics_process(true)
 		anim_player.play("fly")

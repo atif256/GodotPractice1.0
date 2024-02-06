@@ -17,6 +17,18 @@ var star_visibility7 = false # for Chest
 var star_visibility8 = false # for Chest2
 var star_visibility9 = false #for Chest3
 
+
+#for level 3
+var star_visibility10 = false # for Chest
+var star_visibility11 = false # for Chest2
+var star_visibility12 = false #for Chest3
+
+
+# for level 4
+#var star_visibility13 = false # for Chest
+#var star_visibility14 = false # for Chest2
+#var star_visibility15 = false #for Chest3
+
 func _ready():
 	load_star()
 
@@ -38,6 +50,16 @@ func save_star():
 	config.set_value("Stars", "star_visibility8", star_visibility8)
 	config.set_value("Stars", "star_visibility9", star_visibility9)
 	
+	#for level 3
+	config.set_value("Stars", "star_visibility10", star_visibility10)
+	config.set_value("Stars", "star_visibility11", star_visibility11)
+	config.set_value("Stars", "star_visibility12", star_visibility12)
+	
+	#for level 4
+#	config.set_value("Stars", "star_visibility13", star_visibility13)
+#	config.set_value("Stars", "star_visibility14", star_visibility14)
+#	config.set_value("Stars", "star_visibility15", star_visibility15)
+	
 	config.save("user://star_data.cfg")
 
 func load_star():
@@ -55,3 +77,15 @@ func load_star():
 		star_visibility7 = config.get_value("Stars", "star_visibility7", false)
 		star_visibility8 = config.get_value("Stars", "star_visibility8", false)
 		star_visibility9 = config.get_value("Stars", "star_visibility9", false)
+		
+		star_visibility10 = config.get_value("Stars", "star_visibility10", false)
+		star_visibility11 = config.get_value("Stars", "star_visibility11", false)
+		star_visibility12 = config.get_value("Stars", "star_visibility12", false)
+
+#		star_visibility7 = config.get_value("Stars", "star_visibility13", false)
+#		star_visibility8 = config.get_value("Stars", "star_visibility14", false)
+#		star_visibility9 = config.get_value("Stars", "star_visibility15", false)
+		
+		
+
+

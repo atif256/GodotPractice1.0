@@ -5,6 +5,8 @@ var paused = false
 @onready var camera2d = $Camera2D
 @onready var player = $Player
 var raycast : RayCast2D = null
+@onready var finish_line = $FinishedScene
+@onready var unfinish_line = $CollectMoreCoins
 
 
 var is_inventory_closed: bool = true
@@ -57,7 +59,34 @@ func inventory_closed():
 	$InventoryPlayerUI.visible = false
 	is_inventory_closed = true
 
+
+func _on_finished_line_body_entered(body):
+	var player_health = get_node("Player/PlayerHealth")
+	if player_health != null and player_health.has_method("get_score"):
+		var score = player_health.get_score()
+		# Check if the score is greater than or equal to 10 to show finish line
+		if score >= 10:
+			finish_line.visible = true
+			unfinish_line.visible = false
+			
+		else:
+			unfinish_line.visible = true
+#			print("collect more coin to pass")
+
+func _on_door_to_next_level_body_entered(body):
+	if finish_line.visible:
+		get_tree().change_scene_to_file("res://Levels/level_3.tscn")
+		ControlLevelmenu.level3 = true
+		ControlLevelmenu.save_data()
+
+
 func death_menu():
 	if player == null:
 		$DeathSceneMenu.visible = true
 		$AudioStreamPlayer2D.stop()
+
+
+
+
+
+

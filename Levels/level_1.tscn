@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://do80ygktoe3ft"]
+[gd_scene load_steps=45 format=3 uid="uid://do80ygktoe3ft"]
 
 [ext_resource type="Texture2D" uid="uid://cq1s2wwb4n0c1" path="res://art/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_1gipi"]
 [ext_resource type="Script" path="res://Levels/level_1GameManager.gd" id="1_qjbq1"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://b4lg753ajf472" path="res://art/CoinsArt/KeyRed.png" id="32_4q216"]
 [ext_resource type="Resource" uid="uid://mirlnq1wh72o" path="res://UI/InventoryUI/Key_blue.tres" id="33_5f6vi"]
 [ext_resource type="Texture2D" uid="uid://ltb3sntv72n1" path="res://art/CoinsArt/KeyBlue.png" id="33_sfdgk"]
+[ext_resource type="PackedScene" uid="uid://dp04brhvotlxc" path="res://Traps/FireTraps.tscn" id="35_f5dh4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so76f"]
 texture = ExtResource("2_fn52q")
@@ -12772,6 +12773,12 @@ offset_right = 4.0
 offset_bottom = 14.0
 color = Color(0.396078, 0.662745, 0.921569, 0.466667)
 metadata/_edit_use_anchors_ = true
+
+[node name="FireTrap" parent="." instance=ExtResource("35_f5dh4")]
+position = Vector2(3198, 258)
+
+[node name="FireTrap2" parent="." instance=ExtResource("35_f5dh4")]
+position = Vector2(3294, 258)
 
 [connection signal="body_entered" from="FinishedLine" to="." method="_on_finished_line_body_entered"]
 [connection signal="body_entered" from="FinishedLine/DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]
