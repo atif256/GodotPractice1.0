@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7c2koqsoypf5"]
+[gd_scene load_steps=23 format=3 uid="uid://7c2koqsoypf5"]
 
 [ext_resource type="Script" path="res://MainMenuUI/LevelMenu/ControlLevelmenu.gd" id="1_3d3lq"]
 [ext_resource type="PackedScene" uid="uid://dsurps10g7u6o" path="res://Levels/test_level.tscn" id="3_iv4e6"]
@@ -11,10 +11,17 @@
 [ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="7_3v1og"]
 [ext_resource type="PackedScene" uid="uid://8taqystu8u4a" path="res://UI/LevelCompletedUI/starholder1_3_star.tscn" id="7_t64ov"]
 [ext_resource type="AudioStream" uid="uid://ssq685qjynms" path="res://Music/SFX/buttonclick/buttonclick.mp3" id="8_io2bc"]
-[ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="10_fv0yp"]
 [ext_resource type="PackedScene" uid="uid://d2ilkbnsxds2s" path="res://UI/LevelCompletedUI/starholder2_3_star.tscn" id="11_30nch"]
 [ext_resource type="PackedScene" uid="uid://dhcyxrtfvoppd" path="res://UI/LevelCompletedUI/starholder3_3_star.tscn" id="12_1viux"]
 [ext_resource type="PackedScene" uid="uid://bxheuv1xhopgx" path="res://UI/LevelCompletedUI/starholder4_3_star.tscn" id="13_a15s7"]
+[ext_resource type="PackedScene" uid="uid://2dtyakkch8x8" path="res://UI/LevelCompletedUI/starholder5_3_star.tscn" id="13_tphlc"]
+[ext_resource type="PackedScene" uid="uid://dkaqfkjhtaa08" path="res://UI/LevelCompletedUI/starholder6_3_star.tscn" id="14_8ml5r"]
+[ext_resource type="PackedScene" uid="uid://eqdmiftaamq7" path="res://UI/LevelCompletedUI/starholder7_3_star.tscn" id="17_qmwod"]
+[ext_resource type="PackedScene" uid="uid://c3om5ypo7sje5" path="res://UI/LevelCompletedUI/starholder8_3_star.tscn" id="18_vjofs"]
+[ext_resource type="PackedScene" uid="uid://ccxr6dupcqv5y" path="res://UI/LevelCompletedUI/starholder9_3_star.tscn" id="19_bslb0"]
+[ext_resource type="PackedScene" uid="uid://6rjhk1i53oq0" path="res://UI/LevelCompletedUI/starholder11_3_star.tscn" id="19_ln2bj"]
+[ext_resource type="PackedScene" uid="uid://dkpttigpxmydy" path="res://UI/LevelCompletedUI/starholder10_3_star.tscn" id="20_fs86v"]
+[ext_resource type="PackedScene" uid="uid://dc8kniirbutll" path="res://UI/LevelCompletedUI/starholder12_3_star.tscn" id="22_ws0ge"]
 
 [node name="LevelsMenu" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -52,6 +59,116 @@ level_five = ExtResource("6_h5ndl")
 position = Vector2(-448, -264)
 stream = ExtResource("8_io2bc")
 
+[node name="Starholder1" parent="Control" instance=ExtResource("7_t64ov")]
+layout_mode = 1
+offset_top = -40.056
+offset_bottom = 39.944
+
+[node name="Starholder2" parent="Control" instance=ExtResource("11_30nch")]
+layout_mode = 1
+anchor_left = 0.375
+anchor_right = 0.375
+offset_left = -80.0
+offset_top = -40.056
+offset_right = 82.0
+offset_bottom = 39.944
+
+[node name="Starholder3" parent="Control" instance=ExtResource("12_1viux")]
+layout_mode = 1
+anchor_left = 0.619
+anchor_right = 0.619
+offset_left = -81.088
+offset_top = -40.056
+offset_right = 80.912
+offset_bottom = 39.944
+
+[node name="Starholder4" parent="Control" instance=ExtResource("13_a15s7")]
+layout_mode = 1
+anchor_left = 0.858
+anchor_right = 0.858
+offset_left = -81.416
+offset_top = -40.056
+offset_right = 80.584
+offset_bottom = 39.944
+
+[node name="Starholder5" parent="Control" instance=ExtResource("13_tphlc")]
+layout_mode = 1
+anchor_left = 0.146
+anchor_right = 0.146
+offset_left = -81.192
+offset_right = 80.808
+
+[node name="Starholder6" parent="Control" instance=ExtResource("14_8ml5r")]
+layout_mode = 1
+anchor_top = 0.424
+anchor_bottom = 0.424
+offset_top = -31.752
+offset_bottom = 32.248
+
+[node name="Starholder7" parent="Control" instance=ExtResource("17_qmwod")]
+layout_mode = 1
+anchor_left = 0.614
+anchor_top = 0.426
+anchor_right = 0.614
+anchor_bottom = 0.426
+offset_left = -81.328
+offset_top = -32.048
+offset_right = 80.672
+offset_bottom = 31.952
+
+[node name="Starholder8" parent="Control" instance=ExtResource("18_vjofs")]
+layout_mode = 1
+anchor_left = 0.862
+anchor_top = 0.426
+anchor_right = 0.862
+anchor_bottom = 0.426
+offset_left = -81.024
+offset_top = -32.048
+offset_right = 80.976
+offset_bottom = 31.9521
+
+[node name="Starholder9" parent="Control" instance=ExtResource("19_bslb0")]
+layout_mode = 1
+anchor_left = 0.147
+anchor_top = 0.619
+anchor_right = 0.147
+anchor_bottom = 0.619
+offset_left = -81.344
+offset_top = -32.112
+offset_right = 80.656
+offset_bottom = 31.888
+
+[node name="Starholder10" parent="Control" instance=ExtResource("20_fs86v")]
+layout_mode = 1
+anchor_left = 0.38
+anchor_top = 0.617
+anchor_right = 0.38
+anchor_bottom = 0.617
+offset_left = -80.76
+offset_top = -31.816
+offset_right = 81.24
+offset_bottom = 32.184
+
+[node name="Starholder11" parent="Control" instance=ExtResource("19_ln2bj")]
+layout_mode = 1
+anchor_left = 0.626
+anchor_top = 0.617
+anchor_right = 0.626
+anchor_bottom = 0.617
+offset_top = -31.816
+offset_bottom = 32.184
+
+[node name="Starholder12" parent="Control" instance=ExtResource("22_ws0ge")]
+layout_mode = 1
+anchor_left = 0.862
+anchor_top = 0.617
+anchor_right = 0.862
+anchor_bottom = 0.617
+offset_left = -81.024
+offset_top = -31.8161
+offset_right = 80.976
+offset_bottom = 32.1839
+
 [node name="LevelSelection" type="GridContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -59,13 +176,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -466.5
+offset_left = -517.5
 offset_top = -147.5
-offset_right = 466.5
+offset_right = 517.5
 offset_bottom = 147.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 5
+theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 80
 columns = 4
 
@@ -185,74 +302,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_3v1og")
 theme_override_font_sizes/font_size = 25
 text = "Back"
-
-[node name="Starholder1" parent="Control" instance=ExtResource("7_t64ov")]
-layout_mode = 1
-
-[node name="Starholder2" parent="Control" instance=ExtResource("11_30nch")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.383
-anchor_top = 0.272
-anchor_right = 0.383
-anchor_bottom = 0.272
-offset_left = -81.216
-offset_top = -48.256
-offset_right = 80.784
-offset_bottom = 31.744
-
-[node name="Starholder3" parent="Control" instance=ExtResource("12_1viux")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.64
-anchor_top = 0.259
-anchor_right = 0.64
-anchor_bottom = 0.259
-offset_left = -81.28
-offset_top = -39.832
-offset_right = 80.72
-offset_bottom = 40.168
-
-[node name="Starholder4" parent="Control" instance=ExtResource("13_a15s7")]
-layout_mode = 1
-
-[node name="Starholder5" type="GridContainer" parent="Control"]
-visible = false
-layout_mode = 0
-offset_left = 88.0
-offset_top = 254.0
-offset_right = 250.0
-offset_bottom = 334.0
-theme_override_constants/h_separation = -15
-columns = 3
-
-[node name="StarAnim1" parent="Control/Starholder5" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim2" parent="Control/Starholder5" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim3" parent="Control/Starholder5" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="Starholder6" type="GridContainer" parent="Control"]
-visible = false
-layout_mode = 0
-offset_left = 368.0
-offset_top = 256.0
-offset_right = 530.0
-offset_bottom = 336.0
-theme_override_constants/h_separation = -15
-columns = 3
-
-[node name="StarAnim1" parent="Control/Starholder6" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim2" parent="Control/Starholder6" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
-
-[node name="StarAnim3" parent="Control/Starholder6" instance=ExtResource("10_fv0yp")]
-layout_mode = 2
 
 [node name="Title" type="Label" parent="Control"]
 layout_mode = 1

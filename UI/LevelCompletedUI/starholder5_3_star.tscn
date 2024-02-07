@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://2dtyakkch8x8"]
+
+[ext_resource type="PackedScene" uid="uid://ckwyrstxu6iyv" path="res://UI/LevelCompletedUI/star_anim_ui.tscn" id="1_52vpu"]
+
+[node name="Starholder5" type="GridContainer"]
+anchors_preset = -1
+anchor_left = 0.147
+anchor_top = 0.427
+anchor_right = 0.147
+anchor_bottom = 0.427
+offset_left = -81.344
+offset_top = -31.696
+offset_right = 80.656
+offset_bottom = 32.304
+theme_override_constants/h_separation = -15
+columns = 3
+
+[node name="StarAnim1" parent="." instance=ExtResource("1_52vpu")]
+visible = false
+layout_mode = 2
+
+[node name="StarAnim2" parent="." instance=ExtResource("1_52vpu")]
+visible = false
+layout_mode = 2
+
+[node name="StarAnim3" parent="." instance=ExtResource("1_52vpu")]
+visible = false
+layout_mode = 2

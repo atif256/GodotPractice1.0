@@ -4,10 +4,15 @@
 [ext_resource type="Script" path="res://UI/LevelCompletedUI/starholder3_3_star.gd" id="1_nm8kv"]
 
 [node name="Starholder3" type="GridContainer"]
-offset_left = 656.0
-offset_top = 128.0
-offset_right = 818.0
-offset_bottom = 208.0
+anchors_preset = -1
+anchor_left = 0.64
+anchor_top = 0.247
+anchor_right = 0.64
+anchor_bottom = 0.247
+offset_left = -81.28
+offset_top = -32.056
+offset_right = 80.72
+offset_bottom = 31.944
 theme_override_constants/h_separation = -15
 columns = 3
 script = ExtResource("1_nm8kv")

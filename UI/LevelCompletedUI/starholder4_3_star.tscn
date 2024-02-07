@@ -6,13 +6,13 @@
 [node name="Starholder4" type="GridContainer"]
 anchors_preset = -1
 anchor_left = 0.862
-anchor_top = 0.259
+anchor_top = 0.247
 anchor_right = 0.862
-anchor_bottom = 0.259
+anchor_bottom = 0.247
 offset_left = -81.024
-offset_top = -39.832
+offset_top = -32.056
 offset_right = 80.976
-offset_bottom = 40.168
+offset_bottom = 31.944
 theme_override_constants/h_separation = -15
 columns = 3
 script = ExtResource("1_6b0mu")
