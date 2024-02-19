@@ -10,6 +10,11 @@ var corresponding_chest: Node = null
 @export var item: InvItem
 @onready var player = get_parent().find_child("Player")
 
+#new
+@onready var marker = $Marker2D
+
+
+
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		open_chest()
@@ -59,6 +64,7 @@ func _on_key_collected():
 	$Chat.visible = false
 	StarholderBus.star_visibility1 = true
 	StarholderBus.save_star()
+	call_deferred("drop_quest_item")
 
 func _on_key_collected_2(): 
 	chest_is_open = true
@@ -68,6 +74,7 @@ func _on_key_collected_2():
 	$Chat.visible = false
 	StarholderBus.star_visibility2 = true
 	StarholderBus.save_star()
+	call_deferred("drop_quest_item")
 
 func _on_key_collected_3():
 	chest_is_open = true
@@ -77,4 +84,13 @@ func _on_key_collected_3():
 	$Chat.visible = false
 	StarholderBus.star_visibility3 = true
 	StarholderBus.save_star()
+	call_deferred("drop_quest_item")
 
+func drop_quest_item():
+#	const coin = preload("res://CollectableItems/Coins/coins_collectable.tscn")
+	const coin = preload("res://CollectableItems/Quest Items/Ring_Quest_item.tscn")
+	var coin_drop = coin.instantiate()
+	get_tree().get_root().add_child(coin_drop)
+	coin_drop.global_position = marker.global_position
+
+#call_deferred("drop_quest_item")

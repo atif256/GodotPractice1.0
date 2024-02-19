@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ytck76w7jjfq"]
+[gd_scene load_steps=25 format=3 uid="uid://ytck76w7jjfq"]
 
 [ext_resource type="PackedScene" uid="uid://wt1426kpp1h1" path="res://TileMap/tile_map2.tscn" id="1_mpuww"]
 [ext_resource type="Script" path="res://Levels/level_3_Manager.gd" id="1_ralu8"]
@@ -21,7 +21,10 @@
 [ext_resource type="Script" path="res://CollectableItems/Chests/chestscript_level3.gd" id="19_hrld8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86wlw"]
-size = Vector2(30, 53)
+size = Vector2(24, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lejw"]
+size = Vector2(20.4846, 47)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mb4w0"]
 radius = 38.025
@@ -330,8 +333,21 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishedLineType2"]
-position = Vector2(0.422913, 0.332062)
+position = Vector2(-40, 0)
 shape = SubResource("RectangleShape2D_86wlw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FinishedLineType2"]
+position = Vector2(39, 0)
+shape = SubResource("RectangleShape2D_86wlw")
+
+[node name="DoorToNextLevel" type="Area2D" parent="."]
+position = Vector2(826.218, -370.129)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToNextLevel"]
+position = Vector2(0.539612, 2.62851)
+shape = SubResource("RectangleShape2D_2lejw")
 
 [node name="FinishedScene" parent="." instance=ExtResource("9_u1qsr")]
 visible = false
@@ -477,6 +493,7 @@ visible = false
 visible = false
 
 [connection signal="body_entered" from="FinishedLineType2" to="." method="_on_finished_line_type_2_body_entered"]
+[connection signal="body_entered" from="DoorToNextLevel" to="." method="_on_door_to_next_level_body_entered"]
 [connection signal="body_entered" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_exited"]
 [connection signal="body_entered" from="Chest2/Chest2Area2D" to="Chest2" method="_on_chest_2_area_2d_body_entered"]

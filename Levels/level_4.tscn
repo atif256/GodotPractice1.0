@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb3uciyhl0cep"]
+[gd_scene load_steps=10 format=3 uid="uid://cb3uciyhl0cep"]
 
+[ext_resource type="Script" path="res://Levels/level_4_manager.gd" id="1_jqo23"]
 [ext_resource type="PackedScene" uid="uid://wt1426kpp1h1" path="res://TileMap/tile_map2.tscn" id="1_peh75"]
+[ext_resource type="PackedScene" uid="uid://d3qh2gi8lo15w" path="res://MainMenuUI/PauseMenu/pause_menu.tscn" id="4_8jssg"]
+[ext_resource type="PackedScene" uid="uid://bjdxsmkp210p4" path="res://MainMenuUI/finished_menu/finished_scene_menu.tscn" id="5_t878u"]
 [ext_resource type="PackedScene" uid="uid://c5flkl2dibkc7" path="res://Characters/player.tscn" id="5_utjf8"]
+[ext_resource type="PackedScene" uid="uid://bbo418xgoveoi" path="res://MainMenuUI/finished_menu/collect_more_coins_menu.tscn" id="6_h5qoy"]
+[ext_resource type="PackedScene" uid="uid://3km3wmleu2va" path="res://UI/InventoryUI/inventory_player_ui.tscn" id="7_u31n0"]
+[ext_resource type="PackedScene" uid="uid://bdcy3fiepdjcw" path="res://UI/PlayerHealthBar/player_health_bar_ui.tscn" id="8_jwu83"]
+[ext_resource type="FontVariation" uid="uid://cv6utfqyilvxs" path="res://MainMenuUI/MainMenu/MainMenuArt/FontArtForButton.tres" id="9_q3bij"]
 
 [node name="Level_4" type="Node2D"]
+script = ExtResource("1_jqo23")
 
 [node name="TileMap" parent="." instance=ExtResource("1_peh75")]
 position = Vector2(-9.86459, -3.68425)
@@ -26,3 +34,37 @@ process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_8jssg")]
+visible = false
+
+[node name="FinishedScene" parent="." instance=ExtResource("5_t878u")]
+visible = false
+position = Vector2(186.007, -216.471)
+
+[node name="CollectMoreCoins" parent="." instance=ExtResource("6_h5qoy")]
+visible = false
+position = Vector2(397.268, -231.454)
+
+[node name="InventoryPlayerUI" parent="." instance=ExtResource("7_u31n0")]
+visible = false
+
+[node name="PlayerHealthBarUI" parent="." instance=ExtResource("8_jwu83")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 415.0
+offset_top = 259.0
+offset_right = 1655.0
+offset_bottom = 339.0
+theme_override_fonts/font = ExtResource("9_q3bij")
+theme_override_font_sizes/font_size = 40
+text = "Thank you for playing this demo"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 260.0
+offset_top = 8.0
+offset_right = 1500.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("9_q3bij")
+theme_override_font_sizes/font_size = 40
+text = "Thank you for playing this demo"

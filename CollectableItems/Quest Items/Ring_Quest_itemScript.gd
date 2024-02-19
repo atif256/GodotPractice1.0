@@ -4,6 +4,8 @@ extends StaticBody2D
 var ringtaken = false
 var zone_pick_up = false
 
+@export var inv: Inv
+
 @export var item: InvItem
 
 func _process(_delta):
@@ -12,7 +14,11 @@ func _process(_delta):
 			collect_ring()
 
 func collect_ring():
-	player.collect(item)
+#	player.collect(item)
+	inv.insert(item)
+	$CollectItemSFX.play()
+	$AnimationPlayer.play("floating")
+	await $CollectItemSFX.finished
 	queue_free()
 
 func _on_area_2d_body_entered(body: Player):

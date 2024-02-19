@@ -14,6 +14,7 @@ var completed = false
 var is_inventory_closed: bool = true
 @onready var inv: Inv = preload("res://UI/InventoryUI/playerinv.tres")
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	raycast = get_node("Player/world")
 	get_tree().set_pause(false)
@@ -21,7 +22,9 @@ func _ready():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), false)
 	inv.reset_slot()
 
-func _process(_delta):
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
 	if Input.is_action_just_pressed("esc") && completed == false:
 		pauseMenu()
 	if Input.is_action_just_pressed("tab"): #to open inventory
@@ -59,21 +62,3 @@ func inventory_closed():
 	is_inventory_closed = true
 
 
-
-func _on_finished_line_type_2_body_entered(_body):
-	var player_health = get_node("Player/PlayerHealth")
-	if player_health != null and player_health.has_method("get_score"):
-		var score = player_health.get_score()
-		if score >= 10:
-			finish_line.visible = true
-			unfinish_line.visible = false
-		else:
-			unfinish_line.visible = true
-			print("collect more coin to pass")
-
-
-func _on_door_to_next_level_body_entered(body):
-	if finish_line.visible:
-		get_tree().change_scene_to_file("res://Levels/level_4.tscn")
-		ControlLevelmenu.level4 = true
-		ControlLevelmenu.save_data()

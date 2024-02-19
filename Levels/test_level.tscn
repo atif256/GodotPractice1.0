@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://3km3wmleu2va" path="res://UI/InventoryUI/inventory_player_ui.tscn" id="29_l68mn"]
 [ext_resource type="Texture2D" uid="uid://b4lg753ajf472" path="res://art/CoinsArt/KeyRed.png" id="31_ibjb2"]
 [ext_resource type="Resource" uid="uid://snlokw6fy1ho" path="res://UI/InventoryUI/Key_red.tres" id="32_vrt62"]
-[ext_resource type="PackedScene" uid="uid://batdpb7mmb22w" path="res://CollectableItems/Quest Items/Ring_Quest_item.tscn" id="34_467fs"]
+[ext_resource type="PackedScene" uid="uid://bdx4s03ygi85b" path="res://Characters/NPC/villagerNPC/villager_fat.tscn" id="39_o15rb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uvns5"]
 texture = ExtResource("1_0efv7")
@@ -4102,6 +4102,9 @@ collision_mask = 2
 position = Vector2(-2, 2.62541)
 shape = SubResource("CircleShape2D_q1lbs")
 
+[node name="Marker2D" type="Marker2D" parent="Chest"]
+position = Vector2(0.131073, -1.14172)
+
 [node name="Chest2" parent="." instance=ExtResource("27_3q0ly")]
 position = Vector2(-424, 96)
 script = ExtResource("12_g6d5k")
@@ -4121,6 +4124,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest2/Chest2Area2D"]
 position = Vector2(-1.22961, -0.55127)
 shape = SubResource("CircleShape2D_e1knh")
+
+[node name="Marker2D" type="Marker2D" parent="Chest2"]
+position = Vector2(0.131073, -1.14172)
 
 [node name="Chest3" parent="." instance=ExtResource("27_3q0ly")]
 position = Vector2(-500, 95)
@@ -4142,6 +4148,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest3/Chest3Area2D"]
 position = Vector2(1.33633, 0.8909)
 shape = SubResource("CircleShape2D_qkre2")
+
+[node name="Marker2D" type="Marker2D" parent="Chest3"]
+position = Vector2(0.131073, -1.14172)
 
 [node name="Key" parent="." instance=ExtResource("28_hgro1")]
 position = Vector2(-711, 107)
@@ -4183,24 +4192,6 @@ self_modulate = Color(1, 0, 1, 1)
 position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_u7lor")
 
-[node name="Player" parent="." instance=ExtResource("2_1afom")]
-process_mode = 1
-position = Vector2(-659, 88)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-process_mode = 1
-remote_path = NodePath("../../Camera2D")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-process_mode = 1
-position = Vector2(-659, 88)
-offset = Vector2(0, -20)
-zoom = Vector2(2.5, 2.5)
-process_callback = 0
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
 [node name="FinishedScene" parent="." instance=ExtResource("10_i8hyg")]
 visible = false
 position = Vector2(4276, 47)
@@ -4213,7 +4204,7 @@ position = Vector2(4286, 38)
 position = Vector2(4252, -247)
 
 [node name="Boar" parent="." instance=ExtResource("6_c2ofg")]
-position = Vector2(-270, 63)
+position = Vector2(-84, -37)
 collision_mask = 1
 
 [node name="Boar3" parent="." instance=ExtResource("6_c2ofg")]
@@ -4235,7 +4226,7 @@ position = Vector2(31, -17)
 position = Vector2(131, 111)
 
 [node name="Snail2" parent="." instance=ExtResource("4_gknwv")]
-position = Vector2(158, -35)
+position = Vector2(744, 92)
 
 [node name="InvisibleBarriersLeft" parent="." instance=ExtResource("17_yfjpg")]
 position = Vector2(-942, -125)
@@ -4323,8 +4314,29 @@ position = Vector2(3800.9, -221.105)
 [node name="boarwhite" parent="." instance=ExtResource("26_cejbu")]
 position = Vector2(1500, 94)
 
-[node name="Ring" parent="." instance=ExtResource("34_467fs")]
-position = Vector2(-202, 35)
+[node name="VillagerFat" parent="." instance=ExtResource("39_o15rb")]
+position = Vector2(2299, 84)
+
+[node name="Player" parent="." instance=ExtResource("2_1afom")]
+process_mode = 1
+position = Vector2(-659, 88)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+process_mode = 1
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 1
+position = Vector2(-659, 88)
+offset = Vector2(0, -20)
+zoom = Vector2(2.5, 2.5)
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="VillagerFat2" parent="." instance=ExtResource("39_o15rb")]
+position = Vector2(-273, 49)
 
 [connection signal="body_entered" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/ChestArea2D" to="Chest" method="_on_chest_area_2d_body_exited"]

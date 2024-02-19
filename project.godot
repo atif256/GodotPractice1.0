@@ -16,11 +16,11 @@ run/main_scene="res://OpeningGame/opening_game.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="TutorialGameGodot"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://LogoGame/logoDesign1 - Copy.png"
 
 [autoload]
 
-SignalBus="*res://signal_bus.gd"
+SceneChangerManager="*res://signal_bus.gd"
 ControlLevelmenu="*res://MainMenuUI/LevelMenu/ControlLevelmenu.gd"
 StarholderBus="*res://UI/LevelCompletedUI/starholder1script.gd"
 
